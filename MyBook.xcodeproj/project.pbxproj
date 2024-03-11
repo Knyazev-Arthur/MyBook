@@ -7,206 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		756186B62B9A173200CAB57D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186B52B9A173200CAB57D /* AppDelegate.swift */; };
-		756186BA2B9A173200CAB57D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186B92B9A173200CAB57D /* ViewController.swift */; };
-		756186BF2B9A173300CAB57D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 756186BE2B9A173300CAB57D /* Assets.xcassets */; };
-		756186C22B9A173300CAB57D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756186C02B9A173300CAB57D /* LaunchScreen.storyboard */; };
-		756186CD2B9A173300CAB57D /* MyBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186CC2B9A173300CAB57D /* MyBookTests.swift */; };
-		756186D72B9A173300CAB57D /* MyBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186D62B9A173300CAB57D /* MyBookUITests.swift */; };
-		756186D92B9A173300CAB57D /* MyBookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186D82B9A173300CAB57D /* MyBookUITestsLaunchTests.swift */; };
-		756186E62B9A17F600CAB57D /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756186E52B9A17F600CAB57D /* MyView.swift */; };
-		75F5F05D2B9A1BCE00A6BB17 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 75F5F05C2B9A1BCE00A6BB17 /* README.md */; };
+		751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* MyView.swift */; };
+		751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 751EE1A02B9EE055006356F5 /* GoogleSignIn */; };
+		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
+		751EE1A52B9EE339006356F5 /* clientWeb.json in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A42B9EE339006356F5 /* clientWeb.json */; };
+		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
+		75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */; };
+		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
+		75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		756186C92B9A173300CAB57D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 756186AA2B9A173200CAB57D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 756186B12B9A173200CAB57D;
-			remoteInfo = MyBook;
-		};
-		756186D32B9A173300CAB57D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 756186AA2B9A173200CAB57D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 756186B12B9A173200CAB57D;
-			remoteInfo = MyBook;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		756186B22B9A173200CAB57D /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		756186B52B9A173200CAB57D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		756186B92B9A173200CAB57D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		756186BE2B9A173300CAB57D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		756186C12B9A173300CAB57D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		756186C32B9A173300CAB57D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		756186C82B9A173300CAB57D /* MyBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		756186CC2B9A173300CAB57D /* MyBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookTests.swift; sourceTree = "<group>"; };
-		756186D22B9A173300CAB57D /* MyBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		756186D62B9A173300CAB57D /* MyBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookUITests.swift; sourceTree = "<group>"; };
-		756186D82B9A173300CAB57D /* MyBookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		756186E52B9A17F600CAB57D /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
-		75F5F05C2B9A1BCE00A6BB17 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		751EE19D2B9EDC1A006356F5 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
+		751EE1A42B9EE339006356F5 /* clientWeb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clientWeb.json; sourceTree = "<group>"; };
+		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75EDEC512B9EDB6F003DF653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		75EDEC542B9EDB6F003DF653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75EDEC562B9EDB6F003DF653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		756186AF2B9A173200CAB57D /* Frameworks */ = {
+		75EDEC422B9EDB6E003DF653 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186C52B9A173300CAB57D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186CF2B9A173300CAB57D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		756186A92B9A173200CAB57D = {
+		75EDEC3C2B9EDB6E003DF653 = {
 			isa = PBXGroup;
 			children = (
-				756186B42B9A173200CAB57D /* MyBook */,
-				756186CB2B9A173300CAB57D /* MyBookTests */,
-				756186D52B9A173300CAB57D /* MyBookUITests */,
-				756186B32B9A173200CAB57D /* Products */,
+				75EDEC472B9EDB6E003DF653 /* MyBook */,
+				75EDEC462B9EDB6E003DF653 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		756186B32B9A173200CAB57D /* Products */ = {
+		75EDEC462B9EDB6E003DF653 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				756186B22B9A173200CAB57D /* MyBook.app */,
-				756186C82B9A173300CAB57D /* MyBookTests.xctest */,
-				756186D22B9A173300CAB57D /* MyBookUITests.xctest */,
+				75EDEC452B9EDB6E003DF653 /* MyBook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		756186B42B9A173200CAB57D /* MyBook */ = {
+		75EDEC472B9EDB6E003DF653 /* MyBook */ = {
 			isa = PBXGroup;
 			children = (
-				756186B52B9A173200CAB57D /* AppDelegate.swift */,
-				756186B92B9A173200CAB57D /* ViewController.swift */,
-				756186E52B9A17F600CAB57D /* MyView.swift */,
-				756186BE2B9A173300CAB57D /* Assets.xcassets */,
-				756186C02B9A173300CAB57D /* LaunchScreen.storyboard */,
-				756186C32B9A173300CAB57D /* Info.plist */,
-				75F5F05C2B9A1BCE00A6BB17 /* README.md */,
+				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
+				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
+				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
+				75EDEC512B9EDB6F003DF653 /* Assets.xcassets */,
+				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
+				75EDEC562B9EDB6F003DF653 /* Info.plist */,
+				751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */,
+				751EE1A42B9EE339006356F5 /* clientWeb.json */,
 			);
 			path = MyBook;
-			sourceTree = "<group>";
-		};
-		756186CB2B9A173300CAB57D /* MyBookTests */ = {
-			isa = PBXGroup;
-			children = (
-				756186CC2B9A173300CAB57D /* MyBookTests.swift */,
-			);
-			path = MyBookTests;
-			sourceTree = "<group>";
-		};
-		756186D52B9A173300CAB57D /* MyBookUITests */ = {
-			isa = PBXGroup;
-			children = (
-				756186D62B9A173300CAB57D /* MyBookUITests.swift */,
-				756186D82B9A173300CAB57D /* MyBookUITestsLaunchTests.swift */,
-			);
-			path = MyBookUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		756186B12B9A173200CAB57D /* MyBook */ = {
+		75EDEC442B9EDB6E003DF653 /* MyBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 756186DC2B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBook" */;
+			buildConfigurationList = 75EDEC592B9EDB6F003DF653 /* Build configuration list for PBXNativeTarget "MyBook" */;
 			buildPhases = (
-				756186AE2B9A173200CAB57D /* Sources */,
-				756186AF2B9A173200CAB57D /* Frameworks */,
-				756186B02B9A173200CAB57D /* Resources */,
+				75EDEC412B9EDB6E003DF653 /* Sources */,
+				75EDEC422B9EDB6E003DF653 /* Frameworks */,
+				75EDEC432B9EDB6E003DF653 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MyBook;
+			packageProductDependencies = (
+				751EE1A02B9EE055006356F5 /* GoogleSignIn */,
+			);
 			productName = MyBook;
-			productReference = 756186B22B9A173200CAB57D /* MyBook.app */;
+			productReference = 75EDEC452B9EDB6E003DF653 /* MyBook.app */;
 			productType = "com.apple.product-type.application";
-		};
-		756186C72B9A173300CAB57D /* MyBookTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 756186DF2B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBookTests" */;
-			buildPhases = (
-				756186C42B9A173300CAB57D /* Sources */,
-				756186C52B9A173300CAB57D /* Frameworks */,
-				756186C62B9A173300CAB57D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				756186CA2B9A173300CAB57D /* PBXTargetDependency */,
-			);
-			name = MyBookTests;
-			productName = MyBookTests;
-			productReference = 756186C82B9A173300CAB57D /* MyBookTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		756186D12B9A173300CAB57D /* MyBookUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 756186E22B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBookUITests" */;
-			buildPhases = (
-				756186CE2B9A173300CAB57D /* Sources */,
-				756186CF2B9A173300CAB57D /* Frameworks */,
-				756186D02B9A173300CAB57D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				756186D42B9A173300CAB57D /* PBXTargetDependency */,
-			);
-			name = MyBookUITests;
-			productName = MyBookUITests;
-			productReference = 756186D22B9A173300CAB57D /* MyBookUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		756186AA2B9A173200CAB57D /* Project object */ = {
+		75EDEC3D2B9EDB6E003DF653 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					756186B12B9A173200CAB57D = {
+					75EDEC442B9EDB6E003DF653 = {
 						CreatedOnToolsVersion = 15.2;
-					};
-					756186C72B9A173300CAB57D = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = 756186B12B9A173200CAB57D;
-					};
-					756186D12B9A173300CAB57D = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = 756186B12B9A173200CAB57D;
 					};
 				};
 			};
-			buildConfigurationList = 756186AD2B9A173200CAB57D /* Build configuration list for PBXProject "MyBook" */;
+			buildConfigurationList = 75EDEC402B9EDB6E003DF653 /* Build configuration list for PBXProject "MyBook" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,93 +118,51 @@
 				en,
 				Base,
 			);
-			mainGroup = 756186A92B9A173200CAB57D;
-			productRefGroup = 756186B32B9A173200CAB57D /* Products */;
+			mainGroup = 75EDEC3C2B9EDB6E003DF653;
+			packageReferences = (
+				751EE19F2B9EE055006356F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			productRefGroup = 75EDEC462B9EDB6E003DF653 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				756186B12B9A173200CAB57D /* MyBook */,
-				756186C72B9A173300CAB57D /* MyBookTests */,
-				756186D12B9A173300CAB57D /* MyBookUITests */,
+				75EDEC442B9EDB6E003DF653 /* MyBook */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		756186B02B9A173200CAB57D /* Resources */ = {
+		75EDEC432B9EDB6E003DF653 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F5F05D2B9A1BCE00A6BB17 /* README.md in Resources */,
-				756186C22B9A173300CAB57D /* LaunchScreen.storyboard in Resources */,
-				756186BF2B9A173300CAB57D /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186C62B9A173300CAB57D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186D02B9A173300CAB57D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */,
+				751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */,
+				75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */,
+				751EE1A52B9EE339006356F5 /* clientWeb.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		756186AE2B9A173200CAB57D /* Sources */ = {
+		75EDEC412B9EDB6E003DF653 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				756186E62B9A17F600CAB57D /* MyView.swift in Sources */,
-				756186BA2B9A173200CAB57D /* ViewController.swift in Sources */,
-				756186B62B9A173200CAB57D /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186C42B9A173300CAB57D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				756186CD2B9A173300CAB57D /* MyBookTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		756186CE2B9A173300CAB57D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				756186D72B9A173300CAB57D /* MyBookUITests.swift in Sources */,
-				756186D92B9A173300CAB57D /* MyBookUITestsLaunchTests.swift in Sources */,
+				751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */,
+				75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */,
+				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		756186CA2B9A173300CAB57D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 756186B12B9A173200CAB57D /* MyBook */;
-			targetProxy = 756186C92B9A173300CAB57D /* PBXContainerItemProxy */;
-		};
-		756186D42B9A173300CAB57D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 756186B12B9A173200CAB57D /* MyBook */;
-			targetProxy = 756186D32B9A173300CAB57D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		756186C02B9A173300CAB57D /* LaunchScreen.storyboard */ = {
+		75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				756186C12B9A173300CAB57D /* Base */,
+				75EDEC542B9EDB6F003DF653 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -308,7 +170,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		756186DA2B9A173300CAB57D /* Debug */ = {
+		75EDEC572B9EDB6F003DF653 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -371,7 +233,7 @@
 			};
 			name = Debug;
 		};
-		756186DB2B9A173300CAB57D /* Release */ = {
+		75EDEC582B9EDB6F003DF653 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -427,7 +289,7 @@
 			};
 			name = Release;
 		};
-		756186DD2B9A173300CAB57D /* Debug */ = {
+		75EDEC5A2B9EDB6F003DF653 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -454,7 +316,7 @@
 			};
 			name = Debug;
 		};
-		756186DE2B9A173300CAB57D /* Release */ = {
+		75EDEC5B2B9EDB6F003DF653 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -478,125 +340,50 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		756186E02B9A173300CAB57D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8CYTV932SZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Knyazev.MyBook.MyBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBook";
-			};
-			name = Debug;
-		};
-		756186E12B9A173300CAB57D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8CYTV932SZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Knyazev.MyBook.MyBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBook";
-			};
-			name = Release;
-		};
-		756186E32B9A173300CAB57D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8CYTV932SZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Knyazev.MyBook.MyBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyBook;
-			};
-			name = Debug;
-		};
-		756186E42B9A173300CAB57D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8CYTV932SZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Knyazev.MyBook.MyBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyBook;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		756186AD2B9A173200CAB57D /* Build configuration list for PBXProject "MyBook" */ = {
+		75EDEC402B9EDB6E003DF653 /* Build configuration list for PBXProject "MyBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				756186DA2B9A173300CAB57D /* Debug */,
-				756186DB2B9A173300CAB57D /* Release */,
+				75EDEC572B9EDB6F003DF653 /* Debug */,
+				75EDEC582B9EDB6F003DF653 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		756186DC2B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBook" */ = {
+		75EDEC592B9EDB6F003DF653 /* Build configuration list for PBXNativeTarget "MyBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				756186DD2B9A173300CAB57D /* Debug */,
-				756186DE2B9A173300CAB57D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		756186DF2B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBookTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				756186E02B9A173300CAB57D /* Debug */,
-				756186E12B9A173300CAB57D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		756186E22B9A173300CAB57D /* Build configuration list for PBXNativeTarget "MyBookUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				756186E32B9A173300CAB57D /* Debug */,
-				756186E42B9A173300CAB57D /* Release */,
+				75EDEC5A2B9EDB6F003DF653 /* Debug */,
+				75EDEC5B2B9EDB6F003DF653 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		751EE19F2B9EE055006356F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		751EE1A02B9EE055006356F5 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 751EE19F2B9EE055006356F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 756186AA2B9A173200CAB57D /* Project object */;
+	rootObject = 75EDEC3D2B9EDB6E003DF653 /* Project object */;
 }
