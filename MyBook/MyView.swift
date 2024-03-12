@@ -31,7 +31,6 @@ private extension MyView {
         gLoginButton.colorScheme = .dark
         gLoginButton.style = .wide
         gLoginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-        
     }
     
     @objc func tapButton() {
@@ -43,16 +42,21 @@ private extension MyView {
                 print("Ошибка входа через Google: \(error!.localizedDescription)")
                 return
             }
-            guard let signInResult = signInResult else { return }
+            
+            guard let signInResult else { return }
 
             signInResult.user.refreshTokensIfNeeded { user, error in
                 guard error == nil else { return }
-                guard let user = user else { return }
+                guard let user else { return }
 
                 guard let idToken = user.idToken?.tokenString else { return }
-                print("Вход через Google выполнен успешно.\nТокен пользователя: ", idToken)
+                guard let userID = user.userID else { return }
+                print("Вход через Google выполнен успешно")
+                print("Токен пользователя: ", idToken)
+                print("id пользователя: ", userID)
             }
         }
+        
     }
     
     func setupGLoginButtonConstraints() {
