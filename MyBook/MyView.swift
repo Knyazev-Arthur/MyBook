@@ -5,9 +5,11 @@ class MyView: UIView, MyViewProtocol {
     
     weak var viewController: ViewController?
     private let gLoginButton: GIDSignInButton
+    private let label: UILabel
     
     init() {
         gLoginButton = GIDSignInButton()
+        label = UILabel()
         super.init(frame: .zero)
         setupMyView()
     }
@@ -23,7 +25,10 @@ private extension MyView {
     func setupMyView() {
         backgroundColor = .white
         setupGLoginButton()
+        setupLabel()
         addSubview(gLoginButton)
+        addSubview(label)
+        setupLabelConstraints()
         setupGLoginButtonConstraints()
     }
     
@@ -36,27 +41,44 @@ private extension MyView {
     @objc func tapButton() {
         guard let vc = viewController else { return }
         
-        // метод инициации процесса входа пользователя через Google
         GIDSignIn.sharedInstance.signIn(withPresenting: vc) { signInResult, error in
             guard error == nil else {
                 print("Ошибка входа через Google: \(error!.localizedDescription)")
                 return
             }
-            
             guard let signInResult else { return }
-
-            signInResult.user.refreshTokensIfNeeded { user, error in
-                guard error == nil else { return }
-                guard let user else { return }
-
-                guard let idToken = user.idToken?.tokenString else { return }
-                guard let userID = user.userID else { return }
-                print("Вход через Google выполнен успешно")
-                print("Токен пользователя: ", idToken)
-                print("id пользователя: ", userID)
-            }
+            self.getUserToken(signInResult)
         }
+    }
+    
+    func getUserToken(_ signInResult: GIDSignInResult) {
+        signInResult.user.refreshTokensIfNeeded { user, error in
+            guard error == nil else { return }
+            guard let user else { return }
+
+            guard let idToken = user.idToken?.tokenString else { return }
+            guard let userID = user.userID else { return }
+            print("Вход через Google выполнен успешно")
+            print("Токен пользователя: ", idToken)
+            print("id пользователя: ", userID)
+        }
+    }
+    
+    func setupLabel() {
+        label.text = NSLocalizedString("initialGreeting", comment: "")
+        label.numberOfLines = 0
+        label.textAlignment = .center
+    }
+    
+    func setupLabelConstraints() {
+        label.translatesAutoresizingMaskIntoConstraints = false
         
+        let centerX = label.centerXAnchor.constraint(equalTo: centerXAnchor)
+        let centerY = label.centerYAnchor.constraint(equalTo: centerYAnchor)
+        let height = label.heightAnchor.constraint(equalToConstant: 50)
+        let width = label.widthAnchor.constraint(equalToConstant: 250)
+        
+        NSLayoutConstraint.activate([centerX, centerY, height, width])
     }
     
     func setupGLoginButtonConstraints() {
@@ -69,8 +91,6 @@ private extension MyView {
         
         NSLayoutConstraint.activate([centerX, bottom, height, width])
     }
-    
-    
 
 }
 
