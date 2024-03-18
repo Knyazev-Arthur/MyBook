@@ -8,7 +8,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // метод для восстановления предыдущей сессии входа пользователя через Google
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 print("Пользователю требуется авторизоваться")
@@ -23,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // вызывается после входа пользователя в систему через Google для возможности обработки  URL-адреса, содержащего информацию о входе
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         GIDSignIn.sharedInstance.handle(url)
     }
