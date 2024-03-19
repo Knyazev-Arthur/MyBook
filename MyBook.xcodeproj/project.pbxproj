@@ -66,18 +66,34 @@
 		75EDEC472B9EDB6E003DF653 /* MyBook */ = {
 			isa = PBXGroup;
 			children = (
+				75EDEC562B9EDB6F003DF653 /* Info.plist */,
+				751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */,
+				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
 				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
 				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
 				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
-				75EDEC512B9EDB6F003DF653 /* Assets.xcassets */,
-				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
 				7502BF062BA01EF900E565CC /* README.md */,
-				75EDEC562B9EDB6F003DF653 /* Info.plist */,
-				751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */,
+				CE96D9892BA9D70100FF8A61 /* Rersources */,
+			);
+			path = MyBook;
+			sourceTree = "<group>";
+		};
+		CE96D9892BA9D70100FF8A61 /* Rersources */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC512B9EDB6F003DF653 /* Assets.xcassets */,
+				CE96D98A2BA9D72800FF8A61 /* Localization */,
+			);
+			path = Rersources;
+			sourceTree = "<group>";
+		};
+		CE96D98A2BA9D72800FF8A61 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
 				7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */,
 				7523ECA42BA6AD9300707DB7 /* Localizable.strings */,
 			);
-			path = MyBook;
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
