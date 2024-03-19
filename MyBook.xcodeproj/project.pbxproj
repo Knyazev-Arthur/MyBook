@@ -68,10 +68,9 @@
 			children = (
 				75EDEC562B9EDB6F003DF653 /* Info.plist */,
 				751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */,
-				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
-				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
-				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
-				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
+				CE96D98E2BA9DF7F00FF8A61 /* Modules */,
+				CE96D98F2BA9DF9E00FF8A61 /* Services */,
+				CE96D9902BA9DFAE00FF8A61 /* Extensions */,
 				CE96D9892BA9D70100FF8A61 /* Resources */,
 				CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */,
 			);
@@ -94,6 +93,79 @@
 				7523ECA42BA6AD9300707DB7 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		CE96D98E2BA9DF7F00FF8A61 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9912BA9DFD500FF8A61 /* Application */,
+				CE96D9922BA9DFE500FF8A61 /* Splash */,
+				CE96D9952BA9E00A00FF8A61 /* Authorization */,
+				CE96D9962BA9E01600FF8A61 /* Menu */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE96D98F2BA9DF9E00FF8A61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE96D9902BA9DFAE00FF8A61 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE96D9912BA9DFD500FF8A61 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
+				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CE96D9922BA9DFE500FF8A61 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9932BA9DFF300FF8A61 /* ViewController */,
+				CE96D9942BA9DFFE00FF8A61 /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		CE96D9932BA9DFF300FF8A61 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE96D9942BA9DFFE00FF8A61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE96D9952BA9E00A00FF8A61 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		CE96D9962BA9E01600FF8A61 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
