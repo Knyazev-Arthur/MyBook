@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+build/
+*.dSYM
+*.dSYM.zip
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+*.xcuserdata
+*.xcuserstate
+*.xcbkptlist
+*xcworkspace/xcuserdata/*
+*.hmap
+*.ipa
+*.lock
