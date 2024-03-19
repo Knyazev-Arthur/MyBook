@@ -7,17 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* MyView.swift */; };
+		751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */; };
 		751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 751EE1A02B9EE055006356F5 /* GoogleSignIn */; };
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
-		75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */; };
+		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
 		75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */; };
 		CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */; };
-		CE96D99E2BA9E16F00FF8A61 /* MyBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D99D2BA9E16F00FF8A61 /* MyBookTests.swift */; };
+		CE96D99E2BA9E16F00FF8A61 /* MyBookModulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D99D2BA9E16F00FF8A61 /* MyBookModulesTests.swift */; };
+		CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9A82BA9E45000FF8A61 /* AppCoordinator.swift */; };
+		CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9AA2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift */; };
+		CE96D9B32BAA038C00FF8A61 /* AppInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9B22BAA038C00FF8A61 /* AppInteractor.swift */; };
+		CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9B42BAA039B00FF8A61 /* AppInteractorProtocol.swift */; };
+		CE96D9B82BAA03F700FF8A61 /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9B72BAA03F700FF8A61 /* AppBuilder.swift */; };
+		CE96D9BA2BAA040A00FF8A61 /* AppBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9B92BAA040A00FF8A61 /* AppBuilderProtocol.swift */; };
+		CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9BC2BAA043600FF8A61 /* SplashBuilder.swift */; };
+		CE96D9BF2BAA044E00FF8A61 /* SplashBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9BE2BAA044E00FF8A61 /* SplashBuilderProtocol.swift */; };
+		CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9C12BAA047A00FF8A61 /* SplashRouter.swift */; };
+		CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9C32BAA048200FF8A61 /* SplashRouterProtocol.swift */; };
+		CE96D9C62BAA050100FF8A61 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9C52BAA050100FF8A61 /* SplashViewController.swift */; };
+		CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9C82BAA053800FF8A61 /* SplashView.swift */; };
+		CE96D9CC2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9CB2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift */; };
+		CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9CE2BAA079F00FF8A61 /* AuthorizationViewModel.swift */; };
+		CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9D02BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift */; };
+		CE96D9D42BAA09A100FF8A61 /* AuthorizationUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9D32BAA09A100FF8A61 /* AuthorizationUserLogin.swift */; };
+		CE96D9D82BAA09C200FF8A61 /* AuthorizationUserLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9D72BAA09C100FF8A61 /* AuthorizationUserLoginProtocol.swift */; };
+		CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9DB2BAA0A1200FF8A61 /* AuthorizationRouter.swift */; };
+		CE96D9DE2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9DD2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift */; };
+		CE96D9E02BAA11D100FF8A61 /* AuthorizationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9DF2BAA11D100FF8A61 /* AuthorizationBuilder.swift */; };
+		CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9E12BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift */; };
+		CE96D9E62BAA129B00FF8A61 /* MyBookServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9E52BAA129B00FF8A61 /* MyBookServicesTests.swift */; };
+		CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9E72BAA134400FF8A61 /* SplashViewProtocol.swift */; };
+		CE96D9EB2BAA143400FF8A61 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */; };
+		CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */; };
+		CE96D9F12BAA274E00FF8A61 /* AppUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9F02BAA274E00FF8A61 /* AppUserLogin.swift */; };
+		CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751EE19D2B9EDC1A006356F5 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -39,14 +66,41 @@
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		75EDEC512B9EDB6F003DF653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75EDEC542B9EDB6F003DF653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75EDEC562B9EDB6F003DF653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		CE96D99B2BA9E16F00FF8A61 /* MyBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE96D99D2BA9E16F00FF8A61 /* MyBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookTests.swift; sourceTree = "<group>"; };
+		CE96D99D2BA9E16F00FF8A61 /* MyBookModulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookModulesTests.swift; sourceTree = "<group>"; };
 		CE96D9A62BA9E27B00FF8A61 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
+		CE96D9A82BA9E45000FF8A61 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CE96D9AA2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		CE96D9B22BAA038C00FF8A61 /* AppInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInteractor.swift; sourceTree = "<group>"; };
+		CE96D9B42BAA039B00FF8A61 /* AppInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInteractorProtocol.swift; sourceTree = "<group>"; };
+		CE96D9B72BAA03F700FF8A61 /* AppBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBuilder.swift; sourceTree = "<group>"; };
+		CE96D9B92BAA040A00FF8A61 /* AppBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBuilderProtocol.swift; sourceTree = "<group>"; };
+		CE96D9BC2BAA043600FF8A61 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
+		CE96D9BE2BAA044E00FF8A61 /* SplashBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilderProtocol.swift; sourceTree = "<group>"; };
+		CE96D9C12BAA047A00FF8A61 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
+		CE96D9C32BAA048200FF8A61 /* SplashRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouterProtocol.swift; sourceTree = "<group>"; };
+		CE96D9C52BAA050100FF8A61 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		CE96D9C82BAA053800FF8A61 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		CE96D9CB2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewProtocol.swift; sourceTree = "<group>"; };
+		CE96D9CE2BAA079F00FF8A61 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		CE96D9D02BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModelProtocol.swift; sourceTree = "<group>"; };
+		CE96D9D32BAA09A100FF8A61 /* AuthorizationUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationUserLogin.swift; sourceTree = "<group>"; };
+		CE96D9D72BAA09C100FF8A61 /* AuthorizationUserLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationUserLoginProtocol.swift; sourceTree = "<group>"; };
+		CE96D9DB2BAA0A1200FF8A61 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		CE96D9DD2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouterProtocol.swift; sourceTree = "<group>"; };
+		CE96D9DF2BAA11D100FF8A61 /* AuthorizationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilder.swift; sourceTree = "<group>"; };
+		CE96D9E12BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilderProtocol.swift; sourceTree = "<group>"; };
+		CE96D9E52BAA129B00FF8A61 /* MyBookServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookServicesTests.swift; sourceTree = "<group>"; };
+		CE96D9E72BAA134400FF8A61 /* SplashViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewProtocol.swift; sourceTree = "<group>"; };
+		CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelProtocol.swift; sourceTree = "<group>"; };
+		CE96D9F02BAA274E00FF8A61 /* AppUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserLogin.swift; sourceTree = "<group>"; };
+		CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserLoginProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +194,9 @@
 		CE96D9902BA9DFAE00FF8A61 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE96D9AC2BA9E4FF00FF8A61 /* Classes */,
+				CE96D9AD2BA9E50500FF8A61 /* Structures */,
+				CE96D9AE2BA9E50F00FF8A61 /* Protocols */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -147,9 +204,11 @@
 		CE96D9912BA9DFD500FF8A61 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
+				CE96D9AF2BA9E54E00FF8A61 /* LaunchScreen */,
 				CE96D9A52BA9E20D00FF8A61 /* Delegate */,
+				CE96D9B62BAA03D500FF8A61 /* Builder */,
 				CE96D9A42BA9E1FA00FF8A61 /* Coordinator */,
+				CE96D9B12BAA037300FF8A61 /* Interactor */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -157,6 +216,9 @@
 		CE96D9922BA9DFE500FF8A61 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				CE96D9BB2BAA042700FF8A61 /* Builder */,
+				CE96D9C02BAA046300FF8A61 /* Router */,
+				CE96D9E92BAA140200FF8A61 /* ViewModel */,
 				CE96D9932BA9DFF300FF8A61 /* ViewController */,
 				CE96D9942BA9DFFE00FF8A61 /* View */,
 			);
@@ -166,7 +228,7 @@
 		CE96D9932BA9DFF300FF8A61 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
+				CE96D9C52BAA050100FF8A61 /* SplashViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -174,7 +236,8 @@
 		CE96D9942BA9DFFE00FF8A61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
+				CE96D9C82BAA053800FF8A61 /* SplashView.swift */,
+				CE96D9E72BAA134400FF8A61 /* SplashViewProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +245,11 @@
 		CE96D9952BA9E00A00FF8A61 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				CE96D9DA2BAA0A0100FF8A61 /* Builder */,
+				CE96D9D92BAA09FA00FF8A61 /* Router */,
+				CE96D9CD2BAA078B00FF8A61 /* ViewModel */,
+				CE96D9C72BAA051C00FF8A61 /* ViewController */,
+				CE96D9CA2BAA054700FF8A61 /* View */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -196,7 +264,8 @@
 		CE96D99C2BA9E16F00FF8A61 /* MyBookTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE96D99D2BA9E16F00FF8A61 /* MyBookTests.swift */,
+				CE96D9E32BAA126C00FF8A61 /* Modules */,
+				CE96D9E42BAA127600FF8A61 /* Services */,
 			);
 			path = MyBookTests;
 			sourceTree = "<group>";
@@ -204,6 +273,8 @@
 		CE96D9A42BA9E1FA00FF8A61 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				CE96D9A82BA9E45000FF8A61 /* AppCoordinator.swift */,
+				CE96D9AA2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -214,6 +285,176 @@
 				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		CE96D9AC2BA9E4FF00FF8A61 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CE96D9AD2BA9E50500FF8A61 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		CE96D9AE2BA9E50F00FF8A61 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE96D9AF2BA9E54E00FF8A61 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		CE96D9B12BAA037300FF8A61 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9B22BAA038C00FF8A61 /* AppInteractor.swift */,
+				CE96D9B42BAA039B00FF8A61 /* AppInteractorProtocol.swift */,
+				CE96D9EE2BAA270500FF8A61 /* Services */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CE96D9B62BAA03D500FF8A61 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9B72BAA03F700FF8A61 /* AppBuilder.swift */,
+				CE96D9B92BAA040A00FF8A61 /* AppBuilderProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CE96D9BB2BAA042700FF8A61 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9BC2BAA043600FF8A61 /* SplashBuilder.swift */,
+				CE96D9BE2BAA044E00FF8A61 /* SplashBuilderProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CE96D9C02BAA046300FF8A61 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9C12BAA047A00FF8A61 /* SplashRouter.swift */,
+				CE96D9C32BAA048200FF8A61 /* SplashRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE96D9C72BAA051C00FF8A61 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE96D9CA2BAA054700FF8A61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */,
+				CE96D9CB2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE96D9CD2BAA078B00FF8A61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9CE2BAA079F00FF8A61 /* AuthorizationViewModel.swift */,
+				CE96D9D02BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift */,
+				CE96D9D22BAA097000FF8A61 /* Services */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE96D9D22BAA097000FF8A61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9D52BAA09B000FF8A61 /* AuthorizationUserLogin */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE96D9D52BAA09B000FF8A61 /* AuthorizationUserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9D32BAA09A100FF8A61 /* AuthorizationUserLogin.swift */,
+				CE96D9D72BAA09C100FF8A61 /* AuthorizationUserLoginProtocol.swift */,
+			);
+			path = AuthorizationUserLogin;
+			sourceTree = "<group>";
+		};
+		CE96D9D92BAA09FA00FF8A61 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9DB2BAA0A1200FF8A61 /* AuthorizationRouter.swift */,
+				CE96D9DD2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE96D9DA2BAA0A0100FF8A61 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9DF2BAA11D100FF8A61 /* AuthorizationBuilder.swift */,
+				CE96D9E12BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CE96D9E32BAA126C00FF8A61 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D99D2BA9E16F00FF8A61 /* MyBookModulesTests.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE96D9E42BAA127600FF8A61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9E52BAA129B00FF8A61 /* MyBookServicesTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE96D9E92BAA140200FF8A61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */,
+				CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE96D9EE2BAA270500FF8A61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9EF2BAA271800FF8A61 /* AppUserLogin */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE96D9EF2BAA271800FF8A61 /* AppUserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9F02BAA274E00FF8A61 /* AppUserLogin.swift */,
+				CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */,
+			);
+			path = AppUserLogin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +567,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */,
-				75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */,
+				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
+				CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */,
+				CE96D9D82BAA09C200FF8A61 /* AuthorizationUserLoginProtocol.swift in Sources */,
+				CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */,
+				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
+				CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */,
+				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
+				CE96D9D42BAA09A100FF8A61 /* AuthorizationUserLogin.swift in Sources */,
+				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
+				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
+				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
+				CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */,
+				CE96D9BA2BAA040A00FF8A61 /* AppBuilderProtocol.swift in Sources */,
+				CE96D9EB2BAA143400FF8A61 /* SplashViewModel.swift in Sources */,
+				CE96D9B32BAA038C00FF8A61 /* AppInteractor.swift in Sources */,
+				CE96D9F12BAA274E00FF8A61 /* AppUserLogin.swift in Sources */,
+				CE96D9DE2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift in Sources */,
+				CE96D9E02BAA11D100FF8A61 /* AuthorizationBuilder.swift in Sources */,
+				CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */,
+				CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */,
+				CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */,
+				CE96D9C62BAA050100FF8A61 /* SplashViewController.swift in Sources */,
+				CE96D9CC2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift in Sources */,
+				CE96D9B82BAA03F700FF8A61 /* AppBuilder.swift in Sources */,
 				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
+				CE96D9BF2BAA044E00FF8A61 /* SplashBuilderProtocol.swift in Sources */,
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
+				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
+				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
+				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +604,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE96D99E2BA9E16F00FF8A61 /* MyBookTests.swift in Sources */,
+				CE96D9E62BAA129B00FF8A61 /* MyBookServicesTests.swift in Sources */,
+				CE96D99E2BA9E16F00FF8A61 /* MyBookModulesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

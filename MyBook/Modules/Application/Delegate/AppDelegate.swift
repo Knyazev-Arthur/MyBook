@@ -6,20 +6,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    private var builder: AppBuilderProtocol!
+    private var interactor: AppInteractorProtocol!
+    private var coordinator: AppCoordinatorProtocol!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error != nil || user == nil {
-                print("Пользователю требуется авторизоваться")
-            } else {
-                print("Пользователь уже был авторизован в системе")
-            }
-        }
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ViewController()
-        window?.makeKeyAndVisible()
-        return true
+        window = UIWindow()
+        builder = AppBuilder()
+        interactor = builder.interactor
+        coordinator = builder.coordinator
+        guard let coordinator else { return false }
+        return coordinator.start(window)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
