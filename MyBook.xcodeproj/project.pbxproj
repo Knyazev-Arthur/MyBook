@@ -72,19 +72,19 @@
 				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
 				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
 				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
-				CE96D9892BA9D70100FF8A61 /* Rersources */,
+				CE96D9892BA9D70100FF8A61 /* Resources */,
 				CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */,
 			);
 			path = MyBook;
 			sourceTree = "<group>";
 		};
-		CE96D9892BA9D70100FF8A61 /* Rersources */ = {
+		CE96D9892BA9D70100FF8A61 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				75EDEC512B9EDB6F003DF653 /* Assets.xcassets */,
 				CE96D98A2BA9D72800FF8A61 /* Localization */,
 			);
-			path = Rersources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CE96D98A2BA9D72800FF8A61 /* Localization */ = {
