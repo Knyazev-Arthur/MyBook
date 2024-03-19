@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7502BF072BA01EF900E565CC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7502BF062BA01EF900E565CC /* README.md */; };
 		751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* MyView.swift */; };
 		751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 751EE1A02B9EE055006356F5 /* GoogleSignIn */; };
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
@@ -17,10 +16,10 @@
 		75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
 		75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */; };
+		CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7502BF062BA01EF900E565CC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		751EE19D2B9EDC1A006356F5 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -33,6 +32,7 @@
 		75EDEC512B9EDB6F003DF653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75EDEC542B9EDB6F003DF653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75EDEC562B9EDB6F003DF653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +72,8 @@
 				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
 				75EDEC4C2B9EDB6E003DF653 /* ViewController.swift */,
 				751EE19D2B9EDC1A006356F5 /* MyView.swift */,
-				7502BF062BA01EF900E565CC /* README.md */,
 				CE96D9892BA9D70100FF8A61 /* Rersources */,
+				CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */,
 			);
 			path = MyBook;
 			sourceTree = "<group>";
@@ -165,7 +165,6 @@
 				7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */,
 				75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */,
 				751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */,
-				7502BF072BA01EF900E565CC /* README.md in Resources */,
 				75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +179,7 @@
 				751EE19E2B9EDC1A006356F5 /* MyView.swift in Sources */,
 				75EDEC4D2B9EDB6E003DF653 /* ViewController.swift in Sources */,
 				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
+				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
