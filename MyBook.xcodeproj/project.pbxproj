@@ -46,6 +46,7 @@
 		CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		CE96D99B2BA9E16F00FF8A61 /* MyBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE96D99D2BA9E16F00FF8A61 /* MyBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookTests.swift; sourceTree = "<group>"; };
+		CE96D9A62BA9E27B00FF8A61 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 		75EDEC3C2B9EDB6E003DF653 = {
 			isa = PBXGroup;
 			children = (
+				CE96D9A62BA9E27B00FF8A61 /* ReadMe.md */,
 				75EDEC472B9EDB6E003DF653 /* MyBook */,
 				CE96D99C2BA9E16F00FF8A61 /* MyBookTests */,
 				75EDEC462B9EDB6E003DF653 /* Products */,
@@ -146,7 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */,
-				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
+				CE96D9A52BA9E20D00FF8A61 /* Delegate */,
+				CE96D9A42BA9E1FA00FF8A61 /* Coordinator */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -196,6 +199,21 @@
 				CE96D99D2BA9E16F00FF8A61 /* MyBookTests.swift */,
 			);
 			path = MyBookTests;
+			sourceTree = "<group>";
+		};
+		CE96D9A42BA9E1FA00FF8A61 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE96D9A52BA9E20D00FF8A61 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
