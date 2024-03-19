@@ -48,7 +48,7 @@ private extension AppCoordinator {
     
     func startAuthorizationModule(_ window: UIWindow?) {
         guard let window, let builder = builder.authorizationBuilder, let controller = builder.controller, let router = builder.router else {
-            fatalError()
+            fatalError("There aren't any significant authorization module objects")
         }
         
         window.rootViewController = controller
