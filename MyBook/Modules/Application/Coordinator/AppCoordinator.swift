@@ -33,6 +33,9 @@ private extension AppCoordinator {
         switch event {
             case .authorization(let status):
                 userAuthorizationHandler(status)
+            
+            case .pushNotitication(_):
+                break
         }
     }
     

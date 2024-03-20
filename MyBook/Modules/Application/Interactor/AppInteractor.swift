@@ -34,6 +34,7 @@ class AppInteractor: AppInteractorProtocol {
 // MARK: - AppInteractorExternalEvent
 enum AppInteractorExternalEvent {
     case authorization(AppInteractorUserStatus)
+    case pushNotitication([String : Any])
 }
 
 // MARK: - AppInteractorUserStatus
