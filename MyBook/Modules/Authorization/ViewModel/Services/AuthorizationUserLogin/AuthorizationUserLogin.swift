@@ -1,4 +1,3 @@
-import UIKit
 import GoogleSignIn
 
 class AuthorizationUserLogin: AuthorizationUserLoginProtocol {

@@ -12,6 +12,8 @@
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
+		752C0C582BB6E52600241FFF /* SplashLogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752C0C572BB6E52600241FFF /* SplashLogoImage.swift */; };
+		752C0C5B2BB6F77B00241FFF /* SplashLogoImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752C0C5A2BB6F77B00241FFF /* SplashLogoImageProtocol.swift */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		752C0C572BB6E52600241FFF /* SplashLogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashLogoImage.swift; sourceTree = "<group>"; };
+		752C0C5A2BB6F77B00241FFF /* SplashLogoImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashLogoImageProtocol.swift; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		752C0C562BB6E4F200241FFF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				752C0C592BB6E90500241FFF /* SplashLogoImage */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		752C0C592BB6E90500241FFF /* SplashLogoImage */ = {
+			isa = PBXGroup;
+			children = (
+				752C0C572BB6E52600241FFF /* SplashLogoImage.swift */,
+				752C0C5A2BB6F77B00241FFF /* SplashLogoImageProtocol.swift */,
+			);
+			path = SplashLogoImage;
+			sourceTree = "<group>";
+		};
 		75EDEC3C2B9EDB6E003DF653 = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +457,7 @@
 			children = (
 				CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */,
 				CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */,
+				752C0C562BB6E4F200241FFF /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -576,6 +598,7 @@
 				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
 				CE96D9D42BAA09A100FF8A61 /* AuthorizationUserLogin.swift in Sources */,
 				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
+				752C0C5B2BB6F77B00241FFF /* SplashLogoImageProtocol.swift in Sources */,
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
 				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
 				CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */,
@@ -596,6 +619,7 @@
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
+				752C0C582BB6E52600241FFF /* SplashLogoImage.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

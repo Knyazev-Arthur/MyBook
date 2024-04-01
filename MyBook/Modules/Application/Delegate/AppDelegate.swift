@@ -1,4 +1,3 @@
-import UIKit
 import GoogleSignIn
 
 @main
