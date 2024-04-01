@@ -14,7 +14,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     }
     
     func start(_ window: UIWindow?) -> Bool {
-        startAuthorizationModule(window)
+        startSplashModule(window)
         return true
     }
     
@@ -49,6 +49,16 @@ private extension AppCoordinator {
         }
     }
     
+    func startSplashModule(_ window: UIWindow?) {
+        guard let window, let builder = builder.splashBuilder, let controller = builder.controller, let router = builder.router else {
+            fatalError("There aren't any significant authorization module objects")
+        }
+        
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        routers[AppCoordinatorKey.splash] = router
+    }
+    
     func startAuthorizationModule(_ window: UIWindow?) {
         guard let window, let builder = builder.authorizationBuilder, let controller = builder.controller, let router = builder.router else {
             fatalError("There aren't any significant authorization module objects")
@@ -63,6 +73,7 @@ private extension AppCoordinator {
 
 // MARK: - AppCoordinatorKey
 fileprivate enum AppCoordinatorKey {
+    static let splash = "Splash"
     static let authorization = "Authorization"
     static let menu = "Menu"
 }

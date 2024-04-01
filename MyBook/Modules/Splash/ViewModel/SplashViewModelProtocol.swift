@@ -1,3 +1,6 @@
 import Foundation
 
-protocol SplashViewModelProtocol {}
+protocol SplashViewModelProtocol: AnyObject {
+    var action: ((Data) -> Void)? { get set }
+    func sendEvent()
+}

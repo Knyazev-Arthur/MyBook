@@ -1,3 +1,6 @@
 import Foundation
 
-protocol SplashBuilderProtocol {}
+protocol SplashBuilderProtocol {
+    var controller: SplashViewController? { get }
+    var router: SplashRouterProtocol? { get }
+}
