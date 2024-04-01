@@ -57,6 +57,10 @@ private extension AppCoordinator {
         window.rootViewController = controller
         window.makeKeyAndVisible()
         routers[AppCoordinatorKey.splash] = router
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.startAuthorizationModule(window)
+        }
     }
     
     func startAuthorizationModule(_ window: UIWindow?) {
