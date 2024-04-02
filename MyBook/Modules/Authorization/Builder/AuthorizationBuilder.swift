@@ -3,6 +3,17 @@ import GoogleSignIn
 
 class AuthorizationBuilder: AuthorizationBuilderProtocol {
     
+    private let injector: InjectorProtocol
+    
+    init(injector: InjectorProtocol) {
+        self.injector = injector
+    }
+
+}
+
+// MARK: Public
+extension AuthorizationBuilder {
+    
     func view(_ label: UILabel, _ loginButton: GIDSignInButton) -> AuthorizationViewProtocol {
         AuthorizationView(label: label, loginButton: loginButton)
     }
@@ -26,7 +37,7 @@ class AuthorizationBuilder: AuthorizationBuilderProtocol {
     func googleService() -> GIDSignIn {
         GIDSignIn.sharedInstance
     }
-
+    
 }
 
 // MARK: Protocol

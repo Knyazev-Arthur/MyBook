@@ -2,7 +2,14 @@ import Foundation
 import GoogleSignIn
 
 class AppBuilder: AppBuilderProtocol {
-
+    
+    private let injector: InjectorProtocol
+    
+    init(injector: InjectorProtocol) {
+        self.injector = injector
+        register()
+    }
+    
     func googleService() -> GIDSignIn {
         GIDSignIn.sharedInstance
     }
