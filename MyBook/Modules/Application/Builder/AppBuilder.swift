@@ -10,6 +10,26 @@ class AppBuilder: AppBuilderProtocol {
         register()
     }
     
+}
+
+// MARK: Private
+private extension AppBuilder {
+    
+    func register() {
+        keyWindow()
+    }
+    
+    func keyWindow() {
+        let window = UIWindow()
+        window.makeKeyAndVisible()
+        injector.addObject(to: .application, value: window)
+    }
+    
+}
+
+// MARK: Public
+extension AppBuilder {
+    
     func googleService() -> GIDSignIn {
         GIDSignIn.sharedInstance
     }
@@ -23,6 +43,10 @@ class AppBuilder: AppBuilderProtocol {
 // MARK: Protocol
 extension AppBuilder {
     
+    var window: UIWindow? {
+        injector.getObject(from: .application, type: UIWindow.self)
+    }
+    
     var interactor: AppInteractorProtocol? {
         let googleService = googleService()
         let userLogin = userLogin(googleService)
@@ -35,11 +59,11 @@ extension AppBuilder {
     }
     
     var splashBuilder: SplashBuilderProtocol? {
-        SplashBuilder()
+        SplashBuilder(injector: injector)
     }
     
     var authorizationBuilder: AuthorizationBuilderProtocol? {
-        AuthorizationBuilder()
+        AuthorizationBuilder(injector: injector)
     }
     
 }

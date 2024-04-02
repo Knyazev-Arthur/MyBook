@@ -5,7 +5,6 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var injector: InjectorProtocol!
-    
     private var builder: AppBuilderProtocol!
     private var interactor: AppInteractorProtocol!
     private var coordinator: AppCoordinatorProtocol!
@@ -16,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         interactor = builder.interactor
         coordinator = builder.coordinator
         guard let coordinator else { return false }
-        return coordinator.start(window)
+        return coordinator.start()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
