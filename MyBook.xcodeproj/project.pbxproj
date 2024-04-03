@@ -47,6 +47,7 @@
 		CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */; };
 		CEA54A342BBCC1C70087C90A /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A332BBCC1C70087C90A /* Injector.swift */; };
 		CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A352BBCC1DD0087C90A /* InjectorProtocol.swift */; };
+		CEA54A382BBD6A420087C90A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A372BBD6A420087C90A /* Container.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserLoginProtocol.swift; sourceTree = "<group>"; };
 		CEA54A332BBCC1C70087C90A /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		CEA54A352BBCC1DD0087C90A /* InjectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectorProtocol.swift; sourceTree = "<group>"; };
+		CEA54A372BBD6A420087C90A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +193,9 @@
 		CE96D98F2BA9DF9E00FF8A61 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CEA54A322BBCC19E0087C90A /* Injector */,
+				CEA54A3C2BBD6BA00087C90A /* Dependency */,
+				CEA54A3D2BBD6BBA0087C90A /* UserInterface */,
+				CEA54A3E2BBD6BCD0087C90A /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -471,6 +475,37 @@
 			path = Injector;
 			sourceTree = "<group>";
 		};
+		CEA54A392BBD6A470087C90A /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				CEA54A372BBD6A420087C90A /* Container.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		CEA54A3C2BBD6BA00087C90A /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				CEA54A392BBD6A470087C90A /* Container */,
+				CEA54A322BBCC19E0087C90A /* Injector */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		CEA54A3D2BBD6BBA0087C90A /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		CEA54A3E2BBD6BCD0087C90A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -612,6 +647,7 @@
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
+				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
