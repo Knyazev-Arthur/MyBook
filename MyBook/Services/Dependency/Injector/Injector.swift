@@ -15,7 +15,11 @@ final class Injector: InjectorProtocol {
     }
     
     func getObject<T>(from key: InjectorContainerKey, type: T.Type) -> T? {
-        guard let container = containers[key], let object = container.get(type: type) else { return nil }
+        guard let container = containers[key], let object = container.get(type: type) else {
+            print("⛔️ Error of getting object with type: \(type) from container: \(key) ❗️")
+            return nil
+        }
+        
         return object
     }
     
