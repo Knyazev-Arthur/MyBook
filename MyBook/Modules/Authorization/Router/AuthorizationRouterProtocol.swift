@@ -1,3 +1,5 @@
 import Foundation
 
-protocol AuthorizationRouterProtocol: AnyObject {}
+protocol AuthorizationRouterProtocol: AnyObject {
+    func sendEvent(_ event: AuthorizationRouterInternalEvent)
+}

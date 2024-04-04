@@ -7,12 +7,48 @@ class AuthorizationBuilder: AuthorizationBuilderProtocol {
     
     init(injector: InjectorProtocol) {
         self.injector = injector
+        register()
     }
 
 }
 
+// MARK: Private
+private extension AuthorizationBuilder {
+    
+    func register() {
+        screenRouter()
+        viewController()
+    }
+    
+    func screenRouter() {
+        let router = AuthorizationRouter()
+        injector.addObject(to: .authorization, value: router)
+    }
+    
+    func viewController() {
+        guard let router = injector.getObject(from: .authorization, type: AuthorizationRouter.self) else { return }
+                
+        let googleService = googleService()
+        let userLogin = userLogin(googleService)
+        let viewModel = viewModel(router, userLogin)
+        let label = label()
+        let googleButton = googleButton()
+        let view = view(label, googleButton)
+        let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
+        
+        router.sendEvent(.inject(viewController: viewController))
+        userLogin.viewController = viewController
+        injector.addObject(to: .authorization, value: viewController)
+    }
+    
+}
+
 // MARK: Public
 extension AuthorizationBuilder {
+    
+    func viewController(_ viewModel: AuthorizationViewModelProtocol, _ view: AuthorizationViewProtocol) -> AuthorizationViewController {
+        AuthorizationViewController(viewModel: viewModel, view: view)
+    }
     
     func view(_ label: UILabel, _ loginButton: GIDSignInButton) -> AuthorizationViewProtocol {
         AuthorizationView(label: label, loginButton: loginButton)
@@ -26,8 +62,8 @@ extension AuthorizationBuilder {
         GIDSignInButton()
     }
     
-    func viewModel(_ userLogin: AuthorizationUserLoginProtocol) -> AuthorizationViewModelProtocol {
-        AuthorizationViewModel(userLogin: userLogin)
+    func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AuthorizationUserLoginProtocol) -> AuthorizationViewModelProtocol {
+        AuthorizationViewModel(router: router, userLogin: userLogin)
     }
     
     func userLogin(_ googleService: GIDSignIn) -> AuthorizationUserLoginProtocol {
@@ -44,20 +80,11 @@ extension AuthorizationBuilder {
 extension AuthorizationBuilder {
     
     var controller: AuthorizationViewController? {
-        let googleService = googleService()
-        let userLogin = userLogin(googleService)
-        let viewModel = viewModel(userLogin)
-        let label = label()
-        let googleButton = googleButton()
-        let view = view(label, googleButton)
-        let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
-        userLogin.viewController = viewController
-        return viewController
+        injector.getObject(from: .authorization, type: AuthorizationViewController.self)
     }
     
     var router: AuthorizationRouterProtocol? {
-        guard let controller else { return nil }
-        return AuthorizationRouter(viewController: controller)
+        injector.getObject(from: .authorization, type: AuthorizationRouter.self)
     }
     
 }
