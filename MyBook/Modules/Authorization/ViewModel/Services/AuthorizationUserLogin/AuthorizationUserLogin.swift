@@ -1,3 +1,4 @@
+import Foundation
 import GoogleSignIn
 
 class AuthorizationUserLogin: AuthorizationUserLoginProtocol {
@@ -17,7 +18,7 @@ class AuthorizationUserLogin: AuthorizationUserLoginProtocol {
     
 }
 
-// MARK: Pricate
+// MARK: Private
 private extension AuthorizationUserLogin {
     
     func startUserLogin() {

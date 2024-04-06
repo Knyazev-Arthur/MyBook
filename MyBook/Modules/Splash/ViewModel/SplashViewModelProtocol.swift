@@ -1,6 +1,7 @@
 import Foundation
+import UIKit
 
 protocol SplashViewModelProtocol: AnyObject {
-    var action: ((Data) -> Void)? { get set }
+    var action: ((UIImage?) -> Void)? { get set }
     func sendEvent()
 }

@@ -1,3 +1,4 @@
+import Foundation
 import GoogleSignIn
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
@@ -21,7 +22,6 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     func sendEvent(_ message: String) {
         print(message)
     }
-    
 }
 
 // MARK: Private

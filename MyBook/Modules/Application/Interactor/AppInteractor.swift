@@ -1,3 +1,4 @@
+import Foundation
 import GoogleSignIn
 
 class AppInteractor: AppInteractorProtocol {
@@ -27,7 +28,7 @@ class AppInteractor: AppInteractorProtocol {
     func sendEvent() {
         userLogin.sendEvent()
     }
-    
+
 }
 
 // MARK: - AppInteractorExternalEvent

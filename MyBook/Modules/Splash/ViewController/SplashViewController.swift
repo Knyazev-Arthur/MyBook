@@ -1,3 +1,4 @@
+import Foundation
 import UIKit
 
 class SplashViewController: UIViewController {
@@ -20,14 +21,14 @@ class SplashViewController: UIViewController {
         view = myView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.sendEvent()
+    }
+    
     private func setupObservers() {
         viewModel.action = { [weak self] in
-            guard let image = UIImage(data: $0) else { return }
-            self?.myView.sendEvent(image)
-        }
-        
-        myView.action = { [weak self] in
-            self?.viewModel.sendEvent()
+            self?.myView.sendEvent($0)
         }
     }
     
