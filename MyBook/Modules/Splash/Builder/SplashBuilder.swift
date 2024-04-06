@@ -18,6 +18,12 @@ class SplashBuilder: SplashBuilderProtocol {
         SplashLogoImage()
     }
     
+    private let injector: InjectorProtocol
+    
+    init(injector: InjectorProtocol) {
+        self.injector = injector
+    }
+    
 }
 
 // MARK: Protocol

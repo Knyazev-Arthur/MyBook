@@ -1,18 +1,20 @@
-import UIKit
+import Foundation
 
 class AppCoordinator: AppCoordinatorProtocol {
     
     private let builder: AppBuilderProtocol
     private let interactor: AppInteractorProtocol
-    private var routers: [String : Any]
+    private var routers: [AppCoordinatorKey : Any]
     
     init(builder: AppBuilderProtocol, interactor: AppInteractorProtocol) {
         self.builder = builder
         self.interactor = interactor
-        self.routers = [String : Any]()
+        self.routers = [AppCoordinatorKey : Any]()
         setupObservers()
     }
     
+    func start() -> Bool {
+        startAuthorizationModule()
     func start(_ window: UIWindow?) -> Bool {
         startSplashModule(window)
         return true
@@ -57,27 +59,22 @@ private extension AppCoordinator {
         window.rootViewController = controller
         window.makeKeyAndVisible()
         routers[AppCoordinatorKey.splash] = router
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.startAuthorizationModule(window)
-        }
     }
     
-    func startAuthorizationModule(_ window: UIWindow?) {
-        guard let window, let builder = builder.authorizationBuilder, let controller = builder.controller, let router = builder.router else {
+    func startAuthorizationModule() {
+        guard let window = builder.window, let builder = builder.authorizationBuilder, let controller = builder.controller, let router = builder.router else {
             fatalError("There aren't any significant authorization module objects")
         }
         
         window.rootViewController = controller
         window.makeKeyAndVisible()
-        routers[AppCoordinatorKey.authorization] = router
+        routers[.authorization] = router
     }
     
 }
 
 // MARK: - AppCoordinatorKey
-fileprivate enum AppCoordinatorKey {
-    static let splash = "Splash"
-    static let authorization = "Authorization"
-    static let menu = "Menu"
+fileprivate enum AppCoordinatorKey: Hashable {
+    case authorization
+    case menu
 }

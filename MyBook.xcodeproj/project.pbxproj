@@ -47,6 +47,9 @@
 		CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */; };
 		CE96D9F12BAA274E00FF8A61 /* AppUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9F02BAA274E00FF8A61 /* AppUserLogin.swift */; };
 		CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */; };
+		CEA54A342BBCC1C70087C90A /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A332BBCC1C70087C90A /* Injector.swift */; };
+		CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A352BBCC1DD0087C90A /* InjectorProtocol.swift */; };
+		CEA54A382BBD6A420087C90A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA54A372BBD6A420087C90A /* Container.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,9 @@
 		CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelProtocol.swift; sourceTree = "<group>"; };
 		CE96D9F02BAA274E00FF8A61 /* AppUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserLogin.swift; sourceTree = "<group>"; };
 		CE96D9F22BAA275F00FF8A61 /* AppUserLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserLoginProtocol.swift; sourceTree = "<group>"; };
+		CEA54A332BBCC1C70087C90A /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		CEA54A352BBCC1DD0087C90A /* InjectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectorProtocol.swift; sourceTree = "<group>"; };
+		CEA54A372BBD6A420087C90A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,9 @@
 		CE96D98F2BA9DF9E00FF8A61 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CEA54A3C2BBD6BA00087C90A /* Dependency */,
+				CEA54A3D2BBD6BBA0087C90A /* UserInterface */,
+				CEA54A3E2BBD6BCD0087C90A /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -479,6 +488,46 @@
 			path = AppUserLogin;
 			sourceTree = "<group>";
 		};
+		CEA54A322BBCC19E0087C90A /* Injector */ = {
+			isa = PBXGroup;
+			children = (
+				CEA54A332BBCC1C70087C90A /* Injector.swift */,
+				CEA54A352BBCC1DD0087C90A /* InjectorProtocol.swift */,
+			);
+			path = Injector;
+			sourceTree = "<group>";
+		};
+		CEA54A392BBD6A470087C90A /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				CEA54A372BBD6A420087C90A /* Container.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		CEA54A3C2BBD6BA00087C90A /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				CEA54A392BBD6A470087C90A /* Container */,
+				CEA54A322BBCC19E0087C90A /* Injector */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		CEA54A3D2BBD6BBA0087C90A /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		CEA54A3E2BBD6BCD0087C90A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
+				CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */,
 				CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */,
 				CE96D9D82BAA09C200FF8A61 /* AuthorizationUserLoginProtocol.swift in Sources */,
 				CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */,
@@ -602,6 +652,7 @@
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
 				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
 				CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */,
+				CEA54A342BBCC1C70087C90A /* Injector.swift in Sources */,
 				CE96D9BA2BAA040A00FF8A61 /* AppBuilderProtocol.swift in Sources */,
 				CE96D9EB2BAA143400FF8A61 /* SplashViewModel.swift in Sources */,
 				CE96D9B32BAA038C00FF8A61 /* AppInteractor.swift in Sources */,
@@ -619,6 +670,7 @@
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
+				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
 				752C0C582BB6E52600241FFF /* SplashLogoImage.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);

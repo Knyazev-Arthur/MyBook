@@ -1,5 +1,5 @@
-import UIKit
+import Foundation
 
 protocol AppCoordinatorProtocol {
-    func start(_ window: UIWindow?) -> Bool
+    func start() -> Bool
 }
