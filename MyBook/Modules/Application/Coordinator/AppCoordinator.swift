@@ -55,7 +55,6 @@ private extension AppCoordinator {
         }
         
         window.rootViewController = controller
-        window.makeKeyAndVisible()
         routers[.splash] = router
         
         router.action = { [weak self] in
