@@ -1,3 +1,4 @@
+import Foundation
 import UIKit
 
 class AuthorizationViewController: UIViewController {
@@ -31,4 +32,3 @@ class AuthorizationViewController: UIViewController {
     }
 
 }
-

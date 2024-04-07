@@ -28,7 +28,7 @@ class AppInteractor: AppInteractorProtocol {
     func sendEvent() {
         userLogin.sendEvent()
     }
-    
+
 }
 
 // MARK: - AppInteractorExternalEvent

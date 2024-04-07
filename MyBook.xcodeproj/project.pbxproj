@@ -128,6 +128,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		752C0C562BB6E4F200241FFF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		75EDEC3C2B9EDB6E003DF653 = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +452,7 @@
 			children = (
 				CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */,
 				CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */,
+				752C0C562BB6E4F200241FFF /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -648,6 +656,7 @@
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
 				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
+				752C0C582BB6E52600241FFF /* SplashLogoImage.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

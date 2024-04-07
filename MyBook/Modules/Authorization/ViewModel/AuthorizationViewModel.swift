@@ -13,14 +13,14 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
         setupObservers()
     }
     
+    func sendEvent() {
+        userLogin.sendEvent()
+    }
+    
     private func setupObservers() {
         userLogin.action = { [weak self] in
             self?.action?($0)
         }
-    }
-    
-    func sendEvent() {
-        userLogin.sendEvent()
     }
     
 }
