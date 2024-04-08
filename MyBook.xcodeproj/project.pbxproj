@@ -14,7 +14,6 @@
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
-		755C9F642BC431D900E1F089 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F632BC431D900E1F089 /* SnapKit-Dynamic */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
@@ -120,7 +119,6 @@
 				755C9F622BC431D900E1F089 /* SnapKit in Frameworks */,
 				755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */,
 				751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */,
-				755C9F642BC431D900E1F089 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +538,6 @@
 				751EE1A02B9EE055006356F5 /* GoogleSignIn */,
 				755C9F5E2BC42B9E00E1F089 /* KeychainAccess */,
 				755C9F612BC431D900E1F089 /* SnapKit */,
-				755C9F632BC431D900E1F089 /* SnapKit-Dynamic */,
 			);
 			productName = MyBook;
 			productReference = 75EDEC452B9EDB6E003DF653 /* MyBook.app */;
@@ -585,7 +582,7 @@
 			};
 			buildConfigurationList = 75EDEC402B9EDB6E003DF653 /* Build configuration list for PBXProject "MyBook" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -915,9 +912,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.knyazev.mybook.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBook";
 			};
 			name = Debug;
@@ -932,9 +933,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.knyazev.mybook.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyBook";
 			};
 			name = Release;
@@ -1013,11 +1018,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 755C9F602BC431D900E1F089 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		755C9F632BC431D900E1F089 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 755C9F602BC431D900E1F089 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
