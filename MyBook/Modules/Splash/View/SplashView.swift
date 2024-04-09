@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SnapKit
 
 class SplashView: UIView, SplashViewProtocol {
     
@@ -31,14 +32,12 @@ private extension SplashView {
     }
     
     func setupConstraints() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let centerX = logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        let centerY = logoImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)
-        let width = logoImageView.widthAnchor.constraint(equalToConstant: 200)
-        let height = logoImageView.heightAnchor.constraint(equalToConstant: 140)
-        
-        NSLayoutConstraint.activate([centerX, centerY, width, height])
+        logoImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview().offset(-20)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(200)
+            $0.height.equalTo(140)
+        }
     }
     
 }
