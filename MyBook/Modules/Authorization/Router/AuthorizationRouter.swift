@@ -26,11 +26,19 @@ private extension AuthorizationRouter {
             
             case .setRootVC(let viewController):
                 guard let window else { return }
+                window.layer.add(transition(), forKey: "transition")
                 window.rootViewController = viewController
             
             case .alert:
                 break
         }
+    }
+    
+    func transition() -> CATransition {
+        let transition = CATransition()
+        transition.type = .fade
+        transition.duration = 0.4
+        return transition
     }
 
 }
