@@ -21,7 +21,8 @@ private extension AuthorizationBuilder {
     }
     
     func screenRouter() {
-        let router = AuthorizationRouter()
+        let window = injector.getObject(from: .application, type: UIWindow.self)
+        let router = AuthorizationRouter(window: window)
         injector.addObject(to: .authorization, value: router)
     }
     
@@ -45,10 +46,6 @@ private extension AuthorizationBuilder {
 
 // MARK: Public
 extension AuthorizationBuilder {
-    
-    func viewController(_ viewModel: AuthorizationViewModelProtocol, _ view: AuthorizationViewProtocol) -> AuthorizationViewController {
-        AuthorizationViewController(viewModel: viewModel, view: view)
-    }
     
     func view(_ label: UILabel, _ loginButton: GIDSignInButton) -> AuthorizationViewProtocol {
         AuthorizationView(label: label, loginButton: loginButton)

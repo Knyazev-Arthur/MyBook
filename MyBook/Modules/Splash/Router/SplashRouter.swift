@@ -5,7 +5,12 @@ class SplashRouter: SplashRouterProtocol {
     
     var action: (() -> Void)?
     
+    private weak var window: UIWindow?
     private weak var viewController: UIViewController?
+    
+    init(window: UIWindow?) {
+        self.window = window
+    }
     
     func sendEvent(_ event: SplashRouterInternalEvent) {
         internalEventHadler(event)
@@ -20,7 +25,10 @@ private extension SplashRouter {
         switch event {
             case .inject(let viewController):
                 self.viewController = viewController
-
+            
+            case .start:
+                window?.rootViewController = viewController
+            
             case .action:
                 action?()
         }
@@ -31,5 +39,6 @@ private extension SplashRouter {
 // MARK: - SplashRouterInternalEvent
 enum SplashRouterInternalEvent {
     case inject(viewController: UIViewController?)
+    case start
     case action
 }
