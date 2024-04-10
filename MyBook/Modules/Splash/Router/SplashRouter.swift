@@ -26,9 +26,8 @@ private extension SplashRouter {
             case .inject(let viewController):
                 self.viewController = viewController
             
-            case .setRootVC(_):
-                guard let window else { return }
-                window.rootViewController = viewController
+            case .start:
+                window?.rootViewController = viewController
             
             case .action:
                 action?()
@@ -40,6 +39,6 @@ private extension SplashRouter {
 // MARK: - SplashRouterInternalEvent
 enum SplashRouterInternalEvent {
     case inject(viewController: UIViewController?)
-    case setRootVC(_ viewController: UIViewController?)
+    case start
     case action
 }

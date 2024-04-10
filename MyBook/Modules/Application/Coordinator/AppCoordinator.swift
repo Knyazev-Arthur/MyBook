@@ -50,11 +50,11 @@ private extension AppCoordinator {
     }
     
     func startSplashModule() {
-        guard let builder = builder.splashBuilder, let controller = builder.controller, let router = builder.router else {
+        guard let builder = builder.splashBuilder, let router = builder.router else {
             fatalError("There aren't any significant splash module objects")
         }
         
-        router.sendEvent(.setRootVC(controller))
+        router.sendEvent(.start)
         routers[.splash] = router
         
         router.action = { [weak self] in
@@ -64,11 +64,11 @@ private extension AppCoordinator {
     }
     
     func startAuthorizationModule() {
-        guard let builder = builder.authorizationBuilder, let controller = builder.controller, let router = builder.router else {
+        guard let builder = builder.authorizationBuilder, let router = builder.router else {
             fatalError("There aren't any significant authorization module objects")
         }
         
-        router.sendEvent(.setRootVC(controller))
+        router.sendEvent(.start)
         routers[.authorization] = router
     }
     

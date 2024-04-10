@@ -24,10 +24,9 @@ private extension AuthorizationRouter {
             case .inject(let viewController):
                 self.viewController = viewController
             
-            case .setRootVC(let viewController):
-                guard let window else { return }
-                window.layer.add(transition(), forKey: "transition")
-                window.rootViewController = viewController
+            case .start:
+                window?.layer.add(transition(), forKey: "transition")
+                window?.rootViewController = viewController
             
             case .alert:
                 break
@@ -46,6 +45,6 @@ private extension AuthorizationRouter {
 // MARK: - AuthorizationRouterInternalEvent
 enum AuthorizationRouterInternalEvent {
     case inject(viewController: UIViewController?)
-    case setRootVC(_ viewController: UIViewController?)
+    case start
     case alert
 }
