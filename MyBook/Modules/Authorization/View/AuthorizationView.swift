@@ -1,5 +1,6 @@
 import Foundation
 import GoogleSignIn
+import SnapKit
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
@@ -19,9 +20,10 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ message: String) {
-        print(message)
+    func sendEvent(_ event: AuthorizationViewInternalEvent) {
+        internalEventHadler(event)
     }
+    
 }
 
 // MARK: Private
@@ -29,10 +31,10 @@ private extension AuthorizationView {
     
     func setupConfiguration() {
         backgroundColor = .lightBeige
-        setupLoginButton()
         setupLabel()
-        addSubview(loginButton)
+        setupLoginButton()
         addSubview(label)
+        addSubview(loginButton)
         setupLabelConstraints()
         setupGLoginButtonConstraints()
     }
@@ -74,5 +76,21 @@ private extension AuthorizationView {
         
         NSLayoutConstraint.activate([centerX, bottom, height, width])
     }
+    
+    func internalEventHadler(_ event: AuthorizationViewInternalEvent) {
+        switch event {
+            case .message(let message):
+                print(message)
+            
+            case .action:
+                break
+        }
+    }
 
+}
+
+// MARK: - AuthorizationViewInternalEvent
+enum AuthorizationViewInternalEvent {
+    case message(_ message: String)
+    case action
 }

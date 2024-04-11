@@ -1,12 +1,16 @@
 import Foundation
-import UIKit
+import GoogleSignIn
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
+    var action: ((GIDSignInResult?, Error?) -> Void)?
+    
     private weak var viewController: UIViewController?
+    private weak var googleService: GIDSignIn?
     private weak var window: UIWindow?
     
-    init(window: UIWindow?) {
+    init(window: UIWindow?, googleService: GIDSignIn?) {
+        self.googleService = googleService
         self.window = window
     }
     
@@ -27,8 +31,8 @@ private extension AuthorizationRouter {
             case .start:
                 setRootVC()
             
-            case .alert:
-                break
+            case .logInToGoogle:
+                startGoogleSignIn()
         }
     }
     
@@ -39,12 +43,19 @@ private extension AuthorizationRouter {
         window?.layer.add(transition, forKey: "transition")
         window?.rootViewController = viewController
     }
-
+    
+    func startGoogleSignIn() {
+        guard let viewController else { return }
+        googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
+            self?.action?(result, error)
+        }
+    }
+    
 }
 
 // MARK: - AuthorizationRouterInternalEvent
 enum AuthorizationRouterInternalEvent {
     case inject(viewController: UIViewController?)
     case start
-    case alert
+    case logInToGoogle
 }

@@ -1,4 +1,5 @@
 import Foundation
+import GoogleSignIn
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
@@ -14,13 +15,24 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
     }
     
     func sendEvent() {
-        userLogin.sendEvent()
+        router?.sendEvent(.logInToGoogle)
     }
     
-    private func setupObservers() {
+}
+
+// MARK: Private
+private extension AuthorizationViewModel {
+    
+    func setupObservers() {
+        
+        router?.action = { [weak self] result, error in
+            self?.userLogin.sendEvent(result, error)
+        }
+        
         userLogin.action = { [weak self] in
             self?.action?($0)
         }
+        
     }
     
 }

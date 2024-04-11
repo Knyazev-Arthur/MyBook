@@ -271,6 +271,7 @@
 				CE96D9D92BAA09FA00FF8A61 /* Router */,
 				CE96D9CD2BAA078B00FF8A61 /* ViewModel */,
 				CE96D9C72BAA051C00FF8A61 /* ViewController */,
+				CE96D9D22BAA097000FF8A61 /* Services */,
 				CE96D9CA2BAA054700FF8A61 /* View */,
 			);
 			path = Authorization;
@@ -398,7 +399,6 @@
 			children = (
 				CE96D9CE2BAA079F00FF8A61 /* AuthorizationViewModel.swift */,
 				CE96D9D02BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift */,
-				CE96D9D22BAA097000FF8A61 /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

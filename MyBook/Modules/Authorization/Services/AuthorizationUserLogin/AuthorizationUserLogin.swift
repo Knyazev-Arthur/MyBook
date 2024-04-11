@@ -4,7 +4,6 @@ import GoogleSignIn
 class AuthorizationUserLogin: AuthorizationUserLoginProtocol {
     
     var action: ((String) -> Void)?
-    weak var viewController: UIViewController?
     
     private let googleService: GIDSignIn
     
@@ -12,8 +11,8 @@ class AuthorizationUserLogin: AuthorizationUserLoginProtocol {
         self.googleService = googleService
     }
     
-    func sendEvent() {
-        startUserLogin()
+    func sendEvent(_ result: GIDSignInResult?, _ error: Error?) {
+        startUserLogin(result, error)
     }
     
 }
@@ -21,28 +20,21 @@ class AuthorizationUserLogin: AuthorizationUserLoginProtocol {
 // MARK: Private
 private extension AuthorizationUserLogin {
     
-    func startUserLogin() {
-        guard let viewController else {
-            let error = "Authorization service doesn't have a view controller"
+    func startUserLogin(_ result: GIDSignInResult?, _ error: Error?) {
+        guard error == nil else {
+            let error = "Error user login with Google: \(error!.localizedDescription)"
             action?(error)
             return
         }
         
-        googleService.signIn(withPresenting: viewController) { [weak self] result, error in
-            guard error == nil else {
-                let error = "Error user login with Google: \(error!.localizedDescription)"
-                self?.action?(error)
-                return
-            }
-            
-            guard let result else {
-                let error = "User login result has an empty value"
-                self?.action?(error)
-                return
-            }
-            
-            self?.getUserToken(result)
+        guard let result else {
+            let error = "User login result has an empty value"
+            action?(error)
+            return
         }
+        
+        getUserToken(result)
+        
     }
     
     func getUserToken(_ result: GIDSignInResult) {
@@ -58,7 +50,7 @@ private extension AuthorizationUserLogin {
                 self?.action?(error)
                 return
             }
-
+            
             guard let token = user.idToken?.tokenString else {
                 let error = "Error getting user token"
                 self?.action?(error)
@@ -74,6 +66,7 @@ private extension AuthorizationUserLogin {
             let message = "User succefully logged in with token: \(token), id: \(userID)"
             self?.action?(message)
         }
+        
     }
     
 }

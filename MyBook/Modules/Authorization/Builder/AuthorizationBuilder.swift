@@ -22,7 +22,8 @@ private extension AuthorizationBuilder {
     
     func screenRouter() {
         let window = injector.getObject(from: .application, type: UIWindow.self)
-        let router = AuthorizationRouter(window: window)
+        let googleService = googleService()
+        let router = AuthorizationRouter(window: window, googleService: googleService)
         injector.addObject(to: .authorization, value: router)
     }
     
@@ -38,7 +39,6 @@ private extension AuthorizationBuilder {
         let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
         
         router.sendEvent(.inject(viewController: viewController))
-        userLogin.viewController = viewController
         injector.addObject(to: .authorization, value: viewController)
     }
     
@@ -46,6 +46,10 @@ private extension AuthorizationBuilder {
 
 // MARK: Public
 extension AuthorizationBuilder {
+    
+    func googleService() -> GIDSignIn {
+        GIDSignIn.sharedInstance
+    }
     
     func view(_ label: UILabel, _ loginButton: GIDSignInButton) -> AuthorizationViewProtocol {
         AuthorizationView(label: label, loginButton: loginButton)
@@ -66,11 +70,7 @@ extension AuthorizationBuilder {
     func userLogin(_ googleService: GIDSignIn) -> AuthorizationUserLoginProtocol {
         AuthorizationUserLogin(googleService: googleService)
     }
-    
-    func googleService() -> GIDSignIn {
-        GIDSignIn.sharedInstance
-    }
-    
+
 }
 
 // MARK: Protocol

@@ -22,13 +22,14 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func setupObservers() {
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent($0)
-        }
-        
         myView.action = { [weak self] in
             self?.viewModel.sendEvent()
         }
+
+        viewModel.action = { [weak self] in
+            self?.myView.sendEvent(.message($0))
+        }
+        
     }
 
 }
