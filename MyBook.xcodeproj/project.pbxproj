@@ -596,7 +596,7 @@
 			};
 			buildConfigurationList = 75EDEC402B9EDB6E003DF653 /* Build configuration list for PBXProject "MyBook" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = ru;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
