@@ -21,15 +21,34 @@ class AuthorizationViewController: UIViewController {
         view = myView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.sendEvent(.logoImage)
+    }
+
+}
+
+// MARK: Private
+private extension AuthorizationViewController {
+    
     private func setupObservers() {
         myView.action = { [weak self] in
-            self?.viewModel.sendEvent()
+            self?.viewModel.sendEvent(.router)
         }
-
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent(.message($0))
+        
+        viewModel.action = { [weak self] event in
+            self?.handleViewModelEvent(event)
         }
         
     }
-
+    
+    func handleViewModelEvent(_ event: AuthorizationViewInternalEvent) {
+        switch event {
+            case .logoImage(let logoImage):
+                myView.sendEvent(.logoImage(logoImage))
+            case .message(let message):
+                myView.sendEvent(.message(message))
+        }
+    }
+    
 }

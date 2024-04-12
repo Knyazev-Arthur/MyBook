@@ -29,13 +29,14 @@ private extension AuthorizationBuilder {
     
     func viewController() {
         guard let router = injector.getObject(from: .authorization, type: AuthorizationRouter.self) else { return }
-                
+        
         let googleService = googleService()
         let userLogin = userLogin(googleService)
         let viewModel = viewModel(router, userLogin)
+        let logoImageView = logoImageView()
         let label = label()
         let googleButton = googleButton()
-        let view = view(label, googleButton)
+        let view = view(logoImageView, label, googleButton)
         let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
         
         router.sendEvent(.inject(viewController: viewController))
@@ -50,17 +51,17 @@ extension AuthorizationBuilder {
     func googleService() -> GIDSignIn {
         GIDSignIn.sharedInstance
     }
-    
-    func view(_ label: UILabel, _ loginButton: GIDSignInButton) -> AuthorizationViewProtocol {
-        AuthorizationView(label: label, loginButton: loginButton)
+
+    func logoImageView() -> UIImageView {
+        UIImageView()
     }
     
     func label() -> UILabel {
         UILabel()
     }
     
-    func googleButton() -> GIDSignInButton {
-        GIDSignInButton()
+    func googleButton() -> UIButton {
+        UIButton()
     }
     
     func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AuthorizationUserLoginProtocol) -> AuthorizationViewModelProtocol {
@@ -69,6 +70,10 @@ extension AuthorizationBuilder {
     
     func userLogin(_ googleService: GIDSignIn) -> AuthorizationUserLoginProtocol {
         AuthorizationUserLogin(googleService: googleService)
+    }
+    
+    func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: UIButton) -> AuthorizationViewProtocol {
+        AuthorizationView(logoImageView: logoImageView, label: label, loginButton: loginButton)
     }
 
 }

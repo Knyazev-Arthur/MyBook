@@ -33,10 +33,10 @@ private extension SplashView {
     
     func setupConstraints() {
         logoImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview().offset(-20)
+            $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(140)
+            $0.width.equalTo(300)
+            $0.height.equalTo(210)
         }
     }
     

@@ -3,7 +3,7 @@ import GoogleSignIn
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
-    var action: ((String) -> Void)?
+    var action: ((AuthorizationViewInternalEvent) -> Void)?
     
     private weak var router: AuthorizationRouterProtocol?
     private let userLogin: AuthorizationUserLoginProtocol
@@ -14,8 +14,8 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
         setupObservers()
     }
     
-    func sendEvent() {
-        router?.sendEvent(.logInToGoogle)
+    func sendEvent(_ event: AuthorizationViewModelInternalEvent) {
+        internalEventHadler(event)
     }
     
 }
@@ -30,9 +30,26 @@ private extension AuthorizationViewModel {
         }
         
         userLogin.action = { [weak self] in
-            self?.action?($0)
+            self?.action?(.message($0))
         }
         
     }
     
+    func internalEventHadler(_ event: AuthorizationViewModelInternalEvent) {
+        switch event {
+            case .logoImage:
+                let image = UIImage(named: "Logo")
+                action?(.logoImage(image))
+            
+            case .router:
+                router?.sendEvent(.logInToGoogle)
+        }
+    }
+    
+}
+
+// MARK: - AuthorizationViewModelInternalEvent
+enum AuthorizationViewModelInternalEvent {
+    case logoImage
+    case router
 }

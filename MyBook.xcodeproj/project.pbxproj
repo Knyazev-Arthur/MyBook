@@ -15,6 +15,7 @@
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
+		75D6C4122BC948F600D6B7C5 /* MerriweatherSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MerriweatherSans.ttf; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		75D6C4102BC948D600D6B7C5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		75EDEC3C2B9EDB6E003DF653 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				75EDEC512B9EDB6F003DF653 /* Assets.xcassets */,
+				75D6C4102BC948D600D6B7C5 /* Fonts */,
 				CE96D98A2BA9D72800FF8A61 /* Localization */,
 			);
 			path = Resources;
@@ -613,6 +624,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D6C4122BC948F600D6B7C5 /* MerriweatherSans.ttf in Resources */,
 				7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */,
 				7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */,
 				75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */,

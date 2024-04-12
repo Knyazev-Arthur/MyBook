@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3S4-Ps-cTp">
-                                <rect key="frame" x="96.666666666666686" y="336" width="200" height="140"/>
+                                <rect key="frame" x="46.666666666666657" y="321" width="300" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="NYr-x1-sio"/>
-                                    <constraint firstAttribute="width" constant="200" id="coR-sj-ojL"/>
+                                    <constraint firstAttribute="height" constant="210" id="NYr-x1-sio"/>
+                                    <constraint firstAttribute="width" constant="300" id="coR-sj-ojL"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.94509804249999996" green="0.93333333730000001" blue="0.89803922179999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="3S4-Ps-cTp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="AN2-qk-TRb"/>
+                            <constraint firstItem="3S4-Ps-cTp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AN2-qk-TRb"/>
                             <constraint firstItem="3S4-Ps-cTp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kaq-67-BhS"/>
                         </constraints>
                     </view>
@@ -37,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1322" height="1000"/>
+        <image name="Logo" width="1200" height="840"/>
     </resources>
 </document>

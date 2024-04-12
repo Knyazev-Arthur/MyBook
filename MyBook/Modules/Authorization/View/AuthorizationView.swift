@@ -6,10 +6,12 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     
     var action: (() -> Void)?
     
+    private let logoImageView: UIImageView
     private let label: UILabel
-    private let loginButton: GIDSignInButton
+    private let loginButton: UIButton
     
-    init(label: UILabel, loginButton: GIDSignInButton) {
+    init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
+        self.logoImageView = logoImageView
         self.label = label
         self.loginButton = loginButton
         super.init(frame: .zero)
@@ -33,15 +35,17 @@ private extension AuthorizationView {
         backgroundColor = .lightBeige
         setupLabel()
         setupLoginButton()
+        addSubview(logoImageView)
         addSubview(label)
         addSubview(loginButton)
+        setupLogoImageViewConstraints()
         setupLabelConstraints()
-        setupGLoginButtonConstraints()
+        setupLoginButtonConstraints()
     }
     
     func setupLoginButton() {
-        loginButton.colorScheme = .dark
-        loginButton.style = .wide
+        let image = UIImage(named: "LoginButton")
+        loginButton.setImage(image, for: .normal)
         loginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
     
@@ -51,39 +55,46 @@ private extension AuthorizationView {
     
     func setupLabel() {
         label.text = NSLocalizedString("initialGreeting", comment: "")
+        label.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
+    }
+    
+    func setupLogoImageViewConstraints() {
+        logoImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(210)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(80)
+        }
     }
     
     func setupLabelConstraints() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        let centerX = label.centerXAnchor.constraint(equalTo: centerXAnchor)
-        let centerY = label.centerYAnchor.constraint(equalTo: centerYAnchor)
-        let height = label.heightAnchor.constraint(equalToConstant: 50)
-        let width = label.widthAnchor.constraint(equalToConstant: 250)
-        
-        NSLayoutConstraint.activate([centerX, centerY, height, width])
+        label.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(40)
+            $0.width.equalTo(250)
+            $0.height.equalTo(60)
+        }
     }
     
-    func setupGLoginButtonConstraints() {
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let centerX = loginButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        let bottom = loginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -25)
-        let height = loginButton.heightAnchor.constraint(equalToConstant: 70)
-        let width = loginButton.widthAnchor.constraint(equalToConstant: 200)
-        
-        NSLayoutConstraint.activate([centerX, bottom, height, width])
+    func setupLoginButtonConstraints() {
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
+        }
     }
     
     func internalEventHadler(_ event: AuthorizationViewInternalEvent) {
         switch event {
+            case .logoImage(let logoImage):
+                logoImageView.image = logoImage
+            
             case .message(let message):
                 print(message)
-            
-            case .action:
-                break
         }
     }
 
@@ -91,6 +102,6 @@ private extension AuthorizationView {
 
 // MARK: - AuthorizationViewInternalEvent
 enum AuthorizationViewInternalEvent {
+    case logoImage(_ logoImage: UIImage?)
     case message(_ message: String)
-    case action
 }

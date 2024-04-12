@@ -1,6 +1,6 @@
 import Foundation
 
 protocol AuthorizationViewModelProtocol: AnyObject {
-    var action: ((String) -> Void)? { get set }
-    func sendEvent()
+    var action: ((AuthorizationViewInternalEvent) -> Void)? { get set }
+    func sendEvent(_ event: AuthorizationViewModelInternalEvent)
 }
