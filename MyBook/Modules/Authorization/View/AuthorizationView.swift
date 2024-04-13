@@ -7,12 +7,12 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     var action: (() -> Void)?
     
     private let logoImageView: UIImageView
-    private let label: UILabel
+    private let labelGreeting: UILabel
     private let loginButton: UIButton
     
     init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
         self.logoImageView = logoImageView
-        self.label = label
+        self.labelGreeting = label
         self.loginButton = loginButton
         super.init(frame: .zero)
         setupConfiguration()
@@ -33,18 +33,15 @@ private extension AuthorizationView {
     
     func setupConfiguration() {
         backgroundColor = .lightBeige
-        setupLabel()
-        setupLoginButton()
         addSubview(logoImageView)
-        addSubview(label)
+        addSubview(labelGreeting)
         addSubview(loginButton)
         setupLogoImageViewConstraints()
-        setupLabelConstraints()
+        setupLabelGreetingConstraints()
         setupLoginButtonConstraints()
     }
     
-    func setupLoginButton() {
-        let image = UIImage(named: "LoginButton")
+    func setupLoginButton(_ image: UIImage?) {
         loginButton.setImage(image, for: .normal)
         loginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
@@ -53,12 +50,12 @@ private extension AuthorizationView {
         action?()
     }
     
-    func setupLabel() {
-        label.text = NSLocalizedString("initialGreeting", comment: "")
-        label.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
+    func setupLabelGreeting(_ text: String) {
+        labelGreeting.text = text
+        labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
+        labelGreeting.numberOfLines = 0
+        labelGreeting.textAlignment = .center
+        labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
     }
     
     func setupLogoImageViewConstraints() {
@@ -70,8 +67,8 @@ private extension AuthorizationView {
         }
     }
     
-    func setupLabelConstraints() {
-        label.snp.makeConstraints {
+    func setupLabelGreetingConstraints() {
+        labelGreeting.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview().offset(40)
             $0.width.equalTo(250)
@@ -90,11 +87,17 @@ private extension AuthorizationView {
     
     func internalEventHadler(_ event: AuthorizationViewInternalEvent) {
         switch event {
-            case .logoImage(let logoImage):
-                logoImageView.image = logoImage
+            case .imageLogo(let image):
+                logoImageView.image = image
             
             case .message(let message):
                 print(message)
+            
+            case .imageLoginButton(let image):
+                setupLoginButton(image)
+            
+            case .textLabelGreeting(let text):
+                setupLabelGreeting(text)
         }
     }
 
@@ -102,6 +105,8 @@ private extension AuthorizationView {
 
 // MARK: - AuthorizationViewInternalEvent
 enum AuthorizationViewInternalEvent {
-    case logoImage(_ logoImage: UIImage?)
+    case imageLogo(_ image: UIImage?)
     case message(_ message: String)
+    case imageLoginButton(_ image: UIImage?)
+    case textLabelGreeting(_ text: String)
 }

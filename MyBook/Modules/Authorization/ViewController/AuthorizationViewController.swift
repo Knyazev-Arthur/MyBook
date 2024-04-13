@@ -23,7 +23,7 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.sendEvent(.logoImage)
+        setupInitialViewModelEvents()
     }
 
 }
@@ -44,11 +44,21 @@ private extension AuthorizationViewController {
     
     func handleViewModelEvent(_ event: AuthorizationViewInternalEvent) {
         switch event {
-            case .logoImage(let logoImage):
-                myView.sendEvent(.logoImage(logoImage))
+            case .imageLogo(let image):
+                myView.sendEvent(.imageLogo(image))
             case .message(let message):
                 myView.sendEvent(.message(message))
+            case .imageLoginButton(let image):
+                myView.sendEvent(.imageLoginButton(image))
+            case .textLabelGreeting(let text):
+                myView.sendEvent(.textLabelGreeting(text))
         }
+    }
+    
+    func setupInitialViewModelEvents() {
+        viewModel.sendEvent(.imageLogo)
+        viewModel.sendEvent(.imageLoginButton)
+        viewModel.sendEvent(.textLabelGreating)
     }
     
 }

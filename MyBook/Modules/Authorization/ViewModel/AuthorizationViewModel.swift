@@ -37,12 +37,20 @@ private extension AuthorizationViewModel {
     
     func internalEventHadler(_ event: AuthorizationViewModelInternalEvent) {
         switch event {
-            case .logoImage:
+            case .imageLogo:
                 let image = UIImage(named: "Logo")
-                action?(.logoImage(image))
+                action?(.imageLogo(image))
             
             case .router:
                 router?.sendEvent(.logInToGoogle)
+            
+            case .imageLoginButton:
+                let image = UIImage(named: "LoginButton")
+                action?(.imageLoginButton(image))
+            
+            case .textLabelGreating:
+                let text = NSLocalizedString("initialGreeting", comment: "")
+                action?(.textLabelGreeting(text))
         }
     }
     
@@ -50,6 +58,8 @@ private extension AuthorizationViewModel {
 
 // MARK: - AuthorizationViewModelInternalEvent
 enum AuthorizationViewModelInternalEvent {
-    case logoImage
+    case imageLogo
     case router
+    case imageLoginButton
+    case textLabelGreating
 }
