@@ -15,6 +15,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     func start() -> Bool {
         startSplashModule()
+        interactor.sendEvent()
         return true
     }
 
