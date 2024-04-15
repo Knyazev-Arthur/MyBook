@@ -36,23 +36,10 @@ private extension AuthorizationViewController {
             self?.viewModel.sendEvent(.router)
         }
         
-        viewModel.action = { [weak self] event in
-            self?.handleViewModelEvent(event)
+        viewModel.action = { [weak self] in
+            self?.myView.sendEvent($0)
         }
         
-    }
-    
-    func handleViewModelEvent(_ event: AuthorizationViewInternalEvent) {
-        switch event {
-            case .imageLogo(let image):
-                myView.sendEvent(.imageLogo(image))
-            case .message(let message):
-                myView.sendEvent(.message(message))
-            case .imageLoginButton(let image):
-                myView.sendEvent(.imageLoginButton(image))
-            case .textLabelGreeting(let text):
-                myView.sendEvent(.textLabelGreeting(text))
-        }
     }
     
     func setupInitialViewModelEvents() {
