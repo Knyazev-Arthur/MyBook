@@ -12,23 +12,37 @@ class AppInteractor: AppInteractorProtocol {
         setupObservers()
     }
     
+    func sendEvent() {
+        userLogin.sendEvent(.authorization)
+    }
+
+}
+
+// MARK: Private
+private extension AppInteractor {
+    
     private func setupObservers() {
-        userLogin.action = { [weak self] in
-            guard let user = $0 else {
-                print("User didn't log in")
-                self?.action?(.authorization(.unavaliable))
-                return
-            }
-            
-            print("User logged in")
-            self?.action?(.authorization(.avaliable(user)))
+        userLogin.action = { [weak self] event in
+            self?.externalEventHadler(event)
         }
     }
     
-    func sendEvent() {
-        userLogin.sendEvent()
+    private func externalEventHadler(_ event: AppUserLoginExternalEvent) {
+        switch event {
+            case .message(_):
+                break
+            
+            case .authorization(let user):
+                guard let user else {
+                    print("User didn't log in")
+                    action?(.authorization(.unavaliable))
+                    return
+                }
+                print("User logged in")
+                action?(.authorization(.avaliable(user)))
+        }
     }
-
+    
 }
 
 // MARK: - AppInteractorExternalEvent

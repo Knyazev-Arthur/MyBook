@@ -1,14 +1,14 @@
 import Foundation
 import GoogleSignIn
-
+ 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
     var action: ((AuthorizationViewInternalEvent) -> Void)?
     
     private weak var router: AuthorizationRouterProtocol?
-    private let userLogin: AuthorizationUserLoginProtocol
+    private let userLogin: AppUserLoginProtocol
     
-    init(router: AuthorizationRouterProtocol?, userLogin: AuthorizationUserLoginProtocol) {
+    init(router: AuthorizationRouterProtocol?, userLogin: AppUserLoginProtocol) {
         self.router = router
         self.userLogin = userLogin
         setupObservers()
@@ -26,11 +26,11 @@ private extension AuthorizationViewModel {
     func setupObservers() {
         
         router?.action = { [weak self] result, error in
-            self?.userLogin.sendEvent(result, error)
+            self?.userLogin.sendEvent(.userLogin(result, error))
         }
         
-        userLogin.action = { [weak self] in
-            self?.action?(.message($0))
+        userLogin.action = { [weak self] event in
+            self?.externalEventHandler(event)
         }
         
     }
@@ -51,6 +51,15 @@ private extension AuthorizationViewModel {
             case .textLabelGreating:
                 let text = NSLocalizedString("initialGreeting", comment: "")
                 action?(.textLabelGreeting(text))
+        }
+    }
+    
+    func externalEventHandler(_ event: AppUserLoginExternalEvent) {
+        switch event {
+            case .message(let message):
+                action?(.message(message))
+            case .authorization(_):
+                break
         }
     }
     

@@ -105,8 +105,8 @@ private extension AuthorizationView {
 
 // MARK: - AuthorizationViewInternalEvent
 enum AuthorizationViewInternalEvent {
-    case imageLogo(_ image: UIImage?)
-    case message(_ message: String)
-    case imageLoginButton(_ image: UIImage?)
-    case textLabelGreeting(_ text: String)
+    case imageLogo(UIImage?)
+    case message(String)
+    case imageLoginButton(UIImage?)
+    case textLabelGreeting(String)
 }

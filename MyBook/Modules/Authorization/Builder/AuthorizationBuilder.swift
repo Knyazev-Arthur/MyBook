@@ -59,12 +59,12 @@ extension AuthorizationBuilder {
         UIButton()
     }
     
-    func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AuthorizationUserLoginProtocol) -> AuthorizationViewModelProtocol {
+    func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AppUserLoginProtocol) -> AuthorizationViewModelProtocol {
         AuthorizationViewModel(router: router, userLogin: userLogin)
     }
     
-    func userLogin(_ googleService: GIDSignIn) -> AuthorizationUserLoginProtocol {
-        AuthorizationUserLogin(googleService: googleService)
+    func userLogin(_ googleService: GIDSignIn) -> AppUserLoginProtocol {
+        AppUserLogin(googleService: googleService)
     }
     
     func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: UIButton) -> AuthorizationViewProtocol {
