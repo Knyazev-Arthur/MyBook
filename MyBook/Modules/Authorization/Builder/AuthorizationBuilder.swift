@@ -22,8 +22,7 @@ private extension AuthorizationBuilder {
     
     func screenRouter() {
         let window = injector.getObject(from: .application, type: UIWindow.self)
-        let googleService = injector.getObject(from: .application, type: GIDSignIn.self)
-        let router = AuthorizationRouter(window: window, googleService: googleService)
+        let router = AuthorizationRouter(window: window)
         injector.addObject(to: .authorization, value: router)
     }
     

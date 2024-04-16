@@ -6,11 +6,9 @@ class AuthorizationRouter: AuthorizationRouterProtocol {
     var action: ((GIDSignInResult?, Error?) -> Void)?
     
     private weak var viewController: UIViewController?
-    private weak var googleService: GIDSignIn?
     private weak var window: UIWindow?
     
-    init(window: UIWindow?, googleService: GIDSignIn?) {
-        self.googleService = googleService
+    init(window: UIWindow?) {
         self.window = window
     }
     
@@ -46,7 +44,7 @@ private extension AuthorizationRouter {
     
     func startGoogleSignIn() {
         guard let viewController else { return }
-        googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [weak self] result, error in
             self?.action?(result, error)
         }
     }
