@@ -24,7 +24,6 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
 private extension AuthorizationViewModel {
     
     func setupObservers() {
-        
         router?.action = { [weak self] result, error in
             self?.userLogin.sendEvent(.userLogin(result, error))
         }
@@ -32,25 +31,15 @@ private extension AuthorizationViewModel {
         userLogin.action = { [weak self] event in
             self?.externalEventHandler(event)
         }
-        
     }
     
     func internalEventHadler(_ event: AuthorizationViewModelInternalEvent) {
         switch event {
-            case .imageLogo:
-                let image = UIImage(named: "Logo")
-                action?(.imageLogo(image))
-            
+            case .initialSetup:
+                initialSetup()
+
             case .router:
                 router?.sendEvent(.logInToGoogle)
-            
-            case .imageLoginButton:
-                let image = UIImage(named: "LoginButton")
-                action?(.imageLoginButton(image))
-            
-            case .textLabelGreating:
-                let text = NSLocalizedString("initialGreeting", comment: "")
-                action?(.textLabelGreeting(text))
         }
     }
     
@@ -58,17 +47,22 @@ private extension AuthorizationViewModel {
         switch event {
             case .message(let message):
                 action?(.message(message))
+            
             case .authorization(_):
                 break
         }
     }
     
+    func initialSetup() {
+        let imageLogo = UIImage(named: "Logo")
+        let imageLoginButton = UIImage(named: "LoginButton")
+        let text = NSLocalizedString("InitialGreeting", comment: "")
+        action?(.viewData(imageLogo, imageLoginButton, text))
+    }
 }
 
 // MARK: - AuthorizationViewModelInternalEvent
 enum AuthorizationViewModelInternalEvent {
-    case imageLogo
+    case initialSetup
     case router
-    case imageLoginButton
-    case textLabelGreating
 }

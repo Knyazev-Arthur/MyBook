@@ -1,5 +1,6 @@
 import Foundation
 import GoogleSignIn
+import UIKit
 
 class AuthorizationBuilder: AuthorizationBuilderProtocol {
     
@@ -21,7 +22,7 @@ private extension AuthorizationBuilder {
     }
     
     func screenRouter() {
-        let window = injector.getObject(from: .application, type: UIWindow.self)
+        guard let window = injector.getObject(from: .application, type: UIWindow.self) else { return }
         let router = AuthorizationRouter(window: window)
         injector.addObject(to: .authorization, value: router)
     }
@@ -32,7 +33,7 @@ private extension AuthorizationBuilder {
         
         let userLogin = userLogin(googleService)
         let viewModel = viewModel(router, userLogin)
-        let logoImageView = logoImageView()
+        let logoImageView = imageView()
         let label = label()
         let googleButton = googleButton()
         let view = view(logoImageView, label, googleButton)
@@ -47,7 +48,7 @@ private extension AuthorizationBuilder {
 // MARK: Public
 extension AuthorizationBuilder {
 
-    func logoImageView() -> UIImageView {
+    func imageView() -> UIImageView {
         UIImageView()
     }
     

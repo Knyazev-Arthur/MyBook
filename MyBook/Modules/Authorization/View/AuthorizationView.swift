@@ -1,6 +1,6 @@
 import Foundation
-import GoogleSignIn
 import SnapKit
+import UIKit
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
@@ -87,17 +87,13 @@ private extension AuthorizationView {
     
     func internalEventHadler(_ event: AuthorizationViewInternalEvent) {
         switch event {
-            case .imageLogo(let image):
-                logoImageView.image = image
+            case .viewData(let imageLogo, let imageLoginButton, let textLabelGreeting):
+                logoImageView.image = imageLogo
+                setupLoginButton(imageLoginButton)
+                setupLabelGreeting(textLabelGreeting)
             
             case .message(let message):
                 print(message)
-            
-            case .imageLoginButton(let image):
-                setupLoginButton(image)
-            
-            case .textLabelGreeting(let text):
-                setupLabelGreeting(text)
         }
     }
 
@@ -105,8 +101,6 @@ private extension AuthorizationView {
 
 // MARK: - AuthorizationViewInternalEvent
 enum AuthorizationViewInternalEvent {
-    case imageLogo(UIImage?)
     case message(String)
-    case imageLoginButton(UIImage?)
-    case textLabelGreeting(String)
+    case viewData(_ imageLogo: UIImage?, _ imageLoginButton: UIImage?, _ textLabelGreeting: String)
 }

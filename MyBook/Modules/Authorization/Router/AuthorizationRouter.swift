@@ -1,5 +1,6 @@
 import Foundation
 import GoogleSignIn
+import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
@@ -44,6 +45,7 @@ private extension AuthorizationRouter {
     
     func startGoogleSignIn() {
         guard let viewController else { return }
+        
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [weak self] result, error in
             self?.action?(result, error)
         }
