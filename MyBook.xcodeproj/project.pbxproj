@@ -10,7 +10,7 @@
 		751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */; };
 		751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 751EE1A02B9EE055006356F5 /* GoogleSignIn */; };
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
-		7523E7E22BC699CC00315858 /* ExtensionsUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523E7E12BC699CC00315858 /* ExtensionsUIColor.swift */; };
+		7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523E7E12BC699CC00315858 /* UIColorExtensions.swift */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
-		7523E7E12BC699CC00315858 /* ExtensionsUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionsUIColor.swift; path = Classes/ExtensionsUIColor.swift; sourceTree = SOURCE_ROOT; };
+		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -278,7 +278,6 @@
 				CE96D9D92BAA09FA00FF8A61 /* Router */,
 				CE96D9CD2BAA078B00FF8A61 /* ViewModel */,
 				CE96D9C72BAA051C00FF8A61 /* ViewController */,
-				CE96D9D22BAA097000FF8A61 /* Services */,
 				CE96D9CA2BAA054700FF8A61 /* View */,
 			);
 			path = Authorization;
@@ -320,7 +319,7 @@
 		CE96D9AC2BA9E4FF00FF8A61 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7523E7E12BC699CC00315858 /* ExtensionsUIColor.swift */,
+				7523E7E12BC699CC00315858 /* UIColorExtensions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -408,13 +407,6 @@
 				CE96D9D02BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CE96D9D22BAA097000FF8A61 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		CE96D9D92BAA09FA00FF8A61 /* Router */ = {
@@ -640,7 +632,7 @@
 				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
 				CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */,
 				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
-				7523E7E22BC699CC00315858 /* ExtensionsUIColor.swift in Sources */,
+				7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */,
 				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
 				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
