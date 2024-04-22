@@ -15,6 +15,7 @@
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
+		7590A2AA2BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */; };
 		75D6C4122BC948F600D6B7C5 /* MerriweatherSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
@@ -70,6 +71,7 @@
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilderVCProtocol.swift; sourceTree = "<group>"; };
 		75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MerriweatherSans.ttf; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				CE96D9DF2BAA11D100FF8A61 /* AuthorizationBuilder.swift */,
 				CE96D9E12BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift */,
+				7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 			files = (
 				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
 				CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */,
+				7590A2AA2BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift in Sources */,
 				CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */,
 				CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */,
 				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
