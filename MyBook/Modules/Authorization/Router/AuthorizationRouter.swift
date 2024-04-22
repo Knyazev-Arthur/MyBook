@@ -4,13 +4,15 @@ import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    var action: ((GIDSignInResult?, Error?) -> Void)?
+    var action: ((AuthorizationRouterExternalEvent) -> Void)?
     
     private weak var viewController: UIViewController?
     private weak var window: UIWindow?
+    private let builder: AuthorizationBuilderVCProtocol
     
-    init(window: UIWindow?) {
+    init(window: UIWindow?, builder: AuthorizationBuilderVCProtocol) {
         self.window = window
+        self.builder = builder
     }
     
     func sendEvent(_ event: AuthorizationRouterInternalEvent) {
@@ -32,6 +34,9 @@ private extension AuthorizationRouter {
             
             case .logInToGoogle:
                 startGoogleSignIn()
+            
+            case .blankScreen:
+                setRootBlankVC()
         }
     }
     
@@ -43,11 +48,24 @@ private extension AuthorizationRouter {
         window?.rootViewController = viewController
     }
     
+    func setRootBlankVC() {
+        let blankScreen = builder.blankSreen
+        let transition = CATransition()
+        transition.type = .fade
+        transition.duration = 0.4
+        window?.layer.add(transition, forKey: "transition")
+        window?.rootViewController = blankScreen
+    }
+    
     func startGoogleSignIn() {
         guard let viewController else { return }
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [weak self] result, error in
-            self?.action?(result, error)
+        builder.googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
+            guard error == nil else {
+                self?.action?(.failure(error))
+                return
+            }
+            
+            self?.action?(.success(result))
         }
     }
     
@@ -58,4 +76,11 @@ enum AuthorizationRouterInternalEvent {
     case inject(viewController: UIViewController?)
     case start
     case logInToGoogle
+    case blankScreen
+}
+
+// MARK: - AuthorizationRouterInternalEvent
+enum AuthorizationRouterExternalEvent {
+    case success(_ result: GIDSignInResult?)
+    case failure(_ error: Error?)
 }

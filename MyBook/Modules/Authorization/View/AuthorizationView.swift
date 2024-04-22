@@ -22,8 +22,10 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ event: AuthorizationViewInternalEvent) {
-        internalEventHadler(event)
+    func sendEvent(_ data: AuthorizationViewData) {
+        logoImageView.image = data.imageLogo
+        setupLoginButton(data.imageLoginButton)
+        setupLabelGreeting(data.textLabelGreeting)
     }
     
 }
@@ -84,23 +86,12 @@ private extension AuthorizationView {
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
         }
     }
-    
-    func internalEventHadler(_ event: AuthorizationViewInternalEvent) {
-        switch event {
-            case .viewData(let imageLogo, let imageLoginButton, let textLabelGreeting):
-                logoImageView.image = imageLogo
-                setupLoginButton(imageLoginButton)
-                setupLabelGreeting(textLabelGreeting)
-            
-            case .message(let message):
-                print(message)
-        }
-    }
 
 }
 
-// MARK: - AuthorizationViewInternalEvent
-enum AuthorizationViewInternalEvent {
-    case message(String)
-    case viewData(_ imageLogo: UIImage?, _ imageLoginButton: UIImage?, _ textLabelGreeting: String)
+// MARK: - AuthorizationViewData
+struct AuthorizationViewData {
+    var imageLogo: UIImage?
+    var imageLoginButton: UIImage?
+    var textLabelGreeting: String
 }

@@ -2,6 +2,6 @@ import Foundation
 import GoogleSignIn
 
 protocol AppUserLoginProtocol: AnyObject {
-    var action: ((AppUserLoginExternalEvent) -> Void)? { get set }
+    var action: ((GIDGoogleUser?) -> Void)? { get set }
     func sendEvent(_ event: AppUserLoginInternalEvent)
 }
