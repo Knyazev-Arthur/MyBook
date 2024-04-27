@@ -21,8 +21,7 @@ private extension SplashBuilder {
     }
     
     func screenRouter() {
-        let window = injector.getObject(from: .application, type: UIWindow.self)
-        let router = SplashRouter(window: window)
+        let router = SplashRouter(builder: self)
         injector.addObject(to: .splash, value: router)
     }
     
@@ -57,7 +56,7 @@ extension SplashBuilder {
     
 }
 
-// MARK: Protocol
+// MARK: Protocol SplashBuilderProtocol
 extension SplashBuilder {
     
     var controller: SplashViewController? {
@@ -68,4 +67,13 @@ extension SplashBuilder {
         injector.getObject(from: .splash, type: SplashRouter.self)
     }
 
+}
+
+// MARK: SplashBuilderRoutProtocol
+extension SplashBuilder: SplashBuilderRoutProtocol {
+    
+    var window: UIWindow? {
+        injector.getObject(from: .application, type: UIWindow.self)
+    }
+    
 }

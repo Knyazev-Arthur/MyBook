@@ -5,11 +5,11 @@ class SplashRouter: SplashRouterProtocol {
     
     var action: (() -> Void)?
     
-    private weak var window: UIWindow?
     private weak var viewController: UIViewController?
+    private let builder: SplashBuilderRoutProtocol
     
-    init(window: UIWindow?) {
-        self.window = window
+    init(builder: SplashBuilderRoutProtocol) {
+        self.builder = builder
     }
     
     func sendEvent(_ event: SplashRouterInternalEvent) {
@@ -27,7 +27,7 @@ private extension SplashRouter {
                 self.viewController = viewController
             
             case .start:
-                window?.rootViewController = viewController
+                builder.window?.rootViewController = viewController
             
             case .action:
                 action?()
