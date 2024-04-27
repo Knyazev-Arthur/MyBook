@@ -13,9 +13,18 @@
 		7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523E7E12BC699CC00315858 /* UIColorExtensions.swift */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
+		753FE7AB2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
-		7590A2AA2BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */; };
+		757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */; };
+		757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D72BD8E76100ABABAE /* MenuRouter.swift */; };
+		757FF6DA2BD8E79700ABABAE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */; };
+		757FF6DC2BD8E7A400ABABAE /* MenuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6DB2BD8E7A400ABABAE /* MenuTabBarController.swift */; };
+		757FF6E12BD94E7900ABABAE /* MenuBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6E02BD94E7900ABABAE /* MenuBuilderProtocol.swift */; };
+		757FF6E32BD9524E00ABABAE /* MenuRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6E22BD9524E00ABABAE /* MenuRouterProtocol.swift */; };
+		757FF6E52BD954FB00ABABAE /* MenuViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6E42BD954FB00ABABAE /* MenuViewModelProtocol.swift */; };
+		757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6EB2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift */; };
+		7590A2AA2BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7590A2A92BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift */; };
 		75D6C4122BC948F600D6B7C5 /* MerriweatherSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
@@ -71,7 +80,16 @@
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilderVCProtocol.swift; sourceTree = "<group>"; };
+		753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
+		757FF6D72BD8E76100ABABAE /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		757FF6DB2BD8E7A400ABABAE /* MenuTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarController.swift; sourceTree = "<group>"; };
+		757FF6E02BD94E7900ABABAE /* MenuBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilderProtocol.swift; sourceTree = "<group>"; };
+		757FF6E22BD9524E00ABABAE /* MenuRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouterProtocol.swift; sourceTree = "<group>"; };
+		757FF6E42BD954FB00ABABAE /* MenuViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelProtocol.swift; sourceTree = "<group>"; };
+		757FF6EB2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		7590A2A92BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilderRoutProtocol.swift; sourceTree = "<group>"; };
 		75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MerriweatherSans.ttf; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +159,90 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		757FF6D02BD8D35700ABABAE /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */,
+				757FF6E02BD94E7900ABABAE /* MenuBuilderProtocol.swift */,
+				757FF6EB2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		757FF6D12BD8D37900ABABAE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				757FF6D72BD8E76100ABABAE /* MenuRouter.swift */,
+				757FF6E22BD9524E00ABABAE /* MenuRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		757FF6D22BD8D38D00ABABAE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */,
+				757FF6E42BD954FB00ABABAE /* MenuViewModelProtocol.swift */,
+				757FF6E62BD955FE00ABABAE /* Services */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		757FF6D32BD8D3F700ABABAE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				757FF6DB2BD8E7A400ABABAE /* MenuTabBarController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		757FF6DF2BD94C2400ABABAE /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D9962BA9E01600FF8A61 /* Menu */,
+				757FF6E82BD9743200ABABAE /* Main */,
+				757FF6E72BD95E8D00ABABAE /* Favorites */,
+				757FF6E92BD9744000ABABAE /* Notes */,
+				757FF6EA2BD9745500ABABAE /* Settings */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		757FF6E62BD955FE00ABABAE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		757FF6E72BD95E8D00ABABAE /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		757FF6E82BD9743200ABABAE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		757FF6E92BD9744000ABABAE /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		757FF6EA2BD9745500ABABAE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		75D6C4102BC948D600D6B7C5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +309,7 @@
 				CE96D9912BA9DFD500FF8A61 /* Application */,
 				CE96D9922BA9DFE500FF8A61 /* Splash */,
 				CE96D9952BA9E00A00FF8A61 /* Authorization */,
-				CE96D9962BA9E01600FF8A61 /* Menu */,
+				757FF6DF2BD94C2400ABABAE /* Navigation */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -288,6 +390,10 @@
 		CE96D9962BA9E01600FF8A61 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				757FF6D02BD8D35700ABABAE /* Builder */,
+				757FF6D12BD8D37900ABABAE /* Router */,
+				757FF6D22BD8D38D00ABABAE /* ViewModel */,
+				757FF6D32BD8D3F700ABABAE /* ViewController */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -372,6 +478,7 @@
 			children = (
 				CE96D9BC2BAA043600FF8A61 /* SplashBuilder.swift */,
 				CE96D9BE2BAA044E00FF8A61 /* SplashBuilderProtocol.swift */,
+				753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -425,7 +532,7 @@
 			children = (
 				CE96D9DF2BAA11D100FF8A61 /* AuthorizationBuilder.swift */,
 				CE96D9E12BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift */,
-				7590A2A92BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift */,
+				7590A2A92BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -630,18 +737,23 @@
 			files = (
 				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
 				CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */,
-				7590A2AA2BD43FE700BD881D /* AuthorizationBuilderVCProtocol.swift in Sources */,
+				7590A2AA2BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift in Sources */,
+				757FF6DA2BD8E79700ABABAE /* MenuViewModel.swift in Sources */,
 				CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */,
 				CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */,
 				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
 				CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */,
 				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
+				757FF6E52BD954FB00ABABAE /* MenuViewModelProtocol.swift in Sources */,
+				757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */,
+				757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */,
 				7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */,
 				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
 				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
 				CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */,
 				CEA54A342BBCC1C70087C90A /* Injector.swift in Sources */,
+				753FE7AB2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift in Sources */,
 				CE96D9BA2BAA040A00FF8A61 /* AppBuilderProtocol.swift in Sources */,
 				CE96D9EB2BAA143400FF8A61 /* SplashViewModel.swift in Sources */,
 				CE96D9B32BAA038C00FF8A61 /* AppInteractor.swift in Sources */,
@@ -651,15 +763,19 @@
 				CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */,
 				CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */,
 				CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */,
+				757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */,
+				757FF6DC2BD8E7A400ABABAE /* MenuTabBarController.swift in Sources */,
 				CE96D9C62BAA050100FF8A61 /* SplashViewController.swift in Sources */,
 				CE96D9CC2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift in Sources */,
 				CE96D9B82BAA03F700FF8A61 /* AppBuilder.swift in Sources */,
 				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
 				CE96D9BF2BAA044E00FF8A61 /* SplashBuilderProtocol.swift in Sources */,
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
+				757FF6E32BD9524E00ABABAE /* MenuRouterProtocol.swift in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
 				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
+				757FF6E12BD94E7900ABABAE /* MenuBuilderProtocol.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
