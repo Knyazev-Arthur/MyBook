@@ -2,8 +2,8 @@ import Foundation
 import GoogleSignIn
 import UIKit
 
-class AuthorizationBuilder: AuthorizationBuilderProtocol, AuthorizationBuilderVCProtocol {
- 
+class AuthorizationBuilder: AuthorizationBuilderProtocol {
+    
     private let injector: InjectorProtocol
     
     init(injector: InjectorProtocol) {
@@ -22,8 +22,7 @@ private extension AuthorizationBuilder {
     }
     
     func screenRouter() {
-        guard let window = injector.getObject(from: .application, type: UIWindow.self) else { return }
-        let router = AuthorizationRouter(window: window, builder: self)
+        let router = AuthorizationRouter(builder: self)
         injector.addObject(to: .authorization, value: router)
     }
     
@@ -87,17 +86,15 @@ extension AuthorizationBuilder {
 
 }
 
-// MARK: Protocol AuthorizationBuilderVCProtocol
-extension AuthorizationBuilder {
+// MARK: Protocol AuthorizationBuilderRoutProtocol
+extension AuthorizationBuilder: AuthorizationBuilderRoutProtocol {
     
+    var window: UIWindow? {
+        injector.getObject(from: .application, type: UIWindow.self)
+    }
+
     var googleService: GIDSignIn? {
         injector.getObject(from: .application, type: GIDSignIn.self)
-    }
-    
-    var blankSreen: UIViewController {
-        let blankSreen = UIViewController()
-        blankSreen.view.backgroundColor = .yellow
-        return blankSreen
     }
     
 }
