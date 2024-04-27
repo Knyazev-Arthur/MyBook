@@ -1,5 +1,4 @@
 import Foundation
-import GoogleSignIn
 
 class AppInteractor: AppInteractorProtocol {
     
@@ -22,15 +21,22 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     private func setupObservers() {
-        userLogin.action = { [weak self] user in
-            guard let user else {
-                print("User didn't log in")
-                self?.action?(.authorization(.unavaliable))
-                return
-            }
-            print("User logged in")
-            self?.action?(.authorization(.avaliable(user)))
+        userLogin.action = { [weak self] event in
+            self?.externalEventHadler(event)
         }
+    }
+    
+    func externalEventHadler(_ event: AppInteractorUserStatus) {
+        switch event {
+            case .avaliable:
+                action?(.authorization(.avaliable))
+                print("User logged in")
+                
+            case .unavaliable:
+                action?(.authorization(.unavaliable))
+                print("User didn't log in")
+            }
+        
     }
     
 }
@@ -44,5 +50,5 @@ enum AppInteractorExternalEvent {
 // MARK: - AppInteractorUserStatus
 enum AppInteractorUserStatus {
     case unavaliable
-    case avaliable(GIDGoogleUser?)
+    case avaliable
 }

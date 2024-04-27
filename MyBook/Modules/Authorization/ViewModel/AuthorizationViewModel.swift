@@ -1,6 +1,6 @@
 import Foundation
 import GoogleSignIn
- 
+
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
     var action: ((AuthorizationViewData) -> Void)?
@@ -15,21 +15,25 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
     }
     
     func sendEvent(_ event: AuthorizationViewModelInternalEvent) {
-        internalEventHadler(event)
+        handleRouterEvent(event)
     }
-    
+
 }
 
 // MARK: Private
 private extension AuthorizationViewModel {
     
     func setupObservers() {
-        router?.action = { [weak self] event in
-            self?.internalEventHadler(event)
+        router?.action = { [weak self] in
+            self?.externalEventHadler($0)
+        }
+        
+        userLogin.completeAction = { [weak self] in
+            self?.router?.sendEvent(.complete)
         }
     }
     
-    func internalEventHadler(_ event: AuthorizationViewModelInternalEvent) {
+    func handleRouterEvent(_ event: AuthorizationViewModelInternalEvent) {
         switch event {
             case .initialSetup:
                 initialSetup()
@@ -39,13 +43,13 @@ private extension AuthorizationViewModel {
         }
     }
     
-    func internalEventHadler(_ event: AuthorizationRouterExternalEvent) {
+    func externalEventHadler(_ event: Result<GIDGoogleUser?, Error>) {
         switch event {
             case .failure(let error):
-                print("Error user login with Google: \(error!.localizedDescription)")
+                print("Error user login with Google: \(error.localizedDescription)")
             
-            case .success(let result):
-                authorization(result)
+            case .success(let user):
+                authorization(user)
         }
     }
     
@@ -53,20 +57,17 @@ private extension AuthorizationViewModel {
         let imageLogo = UIImage(named: "Logo")
         let imageLoginButton = UIImage(named: "LoginButton")
         let text = NSLocalizedString("InitialGreeting", comment: "")
-        let authorizationViewData = AuthorizationViewData(imageLogo: imageLogo, 
-                                                          imageLoginButton: imageLoginButton,
-                                                          textLabelGreeting: text)
+        let authorizationViewData = AuthorizationViewData(imageLogo: imageLogo, imageLoginButton: imageLoginButton, textLabelGreeting: text)
         action?(authorizationViewData)
     }
     
-    func authorization(_ result: GIDSignInResult?) {
-        guard let result else {
+    func authorization(_ user: GIDGoogleUser?) {
+        guard let user else {
             print("User login result has an empty value")
             return
         }
         
-        userLogin.sendEvent(.userLogin(result))
-        router?.sendEvent(.blankScreen)
+        userLogin.sendEvent(.userLogin(user))
     }
     
 }
@@ -76,3 +77,4 @@ enum AuthorizationViewModelInternalEvent {
     case initialSetup
     case router
 }
+

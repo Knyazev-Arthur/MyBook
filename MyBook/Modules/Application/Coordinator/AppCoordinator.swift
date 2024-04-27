@@ -15,7 +15,6 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     func start() -> Bool {
         startSplashModule()
-        interactor.sendEvent()
         return true
     }
 
@@ -37,17 +36,19 @@ private extension AppCoordinator {
             
             case .pushNotitication(_):
                 break
-        }
+            }
+        
     }
     
     func userAuthorizationHandler(_ status: AppInteractorUserStatus) {
         switch status {
             case .unavaliable:
-                break
+                startAuthorizationModule()
             
-            case .avaliable(_):
-                break
-        }
+            case .avaliable:
+                startMenuModule()
+            }
+        
     }
     
     func startSplashModule() {
@@ -59,8 +60,7 @@ private extension AppCoordinator {
         routers[.splash] = router
         
         router.action = { [weak self] in
-            self?.startAuthorizationModule()
-            self?.routers[.splash] = nil
+            self?.interactor.sendEvent()
         }
     }
     
@@ -71,6 +71,21 @@ private extension AppCoordinator {
         
         router.sendEvent(.start)
         routers[.authorization] = router
+        routers[.splash] = nil
+        
+        router.completeAction = { [weak self] in
+            self?.startMenuModule()
+        }
+    }
+    
+    func startMenuModule() {
+        guard let builder = builder.menuBuilder, let router = builder.router else {
+            fatalError("There aren't any significant authorization module objects")
+        }
+        
+        router.sendEvent(.start)
+        routers[.menu] = router
+        routers[.authorization] = nil
     }
     
 }

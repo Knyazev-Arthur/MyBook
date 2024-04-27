@@ -4,14 +4,13 @@ import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    var action: ((AuthorizationRouterExternalEvent) -> Void)?
+    var action: ((Result<GIDGoogleUser?, Error>) -> Void)?
+    var completeAction: (() -> Void)?
     
     private weak var viewController: UIViewController?
-    private weak var window: UIWindow?
-    private let builder: AuthorizationBuilderVCProtocol
+    private let builder: AuthorizationBuilderRoutProtocol
     
-    init(window: UIWindow?, builder: AuthorizationBuilderVCProtocol) {
-        self.window = window
+    init(builder: AuthorizationBuilderRoutProtocol) {
         self.builder = builder
     }
     
@@ -35,8 +34,8 @@ private extension AuthorizationRouter {
             case .logInToGoogle:
                 startGoogleSignIn()
             
-            case .blankScreen:
-                setRootBlankVC()
+            case .complete:
+                completeAction?()
         }
     }
     
@@ -44,28 +43,19 @@ private extension AuthorizationRouter {
         let transition = CATransition()
         transition.type = .fade
         transition.duration = 0.4
-        window?.layer.add(transition, forKey: "transition")
-        window?.rootViewController = viewController
-    }
-    
-    func setRootBlankVC() {
-        let blankScreen = builder.blankSreen
-        let transition = CATransition()
-        transition.type = .fade
-        transition.duration = 0.4
-        window?.layer.add(transition, forKey: "transition")
-        window?.rootViewController = blankScreen
+        builder.window?.layer.add(transition, forKey: "transition")
+        builder.window?.rootViewController = viewController
     }
     
     func startGoogleSignIn() {
         guard let viewController else { return }
         builder.googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
-            guard error == nil else {
+            if let error {
                 self?.action?(.failure(error))
                 return
             }
             
-            self?.action?(.success(result))
+            self?.action?(.success(result?.user))
         }
     }
     
@@ -76,11 +66,5 @@ enum AuthorizationRouterInternalEvent {
     case inject(viewController: UIViewController?)
     case start
     case logInToGoogle
-    case blankScreen
-}
-
-// MARK: - AuthorizationRouterInternalEvent
-enum AuthorizationRouterExternalEvent {
-    case success(_ result: GIDSignInResult?)
-    case failure(_ error: Error?)
+    case complete
 }
