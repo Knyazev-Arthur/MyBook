@@ -69,4 +69,8 @@ extension AppBuilder {
         AuthorizationBuilder(injector: injector)
     }
     
+    var menuBuilder: MenuBuilderProtocol? {
+        MenuBuilder(injector: injector)
+    }
+    
 }
