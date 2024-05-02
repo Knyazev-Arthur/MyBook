@@ -28,8 +28,19 @@ private extension AuthorizationViewModel {
             self?.externalEventHadler($0)
         }
         
-        userLogin.completeAction = { [weak self] in
-            self?.router?.sendEvent(.complete)
+        userLogin.action = { [weak self] event in
+            self?.userAuthorizationHandler(event)
+        }
+    }
+    
+    func userAuthorizationHandler(_ event: Result<String, Error>) {
+        switch event {
+            case .success(let message):
+                print(message)
+                router?.sendEvent(.complete)
+            
+            default:
+                break
         }
     }
     
@@ -77,4 +88,3 @@ enum AuthorizationViewModelInternalEvent {
     case initialSetup
     case router
 }
-

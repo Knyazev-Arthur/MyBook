@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class AuthorizationViewController: UIViewController {
@@ -39,6 +38,6 @@ private extension AuthorizationViewController {
         viewModel.action = { [weak self] in
             self?.myView.sendEvent($0)
         }
-        
     }
+    
 }

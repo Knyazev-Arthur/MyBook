@@ -26,29 +26,26 @@ private extension AppInteractor {
         }
     }
     
-    func externalEventHadler(_ event: AppInteractorUserStatus) {
+    func externalEventHadler(_ event: Result<String, Error>) {
         switch event {
-            case .avaliable:
+            case .success(_):
                 action?(.authorization(.avaliable))
-                print("User logged in")
                 
-            case .unavaliable:
+            case .failure(_):
                 action?(.authorization(.unavaliable))
-                print("User didn't log in")
-            }
-        
+        }
     }
     
 }
 
 // MARK: - AppInteractorExternalEvent
 enum AppInteractorExternalEvent {
-    case authorization(AppInteractorUserStatus)
+    case authorization(UserLoginEventHandler)
     case pushNotitication([String : Any])
 }
 
 // MARK: - AppInteractorUserStatus
-enum AppInteractorUserStatus {
+enum UserLoginEventHandler {
     case unavaliable
     case avaliable
 }

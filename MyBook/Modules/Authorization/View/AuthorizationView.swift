@@ -1,4 +1,3 @@
-import Foundation
 import SnapKit
 import UIKit
 
@@ -91,7 +90,7 @@ private extension AuthorizationView {
 
 // MARK: - AuthorizationViewData
 struct AuthorizationViewData {
-    var imageLogo: UIImage?
-    var imageLoginButton: UIImage?
-    var textLabelGreeting: String
+    let imageLogo: UIImage?
+    let imageLoginButton: UIImage?
+    let textLabelGreeting: String
 }

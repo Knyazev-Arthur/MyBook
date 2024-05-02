@@ -3,8 +3,7 @@ import GoogleSignIn
 
 class AppUserLogin: AppUserLoginProtocol {
     
-    var action: ((AppInteractorUserStatus) -> Void)?
-    var completeAction: (() -> Void)?
+    var action: ((Result<String, Error>) -> Void)?
     
     private let googleService: GIDSignIn
     
@@ -24,9 +23,7 @@ private extension AppUserLogin {
     func internalEventHandler(_ event: AppUserLoginInternalEvent) {
         switch event {
             case .userLogin(let user):
-                getUserToken(user) { [weak self] result in
-                    self?.resultGetToken(result)
-                }
+                getUserToken(user)
             
             case .authorization:
                 googleService.restorePreviousSignIn { [weak self] user, error in
@@ -35,63 +32,42 @@ private extension AppUserLogin {
         }
     }
     
-    func resultGetToken(_ result: ResultGetToken) {
-        switch result {
-            case .succes(let message):
-                print(message)
-                completeAction?()
-            
-            case .failure(let error):
-                print(error)
-            }
-    }
-    
     func sessiosVerification(_ user: GIDGoogleUser?, _ error: Error?) {
         if let error {
+            action?(.failure(error))
             print("Error user login with Google: \(error.localizedDescription)")
-            action?(.unavaliable)
             return
         }
         
-        getUserToken(user) { [weak self] result in
-            switch result {
-                case .succes(_):
-                    self?.action?(.avaliable)
-                
-                case .failure(let error):
-                    self?.action?(.unavaliable)
-                    print(error)
-                }
-        }
+        getUserToken(user)
     }
     
-    func getUserToken(_ user: GIDGoogleUser?, completion: @escaping (ResultGetToken) -> Void) {
-        user?.refreshTokensIfNeeded { user, error in
+    func getUserToken(_ user: GIDGoogleUser?) {
+        user?.refreshTokensIfNeeded { [weak self] user, error in
             if let error {
-                let error = "Error getting user token: \(error.localizedDescription)"
-                completion(.failure(error))
+                self?.action?(.failure(error))
+                print("Error getting user token: \(error.localizedDescription)")
                 return
             }
             
             guard let user else {
-                let error = "Error getting user inforamtion"
-                completion(.failure(error))
+                print("Error getting user inforamtion")
                 return
             }
             
             guard let token = user.idToken?.tokenString, !token.isEmpty else {
-                let error = "Error getting user token"
-                completion(.failure(error))
+                print("Error getting user token")
                 return
             }
             
             guard let userID = user.userID, !userID.isEmpty else {
-                let error = "Error getting user identifier"
-                completion(.failure(error))
+                print("Error getting user identifier")
                 return
             }
+            
+            print("User logged in")
             let message = "User succefully logged in with token: \(token), id: \(userID)"
-            completion(.succes(message))
+            self?.action?(.success(message))
         }
     }
 
@@ -101,10 +77,4 @@ private extension AppUserLogin {
 enum AppUserLoginInternalEvent {
     case userLogin(_ user: GIDGoogleUser?)
     case authorization
-}
-
-// MARK: - ResultGetToken
-enum ResultGetToken {
-    case succes(String)
-    case failure(String)
 }

@@ -1,11 +1,10 @@
-import Foundation
 import GoogleSignIn
 import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
     var action: ((Result<GIDGoogleUser?, Error>) -> Void)?
-    var completeAction: (() -> Void)?
+    var actionСomplete: (() -> Void)?
     
     private weak var viewController: UIViewController?
     private let builder: AuthorizationBuilderRoutProtocol
@@ -35,7 +34,7 @@ private extension AuthorizationRouter {
                 startGoogleSignIn()
             
             case .complete:
-                completeAction?()
+                actionСomplete?()
         }
     }
     
@@ -49,6 +48,7 @@ private extension AuthorizationRouter {
     
     func startGoogleSignIn() {
         guard let viewController else { return }
+        
         builder.googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
             if let error {
                 self?.action?(.failure(error))
@@ -58,6 +58,7 @@ private extension AuthorizationRouter {
             self?.action?(.success(result?.user))
         }
     }
+
     
 }
 

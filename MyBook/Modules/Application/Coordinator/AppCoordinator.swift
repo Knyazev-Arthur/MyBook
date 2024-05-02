@@ -36,19 +36,17 @@ private extension AppCoordinator {
             
             case .pushNotitication(_):
                 break
-            }
-        
+        }
     }
     
-    func userAuthorizationHandler(_ status: AppInteractorUserStatus) {
+    func userAuthorizationHandler(_ status: UserLoginEventHandler) {
         switch status {
             case .unavaliable:
                 startAuthorizationModule()
             
             case .avaliable:
                 startMenuModule()
-            }
-        
+        }
     }
     
     func startSplashModule() {
@@ -73,14 +71,14 @@ private extension AppCoordinator {
         routers[.authorization] = router
         routers[.splash] = nil
         
-        router.completeAction = { [weak self] in
+        router.actionСomplete = { [weak self] in
             self?.startMenuModule()
         }
     }
     
     func startMenuModule() {
         guard let builder = builder.menuBuilder, let router = builder.router else {
-            fatalError("There aren't any significant authorization module objects")
+            fatalError("There aren't any significant menu module objects")
         }
         
         router.sendEvent(.start)

@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class MenuBuilder: MenuBuilderProtocol {
@@ -46,7 +45,7 @@ extension MenuBuilder {
     
 }
 
-// MARK: Protocol MenuBuilderProtocol
+// MARK: MenuBuilderProtocol
 extension MenuBuilder {
     
     var router: MenuRouterProtocol? {
@@ -59,7 +58,7 @@ extension MenuBuilder {
     
 }
 
-// MARK: Protocol MenuBuilderRoutProtocol
+// MARK: MenuBuilderRoutProtocol
 extension MenuBuilder: MenuBuilderRoutProtocol {
     
     var window: UIWindow? {

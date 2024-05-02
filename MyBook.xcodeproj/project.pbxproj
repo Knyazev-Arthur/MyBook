@@ -183,7 +183,6 @@
 			children = (
 				757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */,
 				757FF6E42BD954FB00ABABAE /* MenuViewModelProtocol.swift */,
-				757FF6E62BD955FE00ABABAE /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,13 +205,6 @@
 				757FF6EA2BD9745500ABABAE /* Settings */,
 			);
 			path = Navigation;
-			sourceTree = "<group>";
-		};
-		757FF6E62BD955FE00ABABAE /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		757FF6E72BD95E8D00ABABAE /* Favorites */ = {

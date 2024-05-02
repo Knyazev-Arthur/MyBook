@@ -1,4 +1,3 @@
-import Foundation
 import GoogleSignIn
 import UIKit
 
@@ -73,7 +72,7 @@ extension AuthorizationBuilder {
 
 }
 
-// MARK: Protocol AuthorizationBuilderProtocol
+// MARK: AuthorizationBuilderProtocol
 extension AuthorizationBuilder {
     
     var controller: AuthorizationViewController? {
@@ -86,7 +85,7 @@ extension AuthorizationBuilder {
 
 }
 
-// MARK: Protocol AuthorizationBuilderRoutProtocol
+// MARK: AuthorizationBuilderRoutProtocol
 extension AuthorizationBuilder: AuthorizationBuilderRoutProtocol {
     
     var window: UIWindow? {
