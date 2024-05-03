@@ -10,6 +10,8 @@
 		751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */; };
 		751EE1A12B9EE055006356F5 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 751EE1A02B9EE055006356F5 /* GoogleSignIn */; };
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
+		7522A3B92BE52C99003CA4AF /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3B82BE52C99003CA4AF /* MainViewProtocol.swift */; };
+		7522A3BB2BE55712003CA4AF /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3BA2BE55712003CA4AF /* RootController.swift */; };
 		7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523E7E12BC699CC00315858 /* UIColorExtensions.swift */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
@@ -26,6 +28,45 @@
 		757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6EB2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift */; };
 		7590A2AA2BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7590A2A92BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift */; };
 		75D6C4122BC948F600D6B7C5 /* MerriweatherSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */; };
+		75D782C32BE4F73B006E3F76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782C22BE4F73B006E3F76 /* MainNavigationController.swift */; };
+		75D782C62BE4F97A006E3F76 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782C52BE4F97A006E3F76 /* FavoritesNavigationController.swift */; };
+		75D782C92BE4F9AC006E3F76 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782C82BE4F9AC006E3F76 /* NotesViewController.swift */; };
+		75D782CC2BE4F9F4006E3F76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782CB2BE4F9F4006E3F76 /* SettingsViewController.swift */; };
+		75D782CE2BE5201D006E3F76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782CD2BE5201D006E3F76 /* MainView.swift */; };
+		75D782D42BE520B5006E3F76 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782D32BE520B5006E3F76 /* MainBuilder.swift */; };
+		75D782D62BE520C0006E3F76 /* MainBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782D52BE520C0006E3F76 /* MainBuilderProtocol.swift */; };
+		75D782D92BE520D6006E3F76 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782D82BE520D5006E3F76 /* MainRouter.swift */; };
+		75D782DB2BE520E2006E3F76 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782DA2BE520E2006E3F76 /* MainRouterProtocol.swift */; };
+		75D782DD2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782DC2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift */; };
+		75D782DF2BE52112006E3F76 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782DE2BE52112006E3F76 /* MainViewModel.swift */; };
+		75D782E12BE5211D006E3F76 /* MainViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782E02BE5211D006E3F76 /* MainViewModelProtocol.swift */; };
+		75D782E42BE521C1006E3F76 /* FavoritesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782E32BE521C1006E3F76 /* FavoritesBuilder.swift */; };
+		75D782E62BE521C7006E3F76 /* FavoritesBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782E52BE521C7006E3F76 /* FavoritesBuilderProtocol.swift */; };
+		75D782E82BE521D3006E3F76 /* FavoritesBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782E72BE521D3006E3F76 /* FavoritesBuilderRoutProtocol.swift */; };
+		75D782EB2BE521EB006E3F76 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782EA2BE521EB006E3F76 /* FavoritesViewModel.swift */; };
+		75D782ED2BE52204006E3F76 /* FavoritesViewModeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782EC2BE52204006E3F76 /* FavoritesViewModeProtocol.swift */; };
+		75D782F02BE52221006E3F76 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782EF2BE52221006E3F76 /* FavoritesView.swift */; };
+		75D782F22BE5222B006E3F76 /* FavoritesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782F12BE5222B006E3F76 /* FavoritesViewProtocol.swift */; };
+		75D782F52BE52244006E3F76 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782F42BE52244006E3F76 /* FavoritesRouter.swift */; };
+		75D782F72BE5224F006E3F76 /* FavoritesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782F62BE5224F006E3F76 /* FavoritesRouterProtocol.swift */; };
+		75D782F92BE52275006E3F76 /* NotesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782F82BE52275006E3F76 /* NotesBuilder.swift */; };
+		75D782FC2BE522B0006E3F76 /* NotesBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782FB2BE522B0006E3F76 /* NotesBuilderProtocol.swift */; };
+		75D782FE2BE522B8006E3F76 /* NotesBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D782FD2BE522B8006E3F76 /* NotesBuilderRoutProtocol.swift */; };
+		75D783032BE52379006E3F76 /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783022BE52379006E3F76 /* NotesRouter.swift */; };
+		75D783052BE52383006E3F76 /* NotesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783042BE52383006E3F76 /* NotesRouterProtocol.swift */; };
+		75D783072BE5239E006E3F76 /* NotesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783062BE5239E006E3F76 /* NotesViewModelProtocol.swift */; };
+		75D783092BE523A4006E3F76 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783082BE523A4006E3F76 /* NotesViewModel.swift */; };
+		75D7830B2BE523B0006E3F76 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7830A2BE523B0006E3F76 /* NotesView.swift */; };
+		75D7830D2BE523B6006E3F76 /* NotesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7830C2BE523B6006E3F76 /* NotesViewProtocol.swift */; };
+		75D783142BE5269C006E3F76 /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783132BE5269C006E3F76 /* SettingsBuilder.swift */; };
+		75D783162BE526A0006E3F76 /* SettingsBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783152BE526A0006E3F76 /* SettingsBuilderProtocol.swift */; };
+		75D783182BE526AD006E3F76 /* SettingsBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783172BE526AD006E3F76 /* SettingsBuilderRoutProtocol.swift */; };
+		75D7831A2BE526B5006E3F76 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783192BE526B5006E3F76 /* SettingsRouter.swift */; };
+		75D7831C2BE526BA006E3F76 /* SettingsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7831B2BE526BA006E3F76 /* SettingsRouterProtocol.swift */; };
+		75D7831E2BE526C5006E3F76 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7831D2BE526C5006E3F76 /* SettingsViewModel.swift */; };
+		75D783202BE526CE006E3F76 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7831F2BE526CE006E3F76 /* SettingsViewModelProtocol.swift */; };
+		75D783222BE526DD006E3F76 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783212BE526DD006E3F76 /* SettingsView.swift */; };
+		75D783242BE526E4006E3F76 /* SettingsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D783232BE526E4006E3F76 /* SettingsViewProtocol.swift */; };
 		75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */; };
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
@@ -75,6 +116,8 @@
 /* Begin PBXFileReference section */
 		751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
+		7522A3B82BE52C99003CA4AF /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
+		7522A3BA2BE55712003CA4AF /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootController.swift; path = MyBook/Services/UserInterface/RootController.swift; sourceTree = SOURCE_ROOT; };
 		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -91,6 +134,45 @@
 		757FF6EB2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilderRoutProtocol.swift; sourceTree = "<group>"; };
 		7590A2A92BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationBuilderRoutProtocol.swift; sourceTree = "<group>"; };
 		75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MerriweatherSans.ttf; sourceTree = "<group>"; };
+		75D782C22BE4F73B006E3F76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		75D782C52BE4F97A006E3F76 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
+		75D782C82BE4F9AC006E3F76 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		75D782CB2BE4F9F4006E3F76 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		75D782CD2BE5201D006E3F76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		75D782D32BE520B5006E3F76 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		75D782D52BE520C0006E3F76 /* MainBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilderProtocol.swift; sourceTree = "<group>"; };
+		75D782D82BE520D5006E3F76 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		75D782DA2BE520E2006E3F76 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
+		75D782DC2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		75D782DE2BE52112006E3F76 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		75D782E02BE5211D006E3F76 /* MainViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelProtocol.swift; sourceTree = "<group>"; };
+		75D782E32BE521C1006E3F76 /* FavoritesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesBuilder.swift; sourceTree = "<group>"; };
+		75D782E52BE521C7006E3F76 /* FavoritesBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesBuilderProtocol.swift; sourceTree = "<group>"; };
+		75D782E72BE521D3006E3F76 /* FavoritesBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		75D782EA2BE521EB006E3F76 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		75D782EC2BE52204006E3F76 /* FavoritesViewModeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModeProtocol.swift; sourceTree = "<group>"; };
+		75D782EF2BE52221006E3F76 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		75D782F12BE5222B006E3F76 /* FavoritesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewProtocol.swift; sourceTree = "<group>"; };
+		75D782F42BE52244006E3F76 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
+		75D782F62BE5224F006E3F76 /* FavoritesRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouterProtocol.swift; sourceTree = "<group>"; };
+		75D782F82BE52275006E3F76 /* NotesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesBuilder.swift; sourceTree = "<group>"; };
+		75D782FB2BE522B0006E3F76 /* NotesBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesBuilderProtocol.swift; sourceTree = "<group>"; };
+		75D782FD2BE522B8006E3F76 /* NotesBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		75D783022BE52379006E3F76 /* NotesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
+		75D783042BE52383006E3F76 /* NotesRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouterProtocol.swift; sourceTree = "<group>"; };
+		75D783062BE5239E006E3F76 /* NotesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModelProtocol.swift; sourceTree = "<group>"; };
+		75D783082BE523A4006E3F76 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		75D7830A2BE523B0006E3F76 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		75D7830C2BE523B6006E3F76 /* NotesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewProtocol.swift; sourceTree = "<group>"; };
+		75D783132BE5269C006E3F76 /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
+		75D783152BE526A0006E3F76 /* SettingsBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilderProtocol.swift; sourceTree = "<group>"; };
+		75D783172BE526AD006E3F76 /* SettingsBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilderRoutProtocol.swift; sourceTree = "<group>"; };
+		75D783192BE526B5006E3F76 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		75D7831B2BE526BA006E3F76 /* SettingsRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouterProtocol.swift; sourceTree = "<group>"; };
+		75D7831D2BE526C5006E3F76 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		75D7831F2BE526CE006E3F76 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
+		75D783212BE526DD006E3F76 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		75D783232BE526E4006E3F76 /* SettingsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewProtocol.swift; sourceTree = "<group>"; };
 		75EDEC452B9EDB6E003DF653 /* MyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -152,13 +234,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		752C0C562BB6E4F200241FFF /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		757FF6D02BD8D35700ABABAE /* Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +285,11 @@
 		757FF6E72BD95E8D00ABABAE /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				75D782E22BE521AD006E3F76 /* Builder */,
+				75D782F32BE52239006E3F76 /* Router */,
+				75D782E92BE521D8006E3F76 /* ViewModel */,
+				75D782C42BE4F8BF006E3F76 /* ViewController */,
+				75D782EE2BE52212006E3F76 /* View */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -217,6 +297,11 @@
 		757FF6E82BD9743200ABABAE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				75D782D02BE52052006E3F76 /* Builder */,
+				75D782D12BE52060006E3F76 /* Router */,
+				75D782D22BE52071006E3F76 /* ViewModel */,
+				75D782C12BE4F6FD006E3F76 /* ViewController */,
+				75D782CF2BE52034006E3F76 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -224,6 +309,11 @@
 		757FF6E92BD9744000ABABAE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				75D782FA2BE52280006E3F76 /* Builder */,
+				75D782FF2BE5231F006E3F76 /* Router */,
+				75D783002BE52324006E3F76 /* ViewModel */,
+				75D782C72BE4F98B006E3F76 /* ViewController */,
+				75D783012BE5232D006E3F76 /* View */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -231,6 +321,11 @@
 		757FF6EA2BD9745500ABABAE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				75D7830F2BE52622006E3F76 /* Builder */,
+				75D783102BE5262C006E3F76 /* Router */,
+				75D783122BE52639006E3F76 /* ViewModel */,
+				75D782CA2BE4F9DE006E3F76 /* ViewController */,
+				75D783112BE52632006E3F76 /* View */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -241,6 +336,186 @@
 				75D6C4112BC948F600D6B7C5 /* MerriweatherSans.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		75D782C12BE4F6FD006E3F76 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D782C22BE4F73B006E3F76 /* MainNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75D782C42BE4F8BF006E3F76 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D782C52BE4F97A006E3F76 /* FavoritesNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75D782C72BE4F98B006E3F76 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D782C82BE4F9AC006E3F76 /* NotesViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75D782CA2BE4F9DE006E3F76 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75D782CB2BE4F9F4006E3F76 /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75D782CF2BE52034006E3F76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75D782CD2BE5201D006E3F76 /* MainView.swift */,
+				7522A3B82BE52C99003CA4AF /* MainViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75D782D02BE52052006E3F76 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				75D782D32BE520B5006E3F76 /* MainBuilder.swift */,
+				75D782D52BE520C0006E3F76 /* MainBuilderProtocol.swift */,
+				75D782DC2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		75D782D12BE52060006E3F76 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				75D782D82BE520D5006E3F76 /* MainRouter.swift */,
+				75D782DA2BE520E2006E3F76 /* MainRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		75D782D22BE52071006E3F76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75D782DE2BE52112006E3F76 /* MainViewModel.swift */,
+				75D782E02BE5211D006E3F76 /* MainViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		75D782E22BE521AD006E3F76 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				75D782E32BE521C1006E3F76 /* FavoritesBuilder.swift */,
+				75D782E52BE521C7006E3F76 /* FavoritesBuilderProtocol.swift */,
+				75D782E72BE521D3006E3F76 /* FavoritesBuilderRoutProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		75D782E92BE521D8006E3F76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75D782EA2BE521EB006E3F76 /* FavoritesViewModel.swift */,
+				75D782EC2BE52204006E3F76 /* FavoritesViewModeProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		75D782EE2BE52212006E3F76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75D782EF2BE52221006E3F76 /* FavoritesView.swift */,
+				75D782F12BE5222B006E3F76 /* FavoritesViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75D782F32BE52239006E3F76 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				75D782F42BE52244006E3F76 /* FavoritesRouter.swift */,
+				75D782F62BE5224F006E3F76 /* FavoritesRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		75D782FA2BE52280006E3F76 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				75D782F82BE52275006E3F76 /* NotesBuilder.swift */,
+				75D782FB2BE522B0006E3F76 /* NotesBuilderProtocol.swift */,
+				75D782FD2BE522B8006E3F76 /* NotesBuilderRoutProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		75D782FF2BE5231F006E3F76 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				75D783022BE52379006E3F76 /* NotesRouter.swift */,
+				75D783042BE52383006E3F76 /* NotesRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		75D783002BE52324006E3F76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75D783082BE523A4006E3F76 /* NotesViewModel.swift */,
+				75D783062BE5239E006E3F76 /* NotesViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		75D783012BE5232D006E3F76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75D7830A2BE523B0006E3F76 /* NotesView.swift */,
+				75D7830C2BE523B6006E3F76 /* NotesViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75D7830F2BE52622006E3F76 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				75D783132BE5269C006E3F76 /* SettingsBuilder.swift */,
+				75D783152BE526A0006E3F76 /* SettingsBuilderProtocol.swift */,
+				75D783172BE526AD006E3F76 /* SettingsBuilderRoutProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		75D783102BE5262C006E3F76 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				75D783192BE526B5006E3F76 /* SettingsRouter.swift */,
+				75D7831B2BE526BA006E3F76 /* SettingsRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		75D783112BE52632006E3F76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75D783212BE526DD006E3F76 /* SettingsView.swift */,
+				75D783232BE526E4006E3F76 /* SettingsViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75D783122BE52639006E3F76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75D7831D2BE526C5006E3F76 /* SettingsViewModel.swift */,
+				75D7831F2BE526CE006E3F76 /* SettingsViewModelProtocol.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		75EDEC3C2B9EDB6E003DF653 = {
@@ -550,7 +825,6 @@
 			children = (
 				CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */,
 				CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */,
-				752C0C562BB6E4F200241FFF /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -601,6 +875,7 @@
 		CEA54A3D2BBD6BBA0087C90A /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				7522A3BA2BE55712003CA4AF /* RootController.swift */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -727,48 +1002,89 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D7830B2BE523B0006E3F76 /* NotesView.swift in Sources */,
+				75D782DD2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift in Sources */,
 				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
+				75D783072BE5239E006E3F76 /* NotesViewModelProtocol.swift in Sources */,
+				75D782C62BE4F97A006E3F76 /* FavoritesNavigationController.swift in Sources */,
+				75D782E12BE5211D006E3F76 /* MainViewModelProtocol.swift in Sources */,
+				75D782FC2BE522B0006E3F76 /* NotesBuilderProtocol.swift in Sources */,
 				CEA54A362BBCC1DD0087C90A /* InjectorProtocol.swift in Sources */,
 				7590A2AA2BD43FE700BD881D /* AuthorizationBuilderRoutProtocol.swift in Sources */,
+				75D782F22BE5222B006E3F76 /* FavoritesViewProtocol.swift in Sources */,
 				757FF6DA2BD8E79700ABABAE /* MenuViewModel.swift in Sources */,
 				CE96D9E22BAA11EE00FF8A61 /* AuthorizationBuilderProtocol.swift in Sources */,
+				75D783032BE52379006E3F76 /* NotesRouter.swift in Sources */,
+				75D782CE2BE5201D006E3F76 /* MainView.swift in Sources */,
 				CE96D9CF2BAA079F00FF8A61 /* AuthorizationViewModel.swift in Sources */,
+				75D7831C2BE526BA006E3F76 /* SettingsRouterProtocol.swift in Sources */,
+				75D782D42BE520B5006E3F76 /* MainBuilder.swift in Sources */,
+				75D7830D2BE523B6006E3F76 /* NotesViewProtocol.swift in Sources */,
 				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
+				75D783142BE5269C006E3F76 /* SettingsBuilder.swift in Sources */,
+				75D782CC2BE4F9F4006E3F76 /* SettingsViewController.swift in Sources */,
 				CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */,
+				75D7831A2BE526B5006E3F76 /* SettingsRouter.swift in Sources */,
+				75D782ED2BE52204006E3F76 /* FavoritesViewModeProtocol.swift in Sources */,
 				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
+				75D783222BE526DD006E3F76 /* SettingsView.swift in Sources */,
 				757FF6E52BD954FB00ABABAE /* MenuViewModelProtocol.swift in Sources */,
 				757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */,
+				75D782DF2BE52112006E3F76 /* MainViewModel.swift in Sources */,
+				75D782F72BE5224F006E3F76 /* FavoritesRouterProtocol.swift in Sources */,
+				75D782D92BE520D6006E3F76 /* MainRouter.swift in Sources */,
+				75D782F02BE52221006E3F76 /* FavoritesView.swift in Sources */,
 				757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */,
 				7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */,
 				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
+				7522A3BB2BE55712003CA4AF /* RootController.swift in Sources */,
 				CE96D9F32BAA275F00FF8A61 /* AppUserLoginProtocol.swift in Sources */,
 				CE96D9BD2BAA043600FF8A61 /* SplashBuilder.swift in Sources */,
 				CEA54A342BBCC1C70087C90A /* Injector.swift in Sources */,
+				75D783052BE52383006E3F76 /* NotesRouterProtocol.swift in Sources */,
 				753FE7AB2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift in Sources */,
 				CE96D9BA2BAA040A00FF8A61 /* AppBuilderProtocol.swift in Sources */,
+				75D783092BE523A4006E3F76 /* NotesViewModel.swift in Sources */,
+				75D782EB2BE521EB006E3F76 /* FavoritesViewModel.swift in Sources */,
 				CE96D9EB2BAA143400FF8A61 /* SplashViewModel.swift in Sources */,
+				75D783202BE526CE006E3F76 /* SettingsViewModelProtocol.swift in Sources */,
+				75D782E62BE521C7006E3F76 /* FavoritesBuilderProtocol.swift in Sources */,
 				CE96D9B32BAA038C00FF8A61 /* AppInteractor.swift in Sources */,
 				CE96D9F12BAA274E00FF8A61 /* AppUserLogin.swift in Sources */,
+				75D7831E2BE526C5006E3F76 /* SettingsViewModel.swift in Sources */,
+				75D782E82BE521D3006E3F76 /* FavoritesBuilderRoutProtocol.swift in Sources */,
 				CE96D9DE2BAA0A2500FF8A61 /* AuthorizationRouterProtocol.swift in Sources */,
 				CE96D9E02BAA11D100FF8A61 /* AuthorizationBuilder.swift in Sources */,
 				CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */,
+				75D782D62BE520C0006E3F76 /* MainBuilderProtocol.swift in Sources */,
 				CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */,
 				CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */,
 				757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */,
+				75D782DB2BE520E2006E3F76 /* MainRouterProtocol.swift in Sources */,
 				757FF6DC2BD8E7A400ABABAE /* MenuTabBarController.swift in Sources */,
+				75D782F92BE52275006E3F76 /* NotesBuilder.swift in Sources */,
+				75D782F52BE52244006E3F76 /* FavoritesRouter.swift in Sources */,
 				CE96D9C62BAA050100FF8A61 /* SplashViewController.swift in Sources */,
+				75D782C92BE4F9AC006E3F76 /* NotesViewController.swift in Sources */,
 				CE96D9CC2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift in Sources */,
+				75D782E42BE521C1006E3F76 /* FavoritesBuilder.swift in Sources */,
+				75D783242BE526E4006E3F76 /* SettingsViewProtocol.swift in Sources */,
 				CE96D9B82BAA03F700FF8A61 /* AppBuilder.swift in Sources */,
 				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
+				7522A3B92BE52C99003CA4AF /* MainViewProtocol.swift in Sources */,
 				CE96D9BF2BAA044E00FF8A61 /* SplashBuilderProtocol.swift in Sources */,
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				757FF6E32BD9524E00ABABAE /* MenuRouterProtocol.swift in Sources */,
+				75D783182BE526AD006E3F76 /* SettingsBuilderRoutProtocol.swift in Sources */,
+				75D782FE2BE522B8006E3F76 /* NotesBuilderRoutProtocol.swift in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
 				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
+				75D783162BE526A0006E3F76 /* SettingsBuilderProtocol.swift in Sources */,
 				757FF6E12BD94E7900ABABAE /* MenuBuilderProtocol.swift in Sources */,
 				CE96D9C42BAA048200FF8A61 /* SplashRouterProtocol.swift in Sources */,
+				75D782C32BE4F73B006E3F76 /* MainNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

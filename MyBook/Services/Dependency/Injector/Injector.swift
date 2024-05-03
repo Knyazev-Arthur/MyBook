@@ -36,4 +36,8 @@ enum InjectorContainerKey: Hashable {
     case splash
     case authorization
     case menu
+    case main
+    case favorites
+    case notes
+    case settings
 }

@@ -31,7 +31,6 @@ private extension MenuRouter {
     }
     
     func setRootTabBarController() {
-        tabBarController?.view.backgroundColor = .yellow
         let transition = CATransition()
         transition.type = .fade
         transition.duration = 0.4
@@ -41,7 +40,7 @@ private extension MenuRouter {
     
 }
 
-// MARK: - AuthorizationRouterInternalEvent
+// MARK: - MenuRouterInternalEvent
 enum MenuRouterInternalEvent {
     case inject(tabBarController: UITabBarController?)
     case start

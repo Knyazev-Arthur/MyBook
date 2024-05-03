@@ -28,7 +28,7 @@ private extension AuthorizationRouter {
                 self.viewController = viewController
             
             case .start:
-                setRootVC()
+                RootController.setRootViewController(builder.window, viewController)
             
             case .logInToGoogle:
                 startGoogleSignIn()
@@ -36,14 +36,6 @@ private extension AuthorizationRouter {
             case .complete:
                 actionСomplete?()
         }
-    }
-    
-    func setRootVC() {
-        let transition = CATransition()
-        transition.type = .fade
-        transition.duration = 0.4
-        builder.window?.layer.add(transition, forKey: "transition")
-        builder.window?.rootViewController = viewController
     }
     
     func startGoogleSignIn() {
