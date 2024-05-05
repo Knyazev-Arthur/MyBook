@@ -6,6 +6,7 @@ class MainBuilder: MainBuilderProtocol {
     
     init(injector: InjectorProtocol) {
         self.injector = injector
+        register()
     }
     
 }
@@ -31,7 +32,7 @@ private extension MainBuilder {
         let navigationController = MainNavigationController(viewModel: viewModel, view: view)
         
         router.sendEvent(.inject(navigationController: navigationController))
-        injector.addObject(to: .menu, value: navigationController)
+        injector.addObject(to: .main, value: navigationController)
     }
 
 }
@@ -70,3 +71,4 @@ extension MainBuilder: MainBuilderRoutProtocol {
     }
     
 }
+

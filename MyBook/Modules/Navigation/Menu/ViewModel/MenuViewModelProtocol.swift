@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MenuViewModelProtocol {
+protocol MenuViewModelProtocol: AnyObject {
     var action: (() -> Void)? { get set }
     func sendEvent()
 }

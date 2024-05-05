@@ -6,6 +6,7 @@ class SettingsBuilder: SettingsBuilderProtocol {
     
     init(injector: InjectorProtocol) {
         self.injector = injector
+        register()
     }
 
 }
@@ -31,7 +32,7 @@ private extension SettingsBuilder {
         let viewController = SettingsViewController(viewModel: viewModel, view: view)
         
         router.sendEvent(.inject(viewController: viewController))
-        injector.addObject(to: .notes, value: viewController)
+        injector.addObject(to: .settings, value: viewController)
     }
 
 }
@@ -49,15 +50,15 @@ extension SettingsBuilder {
     
 }
 
-// MARK: NotesBuilderProtocol
+// MARK: SettingsBuilderProtocol
 extension SettingsBuilder {
     
     var router: SettingsRouterProtocol? {
-        injector.getObject(from: .notes, type: SettingsRouter.self)
+        injector.getObject(from: .settings, type: SettingsRouter.self)
     }
     
     var controller: SettingsViewController? {
-        injector.getObject(from: .notes, type: SettingsViewController.self)
+        injector.getObject(from: .settings, type: SettingsViewController.self)
     }
     
 }

@@ -6,6 +6,7 @@ class FavoritesBuilder: FavoritesBuilderProtocol {
     
     init(injector: InjectorProtocol) {
         self.injector = injector
+        register()
     }
 
 }
@@ -31,7 +32,7 @@ private extension FavoritesBuilder {
         let navigationController = FavoritesNavigationController(viewModel: viewModel, view: view)
         
         router.sendEvent(.inject(navigationController: navigationController))
-        injector.addObject(to: .menu, value: navigationController)
+        injector.addObject(to: .favorites, value: navigationController)
     }
 
 }

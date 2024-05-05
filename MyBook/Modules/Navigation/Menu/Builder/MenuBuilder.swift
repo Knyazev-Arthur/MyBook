@@ -26,10 +26,18 @@ private extension MenuBuilder {
     
     func tabBarController() {
         guard let router = injector.getObject(from: .menu, type: MenuRouter.self) else { return }
+        guard let mainNavigationController = mainBuilder?.controller else { return }
+        guard let favoritesNavigationController = favoritesBuilder?.controller else { return }
+        guard let notesViewController = notesBuilder?.controller else { return }
+        guard let settingsViewController = settingsBuilder?.controller else { return }
         
-        let viewModel = viewModel(router)
+        let arrayViewControllers = [mainNavigationController, favoritesNavigationController, notesViewController, settingsViewController]
+        let tabBarAppearance = tabBarAppearance()
+        let viewModel = viewModel(router, tabBarAppearance)
         let tabBarController = MenuTabBarController(viewModel: viewModel)
+        tabBarController.setViewControllers(arrayViewControllers, animated: true)
         
+        tabBarAppearance.sendEvent(.inject(tabBarController: tabBarController))
         router.sendEvent(.inject(tabBarController: tabBarController))
         injector.addObject(to: .menu, value: tabBarController)
     }
@@ -39,8 +47,12 @@ private extension MenuBuilder {
 // MARK: Public
 extension MenuBuilder {
         
-    func viewModel(_ router: MenuRouterProtocol) -> MenuViewModel {
-        MenuViewModel(router: router)
+    func viewModel(_ router: MenuRouterProtocol, _ tabBarAppearance: TabBarAppearanceProtocol) -> MenuViewModel {
+        MenuViewModel(router: router, tabBarAppearance: tabBarAppearance)
+    }
+    
+    func tabBarAppearance() -> TabBarAppearanceProtocol {
+        TabBarAppearance()
     }
     
 }
@@ -54,6 +66,22 @@ extension MenuBuilder {
     
     var controller: MenuTabBarController? {
         injector.getObject(from: .menu, type: MenuTabBarController.self)
+    }
+    
+    var mainBuilder: MainBuilderProtocol? {
+        MainBuilder(injector: injector)
+    }
+    
+    var favoritesBuilder: FavoritesBuilderProtocol? {
+        FavoritesBuilder(injector: injector)
+    }
+    
+    var notesBuilder: NotesBuilderProtocol? {
+        NotesBuilder(injector: injector)
+    }
+    
+    var settingsBuilder: SettingsBuilderProtocol? {
+        SettingsBuilder(injector: injector)
     }
     
 }

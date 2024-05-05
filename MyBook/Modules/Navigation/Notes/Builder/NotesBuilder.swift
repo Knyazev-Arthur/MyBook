@@ -6,6 +6,7 @@ class NotesBuilder: NotesBuilderProtocol {
     
     init(injector: InjectorProtocol) {
         self.injector = injector
+        register()
     }
 
 }

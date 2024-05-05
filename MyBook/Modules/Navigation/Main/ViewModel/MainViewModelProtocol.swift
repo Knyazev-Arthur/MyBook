@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MainViewModelProtocol {
+protocol MainViewModelProtocol: AnyObject {
     var action: (() -> Void)? { get set }
     func sendEvent()
 }

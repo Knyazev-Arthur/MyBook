@@ -18,5 +18,5 @@ class FavoritesNavigationController: UINavigationController {
     override func loadView() {
         view = myView
     }
-    
+
 }

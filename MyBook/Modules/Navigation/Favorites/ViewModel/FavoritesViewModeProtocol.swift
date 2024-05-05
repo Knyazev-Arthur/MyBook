@@ -1,6 +1,6 @@
 import Foundation
 
-protocol FavoritesViewModelProtocol {
+protocol FavoritesViewModelProtocol: AnyObject {
     var action: (() -> Void)? { get set }
     func sendEvent()
 }
