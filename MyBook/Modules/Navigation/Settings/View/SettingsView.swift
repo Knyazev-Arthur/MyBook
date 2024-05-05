@@ -22,7 +22,7 @@ class SettingsView: UIView, SettingsViewProtocol {
 private extension SettingsView {
     
     func setupConfiguration() {
-        backgroundColor = .red
+        backgroundColor = .lightBeige
     }
     
 }

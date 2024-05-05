@@ -22,7 +22,7 @@ class MainView: UIView, MainViewProtocol {
 private extension MainView {
     
     func setupConfiguration() {
-        backgroundColor = .black
+        backgroundColor = .lightBeige
     }
     
 }

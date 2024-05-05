@@ -53,7 +53,7 @@ private extension AuthorizationView {
     
     func setupLabelGreeting(_ text: String) {
         labelGreeting.text = text
-        labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
+        labelGreeting.textColor = .greyBlue
         labelGreeting.numberOfLines = 0
         labelGreeting.textAlignment = .center
         labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)

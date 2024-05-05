@@ -22,7 +22,7 @@ class NotesView: UIView, NotesViewProtocol {
 private extension NotesView {
     
     func setupConfiguration() {
-        backgroundColor = .blue
+        backgroundColor = .lightBeige
     }
     
 }

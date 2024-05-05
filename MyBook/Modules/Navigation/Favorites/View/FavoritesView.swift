@@ -22,7 +22,7 @@ class FavoritesView: UIView, FavoritesViewProtocol {
 private extension FavoritesView {
     
     func setupConfiguration() {
-        backgroundColor = .darkGray
+        backgroundColor = .lightBeige
     }
     
 }

@@ -12,6 +12,8 @@
 		751EE1A32B9EE1A3006356F5 /* clientOAuth.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */; };
 		7522A3B92BE52C99003CA4AF /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3B82BE52C99003CA4AF /* MainViewProtocol.swift */; };
 		7522A3BB2BE55712003CA4AF /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3BA2BE55712003CA4AF /* RootController.swift */; };
+		7522A3C02BE66CD1003CA4AF /* TabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3BF2BE66CD1003CA4AF /* TabBarAppearance.swift */; };
+		7522A3C32BE67023003CA4AF /* TabBarAppearanceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522A3C22BE67023003CA4AF /* TabBarAppearanceProtocol.swift */; };
 		7523E7E22BC699CC00315858 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523E7E12BC699CC00315858 /* UIColorExtensions.swift */; };
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
@@ -118,7 +120,9 @@
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
 		7522A3B82BE52C99003CA4AF /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
 		7522A3BA2BE55712003CA4AF /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootController.swift; path = MyBook/Services/UserInterface/RootController.swift; sourceTree = SOURCE_ROOT; };
-		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
+		7522A3BF2BE66CD1003CA4AF /* TabBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearance.swift; sourceTree = "<group>"; };
+		7522A3C22BE67023003CA4AF /* TabBarAppearanceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearanceProtocol.swift; sourceTree = "<group>"; };
+		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = MyBook/Extensions/Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -234,6 +238,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7522A3BE2BE66C92003CA4AF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7522A3C12BE66FA5003CA4AF /* TabBarAppearance */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7522A3C12BE66FA5003CA4AF /* TabBarAppearance */ = {
+			isa = PBXGroup;
+			children = (
+				7522A3BF2BE66CD1003CA4AF /* TabBarAppearance.swift */,
+				7522A3C22BE67023003CA4AF /* TabBarAppearanceProtocol.swift */,
+			);
+			path = TabBarAppearance;
+			sourceTree = "<group>";
+		};
 		757FF6D02BD8D35700ABABAE /* Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +279,7 @@
 			children = (
 				757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */,
 				757FF6E42BD954FB00ABABAE /* MenuViewModelProtocol.swift */,
+				7522A3BE2BE66C92003CA4AF /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1003,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75D7830B2BE523B0006E3F76 /* NotesView.swift in Sources */,
+				7522A3C32BE67023003CA4AF /* TabBarAppearanceProtocol.swift in Sources */,
 				75D782DD2BE520F3006E3F76 /* MainBuilderRoutProtocol.swift in Sources */,
 				CE96D9DC2BAA0A1200FF8A61 /* AuthorizationRouter.swift in Sources */,
 				75D783072BE5239E006E3F76 /* NotesViewModelProtocol.swift in Sources */,
@@ -1031,6 +1054,7 @@
 				757FF6E52BD954FB00ABABAE /* MenuViewModelProtocol.swift in Sources */,
 				757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */,
 				75D782DF2BE52112006E3F76 /* MainViewModel.swift in Sources */,
+				7522A3C02BE66CD1003CA4AF /* TabBarAppearance.swift in Sources */,
 				75D782F72BE5224F006E3F76 /* FavoritesRouterProtocol.swift in Sources */,
 				75D782D92BE520D6006E3F76 /* MainRouter.swift in Sources */,
 				75D782F02BE52221006E3F76 /* FavoritesView.swift in Sources */,
