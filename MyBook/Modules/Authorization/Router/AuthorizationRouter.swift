@@ -3,8 +3,7 @@ import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    var action: ((Result<GIDGoogleUser?, Error>) -> Void)?
-    var actionСomplete: (() -> Void)?
+    var action: ((AuthorizationRouterExternalEvent) -> Void)?
     
     private weak var viewController: UIViewController?
     private let builder: AuthorizationBuilderRoutProtocol
@@ -34,7 +33,7 @@ private extension AuthorizationRouter {
                 startGoogleSignIn()
             
             case .complete:
-                actionСomplete?()
+                action?(.complete)
         }
     }
     
@@ -67,5 +66,12 @@ enum AuthorizationRouterInternalEvent {
     case inject(viewController: UIViewController?)
     case start
     case logInToGoogle
+    case complete
+}
+
+// MARK: - AuthorizationRouterExternalEvent
+enum AuthorizationRouterExternalEvent {
+    case failure(Error)
+    case success(GIDGoogleUser?)
     case complete
 }

@@ -54,13 +54,16 @@ private extension AuthorizationViewModel {
         }
     }
     
-    func externalEventHadler(_ event: Result<GIDGoogleUser?, Error>) {
+    func externalEventHadler(_ event: AuthorizationRouterExternalEvent) {
         switch event {
             case .failure(let error):
                 print("Error user login with Google: \(error.localizedDescription)")
             
             case .success(let user):
                 authorization(user)
+            
+            case .complete:
+                break
         }
     }
     

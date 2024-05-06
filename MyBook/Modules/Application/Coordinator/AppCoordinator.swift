@@ -71,8 +71,14 @@ private extension AppCoordinator {
         routers[.authorization] = router
         routers[.splash] = nil
         
-        router.actionСomplete = { [weak self] in
-            self?.startMenuModule()
+        router.action = { [weak self] event in
+            switch event {
+                case .complete:
+                    self?.startMenuModule()
+            
+                default:
+                    break
+            }
         }
     }
     
