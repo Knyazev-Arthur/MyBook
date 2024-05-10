@@ -21,7 +21,8 @@ private extension AuthorizationBuilder {
     }
     
     func screenRouter() {
-        let router = AuthorizationRouter(builder: self)
+        let action = externalEventManager()
+        let router = AuthorizationRouter(builder: self, action: action)
         injector.addObject(to: .authorization, value: router)
     }
     
@@ -68,6 +69,10 @@ extension AuthorizationBuilder {
     
     func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: UIButton) -> AuthorizationViewProtocol {
         AuthorizationView(logoImageView: logoImageView, label: label, loginButton: loginButton)
+    }
+    
+    func externalEventManager() -> ExternalEventManager<AuthorizationRouterExternalEvent> {
+        ExternalEventManager<AuthorizationRouterExternalEvent>()
     }
 
 }

@@ -30,6 +30,7 @@
 		75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EDEC4C2B9EDB6E003DF653 /* AuthorizationViewController.swift */; };
 		75EDEC522B9EDB6F003DF653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC512B9EDB6F003DF653 /* Assets.xcassets */; };
 		75EDEC552B9EDB6F003DF653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EDEC532B9EDB6F003DF653 /* LaunchScreen.storyboard */; };
+		75F4C04D2BED190300DDEAB4 /* ExternalEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4C04C2BED190300DDEAB4 /* ExternalEventManager.swift */; };
 		CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */; };
 		CE96D99E2BA9E16F00FF8A61 /* MyBookModulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D99D2BA9E16F00FF8A61 /* MyBookModulesTests.swift */; };
 		CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96D9A82BA9E45000FF8A61 /* AppCoordinator.swift */; };
@@ -75,7 +76,7 @@
 /* Begin PBXFileReference section */
 		751EE19D2B9EDC1A006356F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		751EE1A22B9EE1A3006356F5 /* clientOAuth.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clientOAuth.plist; sourceTree = "<group>"; };
-		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
+		7523E7E12BC699CC00315858 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = MyBook/Extensions/Classes/UIColorExtensions.swift; sourceTree = SOURCE_ROOT; };
 		7523ECA32BA6AD9300707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA52BA6ADA500707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		75EDEC512B9EDB6F003DF653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75EDEC542B9EDB6F003DF653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75EDEC562B9EDB6F003DF653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75F4C04C2BED190300DDEAB4 /* ExternalEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalEventManager.swift; sourceTree = "<group>"; };
 		CE96D98C2BA9DB9900FF8A61 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		CE96D99B2BA9E16F00FF8A61 /* MyBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE96D99D2BA9E16F00FF8A61 /* MyBookModulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookModulesTests.swift; sourceTree = "<group>"; };
@@ -200,18 +202,11 @@
 			children = (
 				CE96D9962BA9E01600FF8A61 /* Menu */,
 				757FF6E82BD9743200ABABAE /* Main */,
-				757FF6E72BD95E8D00ABABAE /* Favorites */,
+				75F4C0492BECFA4900DDEAB4 /* Favorites */,
 				757FF6E92BD9744000ABABAE /* Notes */,
 				757FF6EA2BD9745500ABABAE /* Settings */,
 			);
 			path = Navigation;
-			sourceTree = "<group>";
-		};
-		757FF6E72BD95E8D00ABABAE /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 		757FF6E82BD9743200ABABAE /* Main */ = {
@@ -276,6 +271,37 @@
 			path = MyBook;
 			sourceTree = "<group>";
 		};
+		75F3254C2BEDF29A00220AAA /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				75F3254D2BEDF2A700220AAA /* EventManagers */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		75F3254D2BEDF2A700220AAA /* EventManagers */ = {
+			isa = PBXGroup;
+			children = (
+				75F4C04C2BED190300DDEAB4 /* ExternalEventManager.swift */,
+			);
+			path = EventManagers;
+			sourceTree = "<group>";
+		};
+		75F4C0492BECFA4900DDEAB4 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		75F4C04A2BECFA8400DDEAB4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7523E7E12BC699CC00315858 /* UIColorExtensions.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		CE96D9892BA9D70100FF8A61 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +335,7 @@
 		CE96D98F2BA9DF9E00FF8A61 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				75F3254C2BEDF29A00220AAA /* Observers */,
 				CEA54A3C2BBD6BA00087C90A /* Dependency */,
 				CEA54A3D2BBD6BBA0087C90A /* UserInterface */,
 				CEA54A3E2BBD6BCD0087C90A /* Networking */,
@@ -319,7 +346,7 @@
 		CE96D9902BA9DFAE00FF8A61 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE96D9AC2BA9E4FF00FF8A61 /* Classes */,
+				75F4C04A2BECFA8400DDEAB4 /* Classes */,
 				CE96D9AD2BA9E50500FF8A61 /* Structures */,
 				CE96D9AE2BA9E50F00FF8A61 /* Protocols */,
 			);
@@ -414,14 +441,6 @@
 				75EDEC482B9EDB6E003DF653 /* AppDelegate.swift */,
 			);
 			path = Delegate;
-			sourceTree = "<group>";
-		};
-		CE96D9AC2BA9E4FF00FF8A61 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				7523E7E12BC699CC00315858 /* UIColorExtensions.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		CE96D9AD2BA9E50500FF8A61 /* Structures */ = {
@@ -765,6 +784,7 @@
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				757FF6E32BD9524E00ABABAE /* MenuRouterProtocol.swift in Sources */,
 				CE96D9ED2BAA144B00FF8A61 /* SplashViewModelProtocol.swift in Sources */,
+				75F4C04D2BED190300DDEAB4 /* ExternalEventManager.swift in Sources */,
 				CE96D9D12BAA07AE00FF8A61 /* AuthorizationViewModelProtocol.swift in Sources */,
 				CEA54A382BBD6A420087C90A /* Container.swift in Sources */,
 				757FF6E12BD94E7900ABABAE /* MenuBuilderProtocol.swift in Sources */,

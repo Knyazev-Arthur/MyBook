@@ -71,7 +71,7 @@ private extension AppCoordinator {
         routers[.authorization] = router
         routers[.splash] = nil
         
-        router.action = { [weak self] event in
+        router.action?.addSubscription({ [weak self] event in
             switch event {
                 case .complete:
                     self?.startMenuModule()
@@ -79,7 +79,7 @@ private extension AppCoordinator {
                 default:
                     break
             }
-        }
+        })
     }
     
     func startMenuModule() {

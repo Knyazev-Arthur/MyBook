@@ -1,7 +1,6 @@
 import Foundation
-import GoogleSignIn
 
 protocol AuthorizationRouterProtocol: AnyObject {
-    var action: ((AuthorizationRouterExternalEvent) -> Void)? { get set }
+    var action: ExternalEventManager<AuthorizationRouterExternalEvent>? { get }
     func sendEvent(_ event: AuthorizationRouterInternalEvent)
 }

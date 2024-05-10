@@ -24,9 +24,9 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
 private extension AuthorizationViewModel {
     
     func setupObservers() {
-        router?.action = { [weak self] in
+        router?.action?.addSubscription({ [weak self] in
             self?.externalEventHadler($0)
-        }
+        })
         
         userLogin.action = { [weak self] event in
             self?.userAuthorizationHandler(event)

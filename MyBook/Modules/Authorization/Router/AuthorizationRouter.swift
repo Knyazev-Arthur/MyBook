@@ -3,19 +3,14 @@ import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    var action: ((AuthorizationRouterExternalEvent) -> Void)? {
-        willSet {
-            subscriptions.append(newValue)
-        }
-    }
+    var action: ExternalEventManager<AuthorizationRouterExternalEvent>?
     
     private weak var viewController: UIViewController?
-    private var subscriptions: Array<((AuthorizationRouterExternalEvent) -> Void)?>
     private let builder: AuthorizationBuilderRoutProtocol
     
-    init(builder: AuthorizationBuilderRoutProtocol) {
+    init(builder: AuthorizationBuilderRoutProtocol, action: ExternalEventManager<AuthorizationRouterExternalEvent>?) {
         self.builder = builder
-        self.subscriptions = Array<((AuthorizationRouterExternalEvent) -> Void)?>()
+        self.action = action
     }
     
     func sendEvent(_ event: AuthorizationRouterInternalEvent) {
@@ -39,7 +34,7 @@ private extension AuthorizationRouter {
                 startGoogleSignIn()
             
             case .complete:
-                sendExternalEvent(.complete)
+                action?.sendExternalEvent(.complete)
         }
     }
     
@@ -56,17 +51,11 @@ private extension AuthorizationRouter {
         
         builder.googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
             if let error {
-                self?.sendExternalEvent(.failure(error))
+                self?.action?.sendExternalEvent(.failure(error))
                 return
             }
             
-            self?.sendExternalEvent(.success(result?.user))
-        }
-    }
-    
-    func sendExternalEvent(_ event: AuthorizationRouterExternalEvent) {
-        subscriptions.forEach {
-            $0?(event)
+            self?.action?.sendExternalEvent(.success(result?.user))
         }
     }
     
