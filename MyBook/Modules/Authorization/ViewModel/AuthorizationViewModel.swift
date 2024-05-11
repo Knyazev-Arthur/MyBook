@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import GoogleSignIn
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
@@ -54,7 +55,7 @@ private extension AuthorizationViewModel {
         }
     }
     
-    func externalEventHadler(_ event: AuthorizationRouterExternalEvent) {
+    func externalEventHadler(_ event: AuthorizationRouterExternalEvent?) {
         switch event {
             case .failure(let error):
                 print("Error user login with Google: \(error.localizedDescription)")
@@ -62,7 +63,7 @@ private extension AuthorizationViewModel {
             case .success(let user):
                 authorization(user)
             
-            case .complete:
+            default:
                 break
         }
     }

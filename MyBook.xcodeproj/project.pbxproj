@@ -154,13 +154,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		752C0C562BB6E4F200241FFF /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		757FF6D02BD8D35700ABABAE /* Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,7 +562,6 @@
 			children = (
 				CE96D9EA2BAA143400FF8A61 /* SplashViewModel.swift */,
 				CE96D9EC2BAA144B00FF8A61 /* SplashViewModelProtocol.swift */,
-				752C0C562BB6E4F200241FFF /* Services */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
