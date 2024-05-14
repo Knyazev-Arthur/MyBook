@@ -20,7 +20,8 @@ private extension SplashBuilder {
     }
     
     func screenRouter() {
-        let router = SplashRouter(builder: self)
+        let dataPublisher = dataPublisher()
+        let router = SplashRouter(dataPublisher: dataPublisher, builder: self)
         injector.addObject(to: .splash, value: router)
     }
     
@@ -51,6 +52,10 @@ extension SplashBuilder {
     
     func viewModel(_ router: SplashRouterProtocol) -> SplashViewModelProtocol {
         SplashViewModel(router: router)
+    }
+    
+    func dataPublisher() -> DataPublisher<Void> {
+        DataPublisher<Void>()
     }
     
 }

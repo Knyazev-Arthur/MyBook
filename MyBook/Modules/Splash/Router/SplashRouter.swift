@@ -2,12 +2,15 @@ import UIKit
 
 class SplashRouter: SplashRouterProtocol {
     
-    var action: (() -> Void)?
+    let actionSubscriber: AnyPublisher<Void>
     
     private weak var viewController: UIViewController?
+    private let dataPublisher: DataPublisher<Void>
     private let builder: SplashBuilderRoutProtocol
     
-    init(builder: SplashBuilderRoutProtocol) {
+    init(dataPublisher: DataPublisher<Void>, builder: SplashBuilderRoutProtocol) {
+        self.dataPublisher = dataPublisher
+        self.actionSubscriber = AnyPublisher(dataPublisher: dataPublisher)
         self.builder = builder
     }
     
@@ -29,7 +32,7 @@ private extension SplashRouter {
                 builder.window?.rootViewController = viewController
             
             case .action:
-                action?()
+                dataPublisher.send(())
         }
     }
     
