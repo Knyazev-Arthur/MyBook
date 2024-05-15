@@ -1,6 +1,6 @@
 import Foundation
 
 protocol MenuRouterProtocol: AnyObject {
-    var action: (() -> Void)? { get set }
-    func sendEvent(_ event: MenuRouterInternalEvent)
+    var externalEvent: AnyPublisher<Void> { get }
+    var internalEvent: DataPublisher<MenuRouterInternalEvent> { get }
 }

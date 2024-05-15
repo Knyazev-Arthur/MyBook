@@ -2,17 +2,19 @@ import UIKit
 
 class MenuRouter: MenuRouterProtocol {
     
-    var action: (() -> Void)?
+    let externalEvent: AnyPublisher<Void>
+    let internalEvent: DataPublisher<MenuRouterInternalEvent>
     
-    private weak var tabBarController: UITabBarController?
+    private let dataPublisher: DataPublisher<Void>
     private let builder: MenuBuilderRoutProtocol
+    private weak var tabBarController: UITabBarController?
     
     init(builder: MenuBuilderRoutProtocol) {
+        dataPublisher = DataPublisher<Void>()
+        externalEvent = AnyPublisher(dataPublisher)
+        internalEvent = DataPublisher<MenuRouterInternalEvent>()
         self.builder = builder
-    }
-    
-    func sendEvent(_ event: MenuRouterInternalEvent) {
-        internalEventHadler(event)
+        setupObservers()
     }
     
 }
@@ -20,13 +22,22 @@ class MenuRouter: MenuRouterProtocol {
 // MARK: Private
 private extension MenuRouter {
     
-    func internalEventHadler(_ event: MenuRouterInternalEvent) {
+    func setupObservers() {
+        internalEvent.sink { [weak self] event in
+            self?.internalEventHadler(event)
+        }
+    }
+    
+    func internalEventHadler(_ event: MenuRouterInternalEvent?) {
         switch event {
             case .inject(let tabBarController):
                 self.tabBarController = tabBarController
             
             case .start:
                 setRootTabBarController()
+        
+            case .none:
+                break
         }
     }
     
