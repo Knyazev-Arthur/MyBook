@@ -3,19 +3,19 @@ import UIKit
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    var externalEvent: AnyPublisher<Void>
+    var externalEvent: AnyPublisher<Void?>
     
-    private let dataPublisher: DataPublisher<Void>
+    private let dataPublisher: DataPublisher<Void?>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
     private let loginButton: UIButton
     
     init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
-        dataPublisher = DataPublisher<Void>()
-        externalEvent = AnyPublisher(dataPublisher)
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
         super.init(frame: .zero)
         setupConfiguration()
     }
@@ -24,10 +24,10 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setViewData(_ data: AuthorizationViewData?) {
-        logoImageView.image = data?.imageLogo
-        setupLoginButton(data?.imageLoginButton)
-        setupLabelGreeting(data?.textLabelGreeting)
+    func setViewData(_ data: AuthorizationViewData) {
+        logoImageView.image = data.imageLogo
+        setupLoginButton(data.imageLoginButton)
+        setupLabelGreeting(data.textLabelGreeting)
     }
     
 }

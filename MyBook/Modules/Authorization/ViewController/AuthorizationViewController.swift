@@ -24,11 +24,6 @@ class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
         viewModel.internalEvent.send(.initialSetup)
     }
-
-}
-
-// MARK: Private
-private extension AuthorizationViewController {
     
     private func setupObservers() {
         myView.externalEvent.sink { [weak self] _ in
@@ -39,5 +34,5 @@ private extension AuthorizationViewController {
             self?.myView.setViewData($0)
         }
     }
-    
+
 }

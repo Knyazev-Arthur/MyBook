@@ -12,13 +12,12 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
     private weak var router: AuthorizationRouterProtocol?
     
     init(userLogin: AppUserLoginProtocol, router: AuthorizationRouterProtocol?) {
-        dataPublisher = DataPublisher<AuthorizationViewData>()
-        externalEvent = AnyPublisher(dataPublisher)
-        internalEvent = DataPublisher<AuthorizationViewModelInternalEvent>()
         self.userLogin = userLogin
         self.router = router
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
+        self.internalEvent = DataPublisher()
         setupObservers()
-        setupEventHandlers()
     }
 
 }
@@ -27,55 +26,26 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
 private extension AuthorizationViewModel {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] event in
-            self?.internalEventHandler(event)
+        internalEvent.sink { [weak self] in
+            self?.internalEventHandler($0)
         }
-    }
-    
-    func setupEventHandlers() {
-        router?.externalEvent.sink({ [weak self] in
-            self?.externalEventHandler($0)
-        })
         
-        userLogin.externalEvent.sink { [weak self] event in
-            self?.userAuthorizationHandler(event)
+        router?.externalEvent.sink { [weak self] in
+            self?.externalEventHandler($0)
+        }
+        
+        userLogin.externalEvent.sink { [weak self] in
+            self?.userAuthorizationHandler($0)
         }
     }
     
-    func userAuthorizationHandler(_ event: Result<String, Error>?) {
-        switch event {
-            case .success(let message):
-                print(message)
-                router?.internalEvent.send(.complete)
-            
-            default:
-                break
-        }
-    }
-    
-    func internalEventHandler(_ event: AuthorizationViewModelInternalEvent?) {
+    func internalEventHandler(_ event: AuthorizationViewModelInternalEvent) {
         switch event {
             case .initialSetup:
                 initialSetup()
 
             case .router:
                 router?.internalEvent.send(.logInToGoogle)
-            
-            case .none:
-                break
-        }
-    }
-    
-    func externalEventHandler(_ event: AuthorizationRouterExternalEvent?) {
-        switch event {
-            case .failure(let error):
-                print("Error user login with Google: \(error.localizedDescription)")
-            
-            case .success(let user):
-                authorization(user)
-            
-            default:
-                break
         }
     }
     
@@ -87,6 +57,19 @@ private extension AuthorizationViewModel {
         dataPublisher.send(authorizationViewData)
     }
     
+    func externalEventHandler(_ event: AuthorizationRouterExternalEvent) {
+        switch event {
+            case .failure(let error):
+                print("Error user login with Google: \(error.localizedDescription)")
+            
+            case .success(let user):
+                authorization(user)
+            
+            case .complete:
+                break
+        }
+    }
+    
     func authorization(_ user: GIDGoogleUser?) {
         guard let user else {
             print("User login result has an empty value")
@@ -94,6 +77,17 @@ private extension AuthorizationViewModel {
         }
         
         userLogin.internalEvent.send(.userLogin(user))
+    }
+    
+    func userAuthorizationHandler(_ event: Result<String, Error>) {
+        switch event {
+            case .success(let message):
+                print(message)
+                router?.internalEvent.send(.complete)
+            
+            case .failure(_):
+                break
+        }
     }
     
 }
