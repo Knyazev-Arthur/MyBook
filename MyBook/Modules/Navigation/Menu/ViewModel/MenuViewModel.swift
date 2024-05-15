@@ -8,11 +8,9 @@ class MenuViewModel: MenuViewModelProtocol {
     private weak var router: MenuRouterProtocol?
     
     init(router: MenuRouterProtocol?) {
-        dataPublisher = DataPublisher<Void>()
-        externalEvent = AnyPublisher(dataPublisher)
         self.router = router
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
     }
-    
-    func internalEvent() {}
-    
+        
 }

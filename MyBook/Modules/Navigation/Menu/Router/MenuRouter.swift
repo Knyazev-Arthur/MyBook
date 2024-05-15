@@ -10,10 +10,10 @@ class MenuRouter: MenuRouterProtocol {
     private weak var tabBarController: UITabBarController?
     
     init(builder: MenuBuilderRoutProtocol) {
-        dataPublisher = DataPublisher<Void>()
-        externalEvent = AnyPublisher(dataPublisher)
-        internalEvent = DataPublisher<MenuRouterInternalEvent>()
         self.builder = builder
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
+        self.internalEvent = DataPublisher()
         setupObservers()
     }
     
@@ -23,21 +23,18 @@ class MenuRouter: MenuRouterProtocol {
 private extension MenuRouter {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] event in
-            self?.internalEventHadler(event)
+        internalEvent.sink { [weak self] in
+            self?.internalEventHadler($0)
         }
     }
     
-    func internalEventHadler(_ event: MenuRouterInternalEvent?) {
+    func internalEventHadler(_ event: MenuRouterInternalEvent) {
         switch event {
             case .inject(let tabBarController):
                 self.tabBarController = tabBarController
             
             case .start:
                 setRootTabBarController()
-        
-            case .none:
-                break
         }
     }
     
