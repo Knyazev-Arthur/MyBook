@@ -3,20 +3,19 @@ import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    let actionSubscriber: AnyPublisher<AuthorizationRouterExternalEvent>
+    let externalEvent: AnyPublisher<AuthorizationRouterExternalEvent>
+    let internalEvent: DataPublisher<AuthorizationRouterInternalEvent>
     
     private weak var viewController: UIViewController?
     private let dataPublisher: DataPublisher<AuthorizationRouterExternalEvent>
     private let builder: AuthorizationBuilderRoutProtocol
     
-    init(dataPublisher: DataPublisher<AuthorizationRouterExternalEvent>, builder: AuthorizationBuilderRoutProtocol) {
-        self.dataPublisher = dataPublisher
-        self.actionSubscriber = AnyPublisher(dataPublisher: dataPublisher)
+    init(builder: AuthorizationBuilderRoutProtocol) {
+        internalEvent = DataPublisher<AuthorizationRouterInternalEvent>()
+        dataPublisher = DataPublisher<AuthorizationRouterExternalEvent>()
+        externalEvent = AnyPublisher(dataPublisher)
         self.builder = builder
-    }
-    
-    func sendEvent(_ event: AuthorizationRouterInternalEvent) {
-        internalEventHadler(event)
+        setupObservers()
     }
     
 }
@@ -24,7 +23,13 @@ class AuthorizationRouter: AuthorizationRouterProtocol {
 // MARK: Private
 private extension AuthorizationRouter {
     
-    func internalEventHadler(_ event: AuthorizationRouterInternalEvent) {
+    func setupObservers() {
+        internalEvent.sink { [weak self] event in
+            self?.internalEventHandler(event)
+        }
+    }
+    
+    func internalEventHandler(_ event: AuthorizationRouterInternalEvent?) {
         switch event {
             case .inject(let viewController):
                 self.viewController = viewController
@@ -37,6 +42,9 @@ private extension AuthorizationRouter {
             
             case .complete:
                 dataPublisher.send(.complete)
+        
+            case .none:
+                break
         }
     }
     

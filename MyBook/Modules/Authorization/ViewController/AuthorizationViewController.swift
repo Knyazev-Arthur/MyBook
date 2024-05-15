@@ -22,7 +22,7 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.sendEvent(.initialSetup)
+        viewModel.internalEvent.send(.initialSetup)
     }
 
 }
@@ -31,12 +31,12 @@ class AuthorizationViewController: UIViewController {
 private extension AuthorizationViewController {
     
     private func setupObservers() {
-        myView.action = { [weak self] in
-            self?.viewModel.sendEvent(.router)
+        myView.externalEvent.sink { [weak self] _ in
+            self?.viewModel.internalEvent.send(.router)
         }
         
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent($0)
+        viewModel.externalEvent.sink { [weak self] in
+            self?.myView.setViewData($0)
         }
     }
     

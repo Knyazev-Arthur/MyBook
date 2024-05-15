@@ -1,6 +1,6 @@
 import Foundation
 
 protocol AuthorizationRouterProtocol: AnyObject {
-    var actionSubscriber: AnyPublisher<AuthorizationRouterExternalEvent> { get }
-    func sendEvent(_ event: AuthorizationRouterInternalEvent)
+    var externalEvent: AnyPublisher<AuthorizationRouterExternalEvent> { get }
+    var internalEvent: DataPublisher<AuthorizationRouterInternalEvent> { get }
 }

@@ -21,8 +21,7 @@ private extension AuthorizationBuilder {
     }
     
     func screenRouter() {
-        let dataPublisher = dataPublisher()
-        let router = AuthorizationRouter(dataPublisher: dataPublisher, builder: self)
+        let router = AuthorizationRouter(builder: self)
         injector.addObject(to: .authorization, value: router)
     }
     
@@ -38,7 +37,7 @@ private extension AuthorizationBuilder {
         let view = view(logoImageView, label, googleButton)
         let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
         
-        router.sendEvent(.inject(viewController: viewController))
+        router.internalEvent.send(.inject(viewController: viewController))
         injector.addObject(to: .authorization, value: viewController)
     }
 
@@ -60,7 +59,7 @@ extension AuthorizationBuilder {
     }
     
     func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AppUserLoginProtocol) -> AuthorizationViewModelProtocol {
-        AuthorizationViewModel(router: router, userLogin: userLogin)
+        AuthorizationViewModel(userLogin: userLogin, router: router)
     }
     
     func userLogin(_ googleService: GIDSignIn) -> AppUserLoginProtocol {
@@ -70,11 +69,7 @@ extension AuthorizationBuilder {
     func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: UIButton) -> AuthorizationViewProtocol {
         AuthorizationView(logoImageView: logoImageView, label: label, loginButton: loginButton)
     }
-
-    func dataPublisher() -> DataPublisher<AuthorizationRouterExternalEvent> {
-        DataPublisher<AuthorizationRouterExternalEvent>()
-    }
-
+    
 }
 
 // MARK: AuthorizationBuilderProtocol

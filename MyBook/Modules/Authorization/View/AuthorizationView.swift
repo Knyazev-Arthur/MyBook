@@ -3,13 +3,16 @@ import UIKit
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    var action: (() -> Void)?
+    var externalEvent: AnyPublisher<Void>
     
+    private let dataPublisher: DataPublisher<Void>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
     private let loginButton: UIButton
     
     init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
+        dataPublisher = DataPublisher<Void>()
+        externalEvent = AnyPublisher(dataPublisher)
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
@@ -21,10 +24,10 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ data: AuthorizationViewData) {
-        logoImageView.image = data.imageLogo
-        setupLoginButton(data.imageLoginButton)
-        setupLabelGreeting(data.textLabelGreeting)
+    func setViewData(_ data: AuthorizationViewData?) {
+        logoImageView.image = data?.imageLogo
+        setupLoginButton(data?.imageLoginButton)
+        setupLabelGreeting(data?.textLabelGreeting)
     }
     
 }
@@ -48,10 +51,10 @@ private extension AuthorizationView {
     }
     
     @objc func tapButton() {
-        action?()
+        dataPublisher.send(nil)
     }
     
-    func setupLabelGreeting(_ text: String) {
+    func setupLabelGreeting(_ text: String?) {
         labelGreeting.text = text
         labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
         labelGreeting.numberOfLines = 0
