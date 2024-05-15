@@ -20,8 +20,7 @@ private extension SplashBuilder {
     }
     
     func screenRouter() {
-        let dataPublisher = dataPublisher()
-        let router = SplashRouter(dataPublisher: dataPublisher, builder: self)
+        let router = SplashRouter(builder: self)
         injector.addObject(to: .splash, value: router)
     }
     
@@ -33,7 +32,7 @@ private extension SplashBuilder {
         let view = view(imageView)
         let viewController = SplashViewController(viewModel: viewModel, view: view)
         
-        router.sendEvent(.inject(viewController: viewController))
+        router.internalEvent.send(.inject(viewController: viewController))
         injector.addObject(to: .splash, value: viewController)
     }
     
@@ -52,10 +51,6 @@ extension SplashBuilder {
     
     func viewModel(_ router: SplashRouterProtocol) -> SplashViewModelProtocol {
         SplashViewModel(router: router)
-    }
-    
-    func dataPublisher() -> DataPublisher<Void> {
-        DataPublisher<Void>()
     }
     
 }

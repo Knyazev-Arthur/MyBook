@@ -15,7 +15,7 @@ class SplashView: UIView, SplashViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ image: UIImage?) {
+    func setLogo(_ image: UIImage?) {
         logoImageView.image = image
     }
     

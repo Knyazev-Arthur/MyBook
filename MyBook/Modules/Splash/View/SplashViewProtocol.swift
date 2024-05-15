@@ -1,5 +1,5 @@
 import UIKit
 
 protocol SplashViewProtocol: UIView {
-    func sendEvent(_ image: UIImage?)
+    func setLogo(_ image: UIImage?)
 }

@@ -1,6 +1,6 @@
 import Foundation
 
 protocol SplashRouterProtocol: AnyObject {
-    var actionSubscriber: AnyPublisher<Void> { get }
-    func sendEvent(_ event: SplashRouterInternalEvent)
+    var externalEvent: AnyPublisher<Void> { get }
+    var internalEvent: DataPublisher<SplashRouterInternalEvent> { get }
 }

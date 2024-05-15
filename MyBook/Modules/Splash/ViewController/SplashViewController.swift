@@ -22,12 +22,12 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.sendEvent()
+        viewModel.passLogoAndLaunchAction()
     }
     
     private func setupObservers() {
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent($0)
+        viewModel.externalEvent.sink { [weak self] in
+            self?.myView.setLogo($0)
         }
     }
     
