@@ -22,7 +22,7 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.passLogoAndLaunchAction()
+        viewModel.sendLogoAndAction()
     }
     
     private func setupObservers() {

@@ -2,18 +2,18 @@ import UIKit
 
 class SplashRouter: SplashRouterProtocol {
     
-    let externalEvent: AnyPublisher<Void>
+    let externalEvent: AnyPublisher<Void?>
     let internalEvent: DataPublisher<SplashRouterInternalEvent>
     
     private weak var viewController: UIViewController?
-    private let dataPublisher: DataPublisher<Void>
+    private let dataPublisher: DataPublisher<Void?>
     private let builder: SplashBuilderRoutProtocol
     
     init(builder: SplashBuilderRoutProtocol) {
-        internalEvent = DataPublisher()
-        dataPublisher = DataPublisher()
-        externalEvent = AnyPublisher(dataPublisher)
         self.builder = builder
+        self.internalEvent = DataPublisher()
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
         setupObservers()
     }
     
@@ -23,12 +23,12 @@ class SplashRouter: SplashRouterProtocol {
 private extension SplashRouter {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] event in
-            self?.internalEventHandler(event)
+        internalEvent.sink { [weak self] in
+            self?.internalEventHandler($0)
         }
     }
     
-    func internalEventHandler(_ event: SplashRouterInternalEvent?) {
+    func internalEventHandler(_ event: SplashRouterInternalEvent) {
         switch event {
             case .inject(let viewController):
                 self.viewController = viewController
@@ -37,10 +37,7 @@ private extension SplashRouter {
                 builder.window?.rootViewController = viewController
             
             case .action:
-                dataPublisher.send((nil))
-            
-            case .none:
-                break
+                dataPublisher.send(nil)
         }
     }
     

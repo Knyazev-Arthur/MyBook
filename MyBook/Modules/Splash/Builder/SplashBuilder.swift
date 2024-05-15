@@ -55,7 +55,7 @@ extension SplashBuilder {
     
 }
 
-// MARK: Protocol SplashBuilderProtocol
+// MARK: SplashBuilderProtocol
 extension SplashBuilder {
     
     var controller: SplashViewController? {
