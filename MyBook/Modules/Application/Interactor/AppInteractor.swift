@@ -2,15 +2,15 @@ import Foundation
 
 class AppInteractor: AppInteractorProtocol {
     
-    let externalEvent: AnyPublisher <AppInteractorExternalEvent>
+    let externalEvent: AnyPublisher<AppInteractorExternalEvent>
     
     private let dataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
     
     init(userLogin: AppUserLoginProtocol) {
-        dataPublisher = DataPublisher<AppInteractorExternalEvent>()
-        externalEvent = AnyPublisher(dataPublisher)
         self.userLogin = userLogin
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
         setupObservers()
     }
     
@@ -24,21 +24,18 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     private func setupObservers() {
-        userLogin.externalEvent.sink { [weak self] event in
-            self?.externalEventHadler(event)
+        userLogin.externalEvent.sink { [weak self] in
+            self?.externalEventHadler($0)
         }
     }
     
-    func externalEventHadler(_ event: Result<String, Error>?) {
+    func externalEventHadler(_ event: Result<String, Error>) {
         switch event {
             case .success(_):
                 dataPublisher.send(.authorization(.avaliable))
                 
             case .failure(_):
                 dataPublisher.send(.authorization(.unavaliable))
-            
-            case .none:
-                break
         }
     }
     
@@ -46,12 +43,6 @@ private extension AppInteractor {
 
 // MARK: - AppInteractorExternalEvent
 enum AppInteractorExternalEvent {
-    case authorization(UserLoginStatus)
+    case authorization(AppUserLoginStatus)
     case pushNotitication([String : Any])
-}
-
-// MARK: - UserLoginStatus
-enum UserLoginStatus {
-    case unavaliable
-    case avaliable
 }

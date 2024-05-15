@@ -10,10 +10,10 @@ class AppUserLogin: AppUserLoginProtocol {
     private let googleService: GIDSignIn
     
     init(googleService: GIDSignIn) {
-        dataPublisher = DataPublisher<Result<String, Error>>()
-        externalEvent = AnyPublisher(dataPublisher)
-        internalEvent = DataPublisher<AppUserLoginInternalEvent>()
         self.googleService = googleService
+        self.dataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(dataPublisher)
+        self.internalEvent = DataPublisher()
         setupObservers()
     }
     
@@ -23,27 +23,24 @@ class AppUserLogin: AppUserLoginProtocol {
 private extension AppUserLogin {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] event in
-            self?.internalEventHandler(event)
+        internalEvent.sink { [weak self] in
+            self?.internalEventHandler($0)
         }
     }
     
-    func internalEventHandler(_ event: AppUserLoginInternalEvent?) {
+    func internalEventHandler(_ event: AppUserLoginInternalEvent) {
         switch event {
             case .userLogin(let user):
                 getUserToken(user)
             
             case .restorePreviousSignIn:
                 googleService.restorePreviousSignIn { [weak self] user, error in
-                    self?.checkDataPreviousAuthorization(user, error)
+                    self?.checkDataAuthorization(user, error)
                 }
-            
-            case .none:
-                break
         }
     }
     
-    func checkDataPreviousAuthorization(_ user: GIDGoogleUser?, _ error: Error?) {
+    func checkDataAuthorization(_ user: GIDGoogleUser?, _ error: Error?) {
         if let error {
             dataPublisher.send(.failure(error))
             print("Error user login with Google: \(error.localizedDescription)")
@@ -88,4 +85,10 @@ private extension AppUserLogin {
 enum AppUserLoginInternalEvent {
     case userLogin(_ user: GIDGoogleUser?)
     case restorePreviousSignIn
+}
+
+// MARK: - UserLoginStatus
+enum AppUserLoginStatus {
+    case unavaliable
+    case avaliable
 }

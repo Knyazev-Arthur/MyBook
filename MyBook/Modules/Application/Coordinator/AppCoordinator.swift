@@ -29,17 +29,17 @@ private extension AppCoordinator {
         }
     }
     
-    func interactorEventHandler(_ event: AppInteractorExternalEvent?) {
+    func interactorEventHandler(_ event: AppInteractorExternalEvent) {
         switch event {
             case .authorization(let status):
                 userAuthorizationHandler(status)
             
-            default:
+            case .pushNotitication(_):
                 break
         }
     }
     
-    func userAuthorizationHandler(_ status: UserLoginStatus) {
+    func userAuthorizationHandler(_ status: AppUserLoginStatus) {
         switch status {
             case .unavaliable:
                 startAuthorizationModule()
