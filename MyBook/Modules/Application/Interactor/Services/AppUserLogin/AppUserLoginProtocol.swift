@@ -1,6 +1,6 @@
 import Foundation
 
 protocol AppUserLoginProtocol: AnyObject {
-    var action: ((Result<String, Error>) -> Void)? { get set }
-    func sendEvent(_ event: AppUserLoginInternalEvent)
+    var externalEvent: AnyPublisher<Result<String, Error>> { get }
+    var internalEvent: DataPublisher<AppUserLoginInternalEvent> { get }
 }

@@ -2,17 +2,20 @@ import Foundation
 
 class AppInteractor: AppInteractorProtocol {
     
-    var action: ((AppInteractorExternalEvent) -> Void)?
+    let externalEvent: AnyPublisher <AppInteractorExternalEvent>
     
+    private let dataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
     
     init(userLogin: AppUserLoginProtocol) {
+        dataPublisher = DataPublisher<AppInteractorExternalEvent>()
+        externalEvent = AnyPublisher(dataPublisher)
         self.userLogin = userLogin
         setupObservers()
     }
     
-    func sendEvent() {
-        userLogin.sendEvent(.authorization)
+    func restorePreviousSignIn() {
+        userLogin.internalEvent.send(.restorePreviousSignIn)
     }
 
 }
@@ -21,18 +24,21 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     private func setupObservers() {
-        userLogin.action = { [weak self] event in
+        userLogin.externalEvent.sink { [weak self] event in
             self?.externalEventHadler(event)
         }
     }
     
-    func externalEventHadler(_ event: Result<String, Error>) {
+    func externalEventHadler(_ event: Result<String, Error>?) {
         switch event {
             case .success(_):
-                action?(.authorization(.avaliable))
+                dataPublisher.send(.authorization(.avaliable))
                 
             case .failure(_):
-                action?(.authorization(.unavaliable))
+                dataPublisher.send(.authorization(.unavaliable))
+            
+            case .none:
+                break
         }
     }
     
@@ -40,12 +46,12 @@ private extension AppInteractor {
 
 // MARK: - AppInteractorExternalEvent
 enum AppInteractorExternalEvent {
-    case authorization(UserLoginEventHandler)
+    case authorization(UserLoginStatus)
     case pushNotitication([String : Any])
 }
 
-// MARK: - AppInteractorUserStatus
-enum UserLoginEventHandler {
+// MARK: - UserLoginStatus
+enum UserLoginStatus {
     case unavaliable
     case avaliable
 }

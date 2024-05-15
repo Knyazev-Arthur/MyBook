@@ -24,22 +24,22 @@ class AppCoordinator: AppCoordinatorProtocol {
 private extension AppCoordinator {
     
     func setupObservers() {
-        interactor.action = { [weak self] in
+        interactor.externalEvent.sink { [weak self] in
             self?.interactorEventHandler($0)
         }
     }
     
-    func interactorEventHandler(_ event: AppInteractorExternalEvent) {
+    func interactorEventHandler(_ event: AppInteractorExternalEvent?) {
         switch event {
             case .authorization(let status):
                 userAuthorizationHandler(status)
             
-            case .pushNotitication(_):
+            default:
                 break
         }
     }
     
-    func userAuthorizationHandler(_ status: UserLoginEventHandler) {
+    func userAuthorizationHandler(_ status: UserLoginStatus) {
         switch status {
             case .unavaliable:
                 startAuthorizationModule()
@@ -54,12 +54,12 @@ private extension AppCoordinator {
             fatalError("There aren't any significant splash module objects")
         }
         
-        router.sendEvent(.start)
+        router.internalEvent.send(.start)
         routers[.splash] = router
-                
-        router.actionSubscriber.sink({ [weak self] in
-            self?.interactor.sendEvent()
-        })
+        
+        router.externalEvent.sink { [weak self] _ in
+            self?.interactor.restorePreviousSignIn()
+        }
     }
     
     func startAuthorizationModule() {
@@ -67,11 +67,11 @@ private extension AppCoordinator {
             fatalError("There aren't any significant authorization module objects")
         }
         
-        router.sendEvent(.start)
+        router.internalEvent.send(.start)
         routers[.authorization] = router
         routers[.splash] = nil
         
-        router.actionSubscriber.sink({ [weak self] event in
+        router.externalEvent.sink { [weak self] event in
             switch event {
                 case .complete:
                     self?.startMenuModule()
@@ -79,7 +79,7 @@ private extension AppCoordinator {
                 default:
                     break
             }
-        })
+        }
     }
     
     func startMenuModule() {
@@ -87,7 +87,7 @@ private extension AppCoordinator {
             fatalError("There aren't any significant menu module objects")
         }
         
-        router.sendEvent(.start)
+        router.internalEvent.send(.start)
         routers[.menu] = router
         routers[.authorization] = nil
     }
