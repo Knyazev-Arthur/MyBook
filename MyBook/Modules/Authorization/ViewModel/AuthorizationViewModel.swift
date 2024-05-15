@@ -7,15 +7,15 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
     let externalEvent: AnyPublisher<AuthorizationViewData>
     let internalEvent: DataPublisher<AuthorizationViewModelInternalEvent>
     
-    private let dataPublisher: DataPublisher<AuthorizationViewData>
+    private let externalDataPublisher: DataPublisher<AuthorizationViewData>
     private let userLogin: AppUserLoginProtocol
     private weak var router: AuthorizationRouterProtocol?
     
     init(userLogin: AppUserLoginProtocol, router: AuthorizationRouterProtocol?) {
         self.userLogin = userLogin
         self.router = router
-        self.dataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(dataPublisher)
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         self.internalEvent = DataPublisher()
         setupObservers()
     }
@@ -31,7 +31,7 @@ private extension AuthorizationViewModel {
         }
         
         router?.externalEvent.sink { [weak self] in
-            self?.externalEventHandler($0)
+            self?.routerExternalEventHandler($0)
         }
         
         userLogin.externalEvent.sink { [weak self] in
@@ -54,10 +54,10 @@ private extension AuthorizationViewModel {
         let imageLoginButton = UIImage(named: "LoginButton")
         let text = NSLocalizedString("InitialGreeting", comment: "")
         let authorizationViewData = AuthorizationViewData(imageLogo: imageLogo, imageLoginButton: imageLoginButton, textLabelGreeting: text)
-        dataPublisher.send(authorizationViewData)
+        externalDataPublisher.send(authorizationViewData)
     }
     
-    func externalEventHandler(_ event: AuthorizationRouterExternalEvent) {
+    func routerExternalEventHandler(_ event: AuthorizationRouterExternalEvent) {
         switch event {
             case .failure(let error):
                 print("Error user login with Google: \(error.localizedDescription)")

@@ -7,13 +7,13 @@ class AuthorizationRouter: AuthorizationRouterProtocol {
     let internalEvent: DataPublisher<AuthorizationRouterInternalEvent>
     
     private weak var viewController: UIViewController?
-    private let dataPublisher: DataPublisher<AuthorizationRouterExternalEvent>
+    private let externalDataPublisher: DataPublisher<AuthorizationRouterExternalEvent>
     private let builder: AuthorizationBuilderRoutProtocol
     
     init(builder: AuthorizationBuilderRoutProtocol) {
         self.builder = builder
-        self.dataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(dataPublisher)
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         self.internalEvent = DataPublisher()
         setupObservers()
     }
@@ -32,6 +32,7 @@ private extension AuthorizationRouter {
     func internalEventHandler(_ event: AuthorizationRouterInternalEvent) {
         switch event {
             case .inject(let viewController):
+                guard let viewController else { return }
                 self.viewController = viewController
             
             case .start:
@@ -41,7 +42,7 @@ private extension AuthorizationRouter {
                 startGoogleSignIn()
             
             case .complete:
-                dataPublisher.send(.complete)
+                externalDataPublisher.send(.complete)
         }
     }
     
@@ -58,11 +59,11 @@ private extension AuthorizationRouter {
         
         builder.googleService?.signIn(withPresenting: viewController) { [weak self] result, error in
             if let error {
-                self?.dataPublisher.send(.failure(error))
+                self?.externalDataPublisher.send(.failure(error))
                 return
             }
             
-            self?.dataPublisher.send(.success(result?.user))
+            self?.externalDataPublisher.send(.success(result?.user))
         }
     }
     

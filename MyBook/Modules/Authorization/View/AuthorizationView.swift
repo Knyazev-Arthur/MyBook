@@ -5,7 +5,7 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     
     var externalEvent: AnyPublisher<Void?>
     
-    private let dataPublisher: DataPublisher<Void?>
+    private let externalDataPublisher: DataPublisher<Void?>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
     private let loginButton: UIButton
@@ -14,8 +14,8 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
-        self.dataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(dataPublisher)
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         super.init(frame: .zero)
         setupConfiguration()
     }
@@ -51,7 +51,7 @@ private extension AuthorizationView {
     }
     
     @objc func tapButton() {
-        dataPublisher.send(nil)
+        externalDataPublisher.send(nil)
     }
     
     func setupLabelGreeting(_ text: String?) {

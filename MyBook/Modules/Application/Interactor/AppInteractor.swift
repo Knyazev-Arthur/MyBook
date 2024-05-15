@@ -4,13 +4,13 @@ class AppInteractor: AppInteractorProtocol {
     
     let externalEvent: AnyPublisher<AppInteractorExternalEvent>
     
-    private let dataPublisher: DataPublisher<AppInteractorExternalEvent>
+    private let externalDataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
     
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
-        self.dataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(dataPublisher)
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         setupObservers()
     }
     
@@ -23,7 +23,7 @@ class AppInteractor: AppInteractorProtocol {
 // MARK: Private
 private extension AppInteractor {
     
-    private func setupObservers() {
+    func setupObservers() {
         userLogin.externalEvent.sink { [weak self] in
             self?.externalEventHadler($0)
         }
@@ -32,10 +32,10 @@ private extension AppInteractor {
     func externalEventHadler(_ event: Result<String, Error>) {
         switch event {
             case .success(_):
-                dataPublisher.send(.authorization(.avaliable))
+                externalDataPublisher.send(.authorization(.avaliable))
                 
             case .failure(_):
-                dataPublisher.send(.authorization(.unavaliable))
+                externalDataPublisher.send(.authorization(.unavaliable))
         }
     }
     
