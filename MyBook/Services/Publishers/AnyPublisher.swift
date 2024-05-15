@@ -8,7 +8,7 @@ final class AnyPublisher<T> {
         self.dataPublisher = dataPublisher
     }
     
-    func sink(_ closure: @escaping (T?) -> Void) {
+    func sink(_ closure: @escaping (T) -> Void) {
         dataPublisher?.sink(closure)
     }
     
