@@ -32,7 +32,7 @@ private extension SplashRouter {
         switch event {
             case .inject(let value):
                 guard viewController == nil else { return }
-                self.viewController = value
+                viewController = value
             
             case .start:
                 builder.window?.rootViewController = viewController

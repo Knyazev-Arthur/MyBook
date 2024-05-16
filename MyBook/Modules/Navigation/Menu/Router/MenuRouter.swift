@@ -32,7 +32,7 @@ private extension MenuRouter {
         switch event {
             case .inject(let value):
                 guard tabBarController == nil else { return }
-                self.tabBarController = value
+                tabBarController = value
             
             case .start:
                 setRootTabBarController()

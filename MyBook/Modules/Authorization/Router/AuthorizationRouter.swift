@@ -33,7 +33,7 @@ private extension AuthorizationRouter {
         switch event {
             case .inject(let value):
                 guard viewController == nil else { return }
-                self.viewController = value
+                viewController = value
             
             case .start:
                 setRootVC()
