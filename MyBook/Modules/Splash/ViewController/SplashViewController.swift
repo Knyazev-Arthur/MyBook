@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class SplashViewController: UIViewController {
@@ -23,12 +22,12 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.sendEvent()
+        viewModel.sendLogoAndAction()
     }
     
     private func setupObservers() {
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent($0)
+        viewModel.externalEvent.sink { [weak self] in
+            self?.myView.setLogo($0)
         }
     }
     

@@ -1,44 +1,48 @@
 import Foundation
-import GoogleSignIn
 
 class AppInteractor: AppInteractorProtocol {
     
-    var action: ((AppInteractorExternalEvent) -> Void)?
+    let externalEvent: AnyPublisher<AppInteractorExternalEvent>
     
+    private let externalDataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
     
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         setupObservers()
     }
     
-    private func setupObservers() {
-        userLogin.action = { [weak self] in
-            guard let user = $0 else {
-                print("User didn't log in")
-                self?.action?(.authorization(.unavaliable))
-                return
-            }
-            
-            print("User logged in")
-            self?.action?(.authorization(.avaliable(user)))
+    func restorePreviousSignIn() {
+        userLogin.internalEvent.send(.restorePreviousSignIn)
+    }
+
+}
+
+// MARK: Private
+private extension AppInteractor {
+    
+    func setupObservers() {
+        userLogin.externalEvent.sink { [weak self] in
+            self?.externalEventHadler($0)
         }
     }
     
-    func sendEvent() {
-        userLogin.sendEvent()
+    func externalEventHadler(_ event: Result<String, Error>) {
+        switch event {
+            case .success(_):
+                externalDataPublisher.send(.authorization(.avaliable))
+                
+            case .failure(_):
+                externalDataPublisher.send(.authorization(.unavaliable))
+        }
     }
-
+    
 }
 
 // MARK: - AppInteractorExternalEvent
 enum AppInteractorExternalEvent {
-    case authorization(AppInteractorUserStatus)
+    case authorization(AppUserLoginStatus)
     case pushNotitication([String : Any])
-}
-
-// MARK: - AppInteractorUserStatus
-enum AppInteractorUserStatus {
-    case unavaliable
-    case avaliable(GIDGoogleUser?)
 }

@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class SplashBuilder: SplashBuilderProtocol {
@@ -21,8 +20,7 @@ private extension SplashBuilder {
     }
     
     func screenRouter() {
-        let window = injector.getObject(from: .application, type: UIWindow.self)
-        let router = SplashRouter(window: window)
+        let router = SplashRouter(builder: self)
         injector.addObject(to: .splash, value: router)
     }
     
@@ -34,7 +32,7 @@ private extension SplashBuilder {
         let view = view(imageView)
         let viewController = SplashViewController(viewModel: viewModel, view: view)
         
-        router.sendEvent(.inject(viewController: viewController))
+        router.internalEvent.send(.inject(viewController: viewController))
         injector.addObject(to: .splash, value: viewController)
     }
     
@@ -57,7 +55,7 @@ extension SplashBuilder {
     
 }
 
-// MARK: Protocol
+// MARK: SplashBuilderProtocol
 extension SplashBuilder {
     
     var controller: SplashViewController? {
@@ -68,4 +66,13 @@ extension SplashBuilder {
         injector.getObject(from: .splash, type: SplashRouter.self)
     }
 
+}
+
+// MARK: SplashBuilderRoutProtocol
+extension SplashBuilder: SplashBuilderRoutProtocol {
+    
+    var window: UIWindow? {
+        injector.getObject(from: .application, type: UIWindow.self)
+    }
+    
 }

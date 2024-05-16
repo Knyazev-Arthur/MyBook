@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import SnapKit
 
@@ -16,7 +15,7 @@ class SplashView: UIView, SplashViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ image: UIImage?) {
+    func setLogo(_ image: UIImage?) {
         logoImageView.image = image
     }
     
@@ -33,10 +32,10 @@ private extension SplashView {
     
     func setupConstraints() {
         logoImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview().offset(-20)
+            $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(140)
+            $0.width.equalTo(300)
+            $0.height.equalTo(210)
         }
     }
     

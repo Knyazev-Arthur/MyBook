@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class AuthorizationViewController: UIViewController {
@@ -21,13 +20,18 @@ class AuthorizationViewController: UIViewController {
         view = myView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.internalEvent.send(.initialSetup)
+    }
+    
     private func setupObservers() {
-        viewModel.action = { [weak self] in
-            self?.myView.sendEvent($0)
+        myView.externalEvent.sink { [weak self] _ in
+            self?.viewModel.internalEvent.send(.router)
         }
         
-        myView.action = { [weak self] in
-            self?.viewModel.sendEvent()
+        viewModel.externalEvent.sink { [weak self] in
+            self?.myView.setViewData($0)
         }
     }
 

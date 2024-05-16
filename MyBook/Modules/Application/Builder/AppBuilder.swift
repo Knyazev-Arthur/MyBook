@@ -1,5 +1,5 @@
-import Foundation
 import GoogleSignIn
+import UIKit
 
 class AppBuilder: AppBuilderProtocol {
     
@@ -17,6 +17,7 @@ private extension AppBuilder {
     
     func register() {
         keyWindow()
+        googleService()
     }
     
     func keyWindow() {
@@ -25,14 +26,15 @@ private extension AppBuilder {
         injector.addObject(to: .application, value: window)
     }
     
+    func googleService() {
+        let googleService = GIDSignIn.sharedInstance
+        injector.addObject(to: .application, value: googleService)
+    }
+    
 }
 
 // MARK: Public
 extension AppBuilder {
-    
-    func googleService() -> GIDSignIn {
-        GIDSignIn.sharedInstance
-    }
     
     func userLogin(_ googleService: GIDSignIn) -> AppUserLoginProtocol {
         AppUserLogin(googleService: googleService)
@@ -48,7 +50,7 @@ extension AppBuilder {
     }
     
     var interactor: AppInteractorProtocol? {
-        let googleService = googleService()
+        guard let googleService = injector.getObject(from: .application, type: GIDSignIn.self) else { return nil }
         let userLogin = userLogin(googleService)
         return AppInteractor(userLogin: userLogin)
     }
@@ -64,6 +66,10 @@ extension AppBuilder {
     
     var authorizationBuilder: AuthorizationBuilderProtocol? {
         AuthorizationBuilder(injector: injector)
+    }
+    
+    var menuBuilder: MenuBuilderProtocol? {
+        MenuBuilder(injector: injector)
     }
     
 }

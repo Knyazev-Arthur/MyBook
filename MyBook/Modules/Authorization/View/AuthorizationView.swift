@@ -1,16 +1,21 @@
-import Foundation
-import GoogleSignIn
+import SnapKit
+import UIKit
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    var action: (() -> Void)?
+    var externalEvent: AnyPublisher<Void?>
     
-    private let label: UILabel
-    private let loginButton: GIDSignInButton
+    private let externalDataPublisher: DataPublisher<Void?>
+    private let logoImageView: UIImageView
+    private let labelGreeting: UILabel
+    private let loginButton: UIButton
     
-    init(label: UILabel, loginButton: GIDSignInButton) {
-        self.label = label
+    init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
+        self.logoImageView = logoImageView
+        self.labelGreeting = label
         self.loginButton = loginButton
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
         super.init(frame: .zero)
         setupConfiguration()
     }
@@ -19,9 +24,12 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func sendEvent(_ message: String) {
-        print(message)
+    func setViewData(_ data: AuthorizationViewData) {
+        logoImageView.image = data.imageLogo
+        setupLoginButton(data.imageLoginButton)
+        setupLabelGreeting(data.textLabelGreeting)
     }
+    
 }
 
 // MARK: Private
@@ -29,50 +37,63 @@ private extension AuthorizationView {
     
     func setupConfiguration() {
         backgroundColor = .lightBeige
-        setupLoginButton()
-        setupLabel()
+        addSubview(logoImageView)
+        addSubview(labelGreeting)
         addSubview(loginButton)
-        addSubview(label)
-        setupLabelConstraints()
-        setupGLoginButtonConstraints()
+        setupLogoImageViewConstraints()
+        setupLabelGreetingConstraints()
+        setupLoginButtonConstraints()
     }
     
-    func setupLoginButton() {
-        loginButton.colorScheme = .dark
-        loginButton.style = .wide
+    func setupLoginButton(_ image: UIImage?) {
+        loginButton.setImage(image, for: .normal)
         loginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
     
     @objc func tapButton() {
-        action?()
+        externalDataPublisher.send(nil)
     }
     
-    func setupLabel() {
-        label.text = NSLocalizedString("initialGreeting", comment: "")
-        label.numberOfLines = 0
-        label.textAlignment = .center
+    func setupLabelGreeting(_ text: String) {
+        labelGreeting.text = text
+        labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
+        labelGreeting.numberOfLines = 0
+        labelGreeting.textAlignment = .center
+        labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
     }
     
-    func setupLabelConstraints() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        let centerX = label.centerXAnchor.constraint(equalTo: centerXAnchor)
-        let centerY = label.centerYAnchor.constraint(equalTo: centerYAnchor)
-        let height = label.heightAnchor.constraint(equalToConstant: 50)
-        let width = label.widthAnchor.constraint(equalToConstant: 250)
-        
-        NSLayoutConstraint.activate([centerX, centerY, height, width])
+    func setupLogoImageViewConstraints() {
+        logoImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(210)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(80)
+        }
     }
     
-    func setupGLoginButtonConstraints() {
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let centerX = loginButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        let bottom = loginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -25)
-        let height = loginButton.heightAnchor.constraint(equalToConstant: 70)
-        let width = loginButton.widthAnchor.constraint(equalToConstant: 200)
-        
-        NSLayoutConstraint.activate([centerX, bottom, height, width])
+    func setupLabelGreetingConstraints() {
+        labelGreeting.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(40)
+            $0.width.equalTo(250)
+            $0.height.equalTo(60)
+        }
+    }
+    
+    func setupLoginButtonConstraints() {
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
+        }
     }
 
+}
+
+// MARK: - AuthorizationViewData
+struct AuthorizationViewData {
+    let imageLogo: UIImage?
+    let imageLoginButton: UIImage?
+    let textLabelGreeting: String
 }

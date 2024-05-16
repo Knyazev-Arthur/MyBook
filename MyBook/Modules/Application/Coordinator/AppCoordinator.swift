@@ -24,7 +24,7 @@ class AppCoordinator: AppCoordinatorProtocol {
 private extension AppCoordinator {
     
     func setupObservers() {
-        interactor.action = { [weak self] in
+        interactor.externalEvent.sink { [weak self] in
             self?.interactorEventHandler($0)
         }
     }
@@ -39,13 +39,13 @@ private extension AppCoordinator {
         }
     }
     
-    func userAuthorizationHandler(_ status: AppInteractorUserStatus) {
+    func userAuthorizationHandler(_ status: AppUserLoginStatus) {
         switch status {
             case .unavaliable:
-                break
+                startAuthorizationModule()
             
-            case .avaliable(_):
-                break
+            case .avaliable:
+                startMenuModule()
         }
     }
     
@@ -54,12 +54,11 @@ private extension AppCoordinator {
             fatalError("There aren't any significant splash module objects")
         }
         
-        router.sendEvent(.start)
+        router.internalEvent.send(.start)
         routers[.splash] = router
         
-        router.action = { [weak self] in
-            self?.startAuthorizationModule()
-            self?.routers[.splash] = nil
+        router.externalEvent.sink { [weak self] _ in
+            self?.interactor.restorePreviousSignIn()
         }
     }
     
@@ -68,8 +67,29 @@ private extension AppCoordinator {
             fatalError("There aren't any significant authorization module objects")
         }
         
-        router.sendEvent(.start)
+        router.internalEvent.send(.start)
         routers[.authorization] = router
+        routers[.splash] = nil
+        
+        router.externalEvent.sink { [weak self] event in
+            switch event {
+                case .complete:
+                    self?.startMenuModule()
+            
+                default:
+                    break
+            }
+        }
+    }
+    
+    func startMenuModule() {
+        guard let builder = builder.menuBuilder, let router = builder.router else {
+            fatalError("There aren't any significant menu module objects")
+        }
+        
+        router.internalEvent.send(.start)
+        routers[.menu] = router
+        routers[.authorization] = nil
     }
     
 }

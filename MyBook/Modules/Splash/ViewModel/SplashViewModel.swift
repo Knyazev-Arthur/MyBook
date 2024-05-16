@@ -1,21 +1,23 @@
-import Foundation
 import UIKit
 
 class SplashViewModel: SplashViewModelProtocol {
     
-    var action: ((UIImage?) -> Void)?
+    let externalEvent: AnyPublisher<UIImage?>
     
     private weak var router: SplashRouterProtocol?
+    private let externalDataPublisher: DataPublisher<UIImage?>
     
     init(router: SplashRouterProtocol?) {
         self.router = router
+        self.externalDataPublisher = DataPublisher()
+        self.externalEvent = AnyPublisher(externalDataPublisher)
     }
     
-    func sendEvent() {
+    func sendLogoAndAction() {
         let image = UIImage(named: "Logo")
-        action?(image)
+        externalDataPublisher.send(image)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.router?.sendEvent(.action)
+            self?.router?.internalEvent.send(.action)
         }
     }
     
