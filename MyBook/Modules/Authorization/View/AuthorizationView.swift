@@ -54,7 +54,7 @@ private extension AuthorizationView {
         externalDataPublisher.send(nil)
     }
     
-    func setupLabelGreeting(_ text: String?) {
+    func setupLabelGreeting(_ text: String) {
         labelGreeting.text = text
         labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
         labelGreeting.numberOfLines = 0
