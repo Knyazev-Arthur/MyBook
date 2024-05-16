@@ -31,7 +31,7 @@ private extension AuthorizationViewModel {
         }
         
         router?.externalEvent.sink { [weak self] in
-            self?.routerExternalEventHandler($0)
+            self?.routerEventHandler($0)
         }
         
         userLogin.externalEvent.sink { [weak self] in
@@ -57,7 +57,7 @@ private extension AuthorizationViewModel {
         externalDataPublisher.send(authorizationViewData)
     }
     
-    func routerExternalEventHandler(_ event: AuthorizationRouterExternalEvent) {
+    func routerEventHandler(_ event: AuthorizationRouterExternalEvent) {
         switch event {
             case .failure(let error):
                 print("Error user login with Google: \(error.localizedDescription)")

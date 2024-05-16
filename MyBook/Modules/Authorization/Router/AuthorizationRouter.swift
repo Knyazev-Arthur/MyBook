@@ -31,9 +31,9 @@ private extension AuthorizationRouter {
     
     func internalEventHandler(_ event: AuthorizationRouterInternalEvent) {
         switch event {
-            case .inject(let viewController):
-                guard let viewController else { return }
-                self.viewController = viewController
+            case .inject(let value):
+                guard self.viewController == nil else { return }
+                self.viewController = value
             
             case .start:
                 setRootVC()

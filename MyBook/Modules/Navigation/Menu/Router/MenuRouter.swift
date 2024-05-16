@@ -30,9 +30,9 @@ private extension MenuRouter {
     
     func internalEventHadler(_ event: MenuRouterInternalEvent) {
         switch event {
-            case .inject(let tabBarController):
-                guard let tabBarController else { return }
-                self.tabBarController = tabBarController
+            case .inject(let value):
+                guard self.tabBarController == nil else { return }
+                self.tabBarController = value
             
             case .start:
                 setRootTabBarController()
