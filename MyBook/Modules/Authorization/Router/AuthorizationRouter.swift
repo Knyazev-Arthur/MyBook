@@ -32,7 +32,7 @@ private extension AuthorizationRouter {
     func internalEventHandler(_ event: AuthorizationRouterInternalEvent) {
         switch event {
             case .inject(let value):
-                guard self.viewController == nil else { return }
+                guard viewController == nil else { return }
                 self.viewController = value
             
             case .start:

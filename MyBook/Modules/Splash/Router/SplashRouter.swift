@@ -31,7 +31,7 @@ private extension SplashRouter {
     func internalEventHandler(_ event: SplashRouterInternalEvent) {
         switch event {
             case .inject(let value):
-                guard self.viewController == nil else { return }
+                guard viewController == nil else { return }
                 self.viewController = value
             
             case .start:
