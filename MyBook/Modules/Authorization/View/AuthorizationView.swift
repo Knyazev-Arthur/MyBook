@@ -1,11 +1,12 @@
 import SnapKit
 import UIKit
+import Combine
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    var externalEvent: AnyPublisher<Void?>
+    var externalEventPublisher: AnyPublisher<Void?, Never>
     
-    private let externalDataPublisher: DataPublisher<Void?>
+    private let externalDataPublisher: PassthroughSubject<Void?, Never>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
     private let loginButton: UIButton
@@ -14,8 +15,8 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
+        self.externalDataPublisher = PassthroughSubject<Void?, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
         super.init(frame: .zero)
         setupConfiguration()
     }

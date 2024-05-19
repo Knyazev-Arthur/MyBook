@@ -1,20 +1,23 @@
 import GoogleSignIn
 import UIKit
+import Combine
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
-    let externalEvent: AnyPublisher<AuthorizationRouterExternalEvent>
-    let internalEvent: DataPublisher<AuthorizationRouterInternalEvent>
+    let internalEventPublisher: PassthroughSubject<AuthorizationRouterInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<AuthorizationRouterExternalEvent, Never>
     
-    private weak var viewController: UIViewController?
-    private let externalDataPublisher: DataPublisher<AuthorizationRouterExternalEvent>
+    private let externalDataPublisher: PassthroughSubject<AuthorizationRouterExternalEvent, Never>
     private let builder: AuthorizationBuilderRoutProtocol
+    private var subscriptions: Set<AnyCancellable>
+    private weak var viewController: UIViewController?
     
     init(builder: AuthorizationBuilderRoutProtocol) {
         self.builder = builder
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
-        self.internalEvent = DataPublisher()
+        self.internalEventPublisher = PassthroughSubject<AuthorizationRouterInternalEvent, Never>()
+        self.externalDataPublisher = PassthroughSubject<AuthorizationRouterExternalEvent, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -24,9 +27,9 @@ class AuthorizationRouter: AuthorizationRouterProtocol {
 private extension AuthorizationRouter {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: AuthorizationRouterInternalEvent) {

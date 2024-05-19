@@ -37,7 +37,7 @@ private extension AuthorizationBuilder {
         let view = view(logoImageView, label, googleButton)
         let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
         
-        router.internalEvent.send(.inject(viewController: viewController))
+        router.internalEventPublisher.send(.inject(viewController: viewController))
         injector.addObject(to: .authorization, value: viewController)
     }
 

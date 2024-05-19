@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
 protocol AuthorizationRouterProtocol: AnyObject {
-    var externalEvent: AnyPublisher<AuthorizationRouterExternalEvent> { get }
-    var internalEvent: DataPublisher<AuthorizationRouterInternalEvent> { get }
+    var internalEventPublisher: PassthroughSubject<AuthorizationRouterInternalEvent, Never> { get }
+    var externalEventPublisher: AnyPublisher<AuthorizationRouterExternalEvent, Never> { get }
 }
