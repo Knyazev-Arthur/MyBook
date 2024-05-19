@@ -1,6 +1,6 @@
 import Foundation
 
-final class AnyPublisher<T> {
+final class AnyPublishers<T> {
     
     private weak var dataPublisher: DataPublisher<T>?
     
