@@ -1,19 +1,22 @@
 import Foundation
 import GoogleSignIn
+import Combine
 
 class AppUserLogin: AppUserLoginProtocol {
     
-    let externalEvent: AnyPublisher<Result<String, Error>>
-    let internalEvent: DataPublisher<AppUserLoginInternalEvent>
+    let internalEventPublisher: PassthroughSubject<AppUserLoginInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<Result<String, Error>, Never>
     
-    private let externalDataPublisher: DataPublisher<Result<String, Error>>
+    private let externalDataPublisher: PassthroughSubject<Result<String, Error>, Never>
     private let googleService: GIDSignIn
+    private var subscriptions: Set<AnyCancellable>
     
     init(googleService: GIDSignIn) {
         self.googleService = googleService
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
-        self.internalEvent = DataPublisher()
+        self.internalEventPublisher = PassthroughSubject<AppUserLoginInternalEvent, Never>()
+        self.externalDataPublisher = PassthroughSubject<Result<String, Error>, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -23,9 +26,9 @@ class AppUserLogin: AppUserLoginProtocol {
 private extension AppUserLogin {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: AppUserLoginInternalEvent) {

@@ -1,15 +1,18 @@
 import Foundation
+import Combine
 
 class AppCoordinator: AppCoordinatorProtocol {
     
     private let builder: AppBuilderProtocol
     private let interactor: AppInteractorProtocol
     private var routers: [AppCoordinatorKey : Any]
+    private var subscriptions: Set<AnyCancellable>
     
     init(builder: AppBuilderProtocol, interactor: AppInteractorProtocol) {
         self.builder = builder
         self.interactor = interactor
         self.routers = [AppCoordinatorKey : Any]()
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -24,9 +27,9 @@ class AppCoordinator: AppCoordinatorProtocol {
 private extension AppCoordinator {
     
     func setupObservers() {
-        interactor.externalEvent.sink { [weak self] in
+        interactor.externalEventPublisher.sink { [weak self] in
             self?.interactorEventHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func interactorEventHandler(_ event: AppInteractorExternalEvent) {
@@ -54,12 +57,12 @@ private extension AppCoordinator {
             fatalError("There aren't any significant splash module objects")
         }
         
-        router.internalEvent.send(.start)
+        router.internalEventPublisher.send(.start)
         routers[.splash] = router
         
-        router.externalEvent.sink { [weak self] _ in
+        router.externalEventPublisher.sink { [weak self] _ in
             self?.interactor.restorePreviousSignIn()
-        }
+        }.store(in: &subscriptions)
     }
     
     func startAuthorizationModule() {
@@ -67,11 +70,11 @@ private extension AppCoordinator {
             fatalError("There aren't any significant authorization module objects")
         }
         
-        router.internalEvent.send(.start)
+        router.internalEventPublisher.send(.start)
         routers[.authorization] = router
         routers[.splash] = nil
         
-        router.externalEvent.sink { [weak self] event in
+        router.externalEventPublisher.sink { [weak self] event in
             switch event {
                 case .complete:
                     self?.startMenuModule()
@@ -79,7 +82,7 @@ private extension AppCoordinator {
                 default:
                     break
             }
-        }
+        }.store(in: &subscriptions)
     }
     
     func startMenuModule() {
@@ -87,7 +90,7 @@ private extension AppCoordinator {
             fatalError("There aren't any significant menu module objects")
         }
         
-        router.internalEvent.send(.start)
+        router.internalEventPublisher.send(.start)
         routers[.menu] = router
         routers[.authorization] = nil
     }

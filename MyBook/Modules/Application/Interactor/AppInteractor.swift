@@ -1,21 +1,24 @@
 import Foundation
+import Combine
 
 class AppInteractor: AppInteractorProtocol {
     
-    let externalEvent: AnyPublisher<AppInteractorExternalEvent>
+    let externalEventPublisher: AnyPublisher<AppInteractorExternalEvent, Never>
     
-    private let externalDataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
+    private let externalDataPublisher: PassthroughSubject<AppInteractorExternalEvent, Never>
+    private var subscriptions: Set<AnyCancellable>
     
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
+        self.externalDataPublisher = PassthroughSubject<AppInteractorExternalEvent, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
     func restorePreviousSignIn() {
-        userLogin.internalEvent.send(.restorePreviousSignIn)
+        userLogin.internalEventPublisher.send(.restorePreviousSignIn)
     }
 
 }
@@ -24,9 +27,9 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     func setupObservers() {
-        userLogin.externalEvent.sink { [weak self] in
+        userLogin.externalEventPublisher.sink { [weak self] in
             self?.externalEventHadler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func externalEventHadler(_ event: Result<String, Error>) {
