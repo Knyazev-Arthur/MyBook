@@ -1,19 +1,22 @@
 import UIKit
+import Combine
 
 class SplashRouter: SplashRouterProtocol {
     
-    let externalEvent: AnyPublisher<Void?>
-    let internalEvent: DataPublisher<SplashRouterInternalEvent>
+    let internalEventPublisher: PassthroughSubject<SplashRouterInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<Void?, Never>
     
     private weak var viewController: UIViewController?
-    private let externalDataPublisher: DataPublisher<Void?>
+    private let externalDataPublisher: PassthroughSubject<Void?, Never>
     private let builder: SplashBuilderRoutProtocol
+    private var subscriptions: Set<AnyCancellable>
     
     init(builder: SplashBuilderRoutProtocol) {
         self.builder = builder
-        self.internalEvent = DataPublisher()
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
+        self.internalEventPublisher = PassthroughSubject<SplashRouterInternalEvent, Never>()
+        self.externalDataPublisher = PassthroughSubject<Void?, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -23,9 +26,9 @@ class SplashRouter: SplashRouterProtocol {
 private extension SplashRouter {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: SplashRouterInternalEvent) {

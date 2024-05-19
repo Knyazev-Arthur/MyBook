@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
 protocol SplashRouterProtocol: AnyObject {
-    var externalEvent: AnyPublisher<Void?> { get }
-    var internalEvent: DataPublisher<SplashRouterInternalEvent> { get }
+    var externalEventPublisher: AnyPublisher<Void?, Never> { get }
+    var internalEventPublisher: PassthroughSubject<SplashRouterInternalEvent, Never> { get }
 }
