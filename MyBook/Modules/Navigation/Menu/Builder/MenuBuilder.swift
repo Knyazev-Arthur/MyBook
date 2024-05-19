@@ -30,7 +30,7 @@ private extension MenuBuilder {
         let viewModel = viewModel(router)
         let tabBarController = MenuTabBarController(viewModel: viewModel)
         
-        router.internalEvent.send(.inject(tabBarController: tabBarController))
+        router.internalEventPublisher.send(.inject(tabBarController: tabBarController))
         injector.addObject(to: .menu, value: tabBarController)
     }
 

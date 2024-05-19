@@ -1,19 +1,22 @@
 import UIKit
+import Combine
 
 class MenuRouter: MenuRouterProtocol {
     
-    let externalEvent: AnyPublisher<Void>
-    let internalEvent: DataPublisher<MenuRouterInternalEvent>
+    let internalEventPublisher: PassthroughSubject<MenuRouterInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<Void, Never>
     
-    private let externalDataPublisher: DataPublisher<Void>
     private let builder: MenuBuilderRoutProtocol
+    private let externalDataPublisher: PassthroughSubject<Void, Never>
+    private var subscriptions: Set<AnyCancellable>
     private weak var tabBarController: UITabBarController?
     
     init(builder: MenuBuilderRoutProtocol) {
         self.builder = builder
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
-        self.internalEvent = DataPublisher()
+        self.externalDataPublisher = PassthroughSubject<Void, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.internalEventPublisher = PassthroughSubject<MenuRouterInternalEvent, Never>()
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -23,9 +26,9 @@ class MenuRouter: MenuRouterProtocol {
 private extension MenuRouter {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHadler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHadler(_ event: MenuRouterInternalEvent) {
