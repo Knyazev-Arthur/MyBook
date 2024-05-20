@@ -4,20 +4,23 @@ import Combine
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    var externalEventPublisher: AnyPublisher<Void?, Never>
+    let externalEventPublisher: AnyPublisher<Void, Never>
     
-    private let externalDataPublisher: PassthroughSubject<Void?, Never>
+    private let externalDataPublisher: PassthroughSubject<Void, Never>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
-    private let loginButton: UIButton
+    private let loginButton: CustomButton
+    private var subscriptions: Set<AnyCancellable>
     
-    init(logoImageView: UIImageView, label: UILabel, loginButton: UIButton) {
+    init(logoImageView: UIImageView, label: UILabel, loginButton: CustomButton) {
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
-        self.externalDataPublisher = PassthroughSubject<Void?, Never>()
+        self.externalDataPublisher = PassthroughSubject<Void, Never>()
         self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         super.init(frame: .zero)
+        setupObservers()
         setupConfiguration()
     }
     
@@ -36,6 +39,12 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
 // MARK: Private
 private extension AuthorizationView {
     
+    func setupObservers() {
+        loginButton.externalEventPublisher.sink { [weak self] in
+            self?.externalDataPublisher.send()
+        }.store(in: &subscriptions)
+    }
+    
     func setupConfiguration() {
         backgroundColor = .lightBeige
         addSubview(logoImageView)
@@ -48,11 +57,7 @@ private extension AuthorizationView {
     
     func setupLoginButton(_ image: UIImage?) {
         loginButton.setImage(image, for: .normal)
-        loginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-    }
-    
-    @objc func tapButton() {
-        externalDataPublisher.send(nil)
+        loginButton.target(.touchUpInside)
     }
     
     func setupLabelGreeting(_ text: String) {

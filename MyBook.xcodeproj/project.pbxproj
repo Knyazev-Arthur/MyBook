@@ -18,6 +18,7 @@
 		75404FE92BF1F0C4008ABDA8 /* AnyPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
+		757396032BFB32A4006671E9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757396022BFB32A4006671E9 /* CustomButton.swift */; };
 		757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */; };
 		757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D72BD8E76100ABABAE /* MenuRouter.swift */; };
 		757FF6DA2BD8E79700ABABAE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */; };
@@ -85,6 +86,7 @@
 		753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilderRoutProtocol.swift; sourceTree = "<group>"; };
 		75404FE62BF1F0B6008ABDA8 /* DataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPublisher.swift; sourceTree = "<group>"; };
 		75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublishers.swift; sourceTree = "<group>"; };
+		757396022BFB32A4006671E9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = MyBook/Services/UserInterface/CustomButton.swift; sourceTree = SOURCE_ROOT; };
 		757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		757FF6D72BD8E76100ABABAE /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
 		757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 		CEA54A3D2BBD6BBA0087C90A /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				757396022BFB32A4006671E9 /* CustomButton.swift */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */,
 				CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */,
 				CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */,
+				757396032BFB32A4006671E9 /* CustomButton.swift in Sources */,
 				757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */,
 				757FF6DC2BD8E7A400ABABAE /* MenuTabBarController.swift in Sources */,
 				CE96D9C62BAA050100FF8A61 /* SplashViewController.swift in Sources */,
