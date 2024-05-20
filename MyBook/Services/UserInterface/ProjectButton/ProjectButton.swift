@@ -1,15 +1,15 @@
 import UIKit
 import Combine
 
-class ProjectButton: UIButton {
+class ProjectButton: UIButton, ProjectButtonProtocol {
     
-    let tapEventPublisher: AnyPublisher<Void, Never>
+    let publisher: AnyPublisher<Void, Never>
     
     private let externalDataPublisher: PassthroughSubject<Void, Never>
     
     init(_ touchEvent: UIControl.Event) {
         self.externalDataPublisher = PassthroughSubject<Void, Never>()
-        self.tapEventPublisher = AnyPublisher(externalDataPublisher)
+        self.publisher = AnyPublisher(externalDataPublisher)
         super.init(frame: .zero)
         addTarget(self, action: #selector(tapButton), for: touchEvent)
     }
