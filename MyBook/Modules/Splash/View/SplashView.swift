@@ -25,9 +25,13 @@ class SplashView: UIView, SplashViewProtocol {
 private extension SplashView {
     
     func setupConfiguration() {
+        setupLayout()
+        setupConstraints()
+    }
+    
+    func setupLayout() {
         backgroundColor = .lightBeige
         addSubview(logoImageView)
-        setupConstraints()
     }
     
     func setupConstraints() {

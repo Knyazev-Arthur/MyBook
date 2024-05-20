@@ -4,20 +4,20 @@ import Combine
 
 class AuthorizationView: UIView, AuthorizationViewProtocol {
     
-    let externalEventPublisher: AnyPublisher<Void, Never>
+    let publisher: AnyPublisher<Void, Never>
     
     private let externalDataPublisher: PassthroughSubject<Void, Never>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
-    private let loginButton: CustomButton
+    private let loginButton: ProjectButtonProtocol
     private var subscriptions: Set<AnyCancellable>
     
-    init(logoImageView: UIImageView, label: UILabel, loginButton: CustomButton) {
+    init(logoImageView: UIImageView, label: UILabel, loginButton: ProjectButtonProtocol) {
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
         self.externalDataPublisher = PassthroughSubject<Void, Never>()
-        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.publisher = AnyPublisher(externalDataPublisher)
         self.subscriptions = Set<AnyCancellable>()
         super.init(frame: .zero)
         setupObservers()
@@ -40,24 +40,27 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
 private extension AuthorizationView {
     
     func setupObservers() {
-        loginButton.externalEventPublisher.sink { [weak self] in
+        loginButton.publisher.sink { [weak self] in
             self?.externalDataPublisher.send()
         }.store(in: &subscriptions)
     }
     
     func setupConfiguration() {
-        backgroundColor = .lightBeige
-        addSubview(logoImageView)
-        addSubview(labelGreeting)
-        addSubview(loginButton)
+        setupLayout()
         setupLogoImageViewConstraints()
         setupLabelGreetingConstraints()
         setupLoginButtonConstraints()
     }
     
+    func setupLayout() {
+        backgroundColor = .lightBeige
+        addSubview(logoImageView)
+        addSubview(labelGreeting)
+        addSubview(loginButton)
+    }
+    
     func setupLoginButton(_ image: UIImage?) {
         loginButton.setImage(image, for: .normal)
-        loginButton.target(.touchUpInside)
     }
     
     func setupLabelGreeting(_ text: String) {

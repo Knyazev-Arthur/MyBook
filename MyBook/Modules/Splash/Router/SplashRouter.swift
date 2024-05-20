@@ -3,13 +3,14 @@ import Combine
 
 class SplashRouter: SplashRouterProtocol {
     
+    private weak var viewController: UIViewController?
+    
     let internalEventPublisher: PassthroughSubject<SplashRouterInternalEvent, Never>
     let externalEventPublisher: AnyPublisher<Void, Never>
     
     private let externalDataPublisher: PassthroughSubject<Void, Never>
     private let builder: SplashBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>
-    private weak var viewController: UIViewController?
     
     init(builder: SplashBuilderRoutProtocol) {
         self.builder = builder

@@ -33,7 +33,7 @@ private extension AuthorizationBuilder {
         let viewModel = viewModel(router, userLogin)
         let logoImageView = imageView()
         let label = label()
-        let googleButton = customButton()
+        let googleButton = projectButton()
         let view = view(logoImageView, label, googleButton)
         let viewController = AuthorizationViewController(viewModel: viewModel, view: view)
         
@@ -54,8 +54,8 @@ extension AuthorizationBuilder {
         UILabel()
     }
     
-    func customButton() -> CustomButton {
-        CustomButton()
+    func projectButton() -> ProjectButtonProtocol {
+        ProjectButton(.touchUpInside)
     }
     
     func viewModel(_ router: AuthorizationRouterProtocol, _ userLogin: AppUserLoginProtocol) -> AuthorizationViewModelProtocol {
@@ -66,7 +66,7 @@ extension AuthorizationBuilder {
         AppUserLogin(googleService: googleService)
     }
     
-    func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: CustomButton) -> AuthorizationViewProtocol {
+    func view(_ logoImageView: UIImageView, _ label: UILabel, _ loginButton: ProjectButtonProtocol) -> AuthorizationViewProtocol {
         AuthorizationView(logoImageView: logoImageView, label: label, loginButton: loginButton)
     }
     

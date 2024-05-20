@@ -3,15 +3,16 @@ import Combine
 
 class SplashViewModel: SplashViewModelProtocol {
     
-    let externalEventPublisher: AnyPublisher<UIImage?, Never>
-    
     private weak var router: SplashRouterProtocol?
+    
+    let publisher: AnyPublisher<UIImage?, Never>
+    
     private let externalDataPublisher: PassthroughSubject<UIImage?, Never>
     
     init(router: SplashRouterProtocol?) {
         self.router = router
         self.externalDataPublisher = PassthroughSubject<UIImage?, Never>()
-        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.publisher = AnyPublisher(externalDataPublisher)
     }
     
     func sendLogoAndAction() {

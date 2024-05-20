@@ -29,8 +29,8 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func setupObservers() {
-        myView.externalEventPublisher.sink { [weak self] _ in
-            self?.viewModel.internalEventPublisher.send(.router)
+        myView.publisher.sink { [weak self] _ in
+            self?.viewModel.internalEventPublisher.send(.logInToGoogle)
         }.store(in: &subscriptions)
         
         viewModel.externalEventPublisher.sink { [weak self] in

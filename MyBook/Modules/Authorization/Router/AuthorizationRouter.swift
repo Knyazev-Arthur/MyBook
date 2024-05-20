@@ -4,13 +4,14 @@ import Combine
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
     
+    private weak var viewController: UIViewController?
+    
     let internalEventPublisher: PassthroughSubject<AuthorizationRouterInternalEvent, Never>
     let externalEventPublisher: AnyPublisher<AuthorizationRouterExternalEvent, Never>
     
     private let externalDataPublisher: PassthroughSubject<AuthorizationRouterExternalEvent, Never>
     private let builder: AuthorizationBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>
-    private weak var viewController: UIViewController?
     
     init(builder: AuthorizationBuilderRoutProtocol) {
         self.builder = builder

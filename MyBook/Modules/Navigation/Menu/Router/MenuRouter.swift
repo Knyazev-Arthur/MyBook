@@ -3,11 +3,12 @@ import Combine
 
 class MenuRouter: MenuRouterProtocol {
     
+    private weak var tabBarController: UITabBarController?
+    
     let internalEventPublisher: PassthroughSubject<MenuRouterInternalEvent, Never>
     
     private let builder: MenuBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>
-    private weak var tabBarController: UITabBarController?
     
     init(builder: MenuBuilderRoutProtocol) {
         self.builder = builder
@@ -49,7 +50,7 @@ private extension MenuRouter {
     
 }
 
-// MARK: - AuthorizationRouterInternalEvent
+// MARK: - MenuRouterInternalEvent
 enum MenuRouterInternalEvent {
     case inject(tabBarController: UITabBarController?)
     case start

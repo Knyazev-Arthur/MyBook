@@ -29,7 +29,7 @@ class SplashViewController: UIViewController {
     }
     
     private func setupObservers() {
-        viewModel.externalEventPublisher.sink { [weak self] in
+        viewModel.publisher.sink { [weak self] in
             self?.myView.setLogo($0)
         }.store(in: &subscriptions)
     }

@@ -27,7 +27,7 @@ class AppCoordinator: AppCoordinatorProtocol {
 private extension AppCoordinator {
     
     func setupObservers() {
-        interactor.externalEventPublisher.sink { [weak self] in
+        interactor.publisher.sink { [weak self] in
             self?.interactorEventHandler($0)
         }.store(in: &subscriptions)
     }
