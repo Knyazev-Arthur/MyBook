@@ -28,11 +28,11 @@ private extension AppInteractor {
     
     func setupObservers() {
         userLogin.externalEventPublisher.sink { [weak self] in
-            self?.externalEventHadler($0)
+            self?.externalEventHandler($0)
         }.store(in: &subscriptions)
     }
     
-    func externalEventHadler(_ event: Result<String, Error>) {
+    func externalEventHandler(_ event: Result<String, Error>) {
         switch event {
             case .success(_):
                 externalDataPublisher.send(.authorization(.avaliable))

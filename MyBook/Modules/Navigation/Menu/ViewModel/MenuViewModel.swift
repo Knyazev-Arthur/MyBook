@@ -8,5 +8,5 @@ class MenuViewModel: MenuViewModelProtocol {
     init(router: MenuRouterProtocol?) {
         self.router = router
     }
-        
+    
 }

@@ -4,17 +4,17 @@ import Combine
 class SplashRouter: SplashRouterProtocol {
     
     let internalEventPublisher: PassthroughSubject<SplashRouterInternalEvent, Never>
-    let externalEventPublisher: AnyPublisher<Void?, Never>
+    let externalEventPublisher: AnyPublisher<Void, Never>
     
-    private weak var viewController: UIViewController?
-    private let externalDataPublisher: PassthroughSubject<Void?, Never>
+    private let externalDataPublisher: PassthroughSubject<Void, Never>
     private let builder: SplashBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>
+    private weak var viewController: UIViewController?
     
     init(builder: SplashBuilderRoutProtocol) {
         self.builder = builder
         self.internalEventPublisher = PassthroughSubject<SplashRouterInternalEvent, Never>()
-        self.externalDataPublisher = PassthroughSubject<Void?, Never>()
+        self.externalDataPublisher = PassthroughSubject<Void, Never>()
         self.externalEventPublisher = AnyPublisher(externalDataPublisher)
         self.subscriptions = Set<AnyCancellable>()
         setupObservers()
@@ -41,7 +41,7 @@ private extension SplashRouter {
                 builder.window?.rootViewController = viewController
             
             case .action:
-                externalDataPublisher.send(nil)
+                externalDataPublisher.send()
         }
     }
     

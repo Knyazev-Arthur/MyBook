@@ -4,17 +4,13 @@ import Combine
 class MenuRouter: MenuRouterProtocol {
     
     let internalEventPublisher: PassthroughSubject<MenuRouterInternalEvent, Never>
-    let externalEventPublisher: AnyPublisher<Void, Never>
     
     private let builder: MenuBuilderRoutProtocol
-    private let externalDataPublisher: PassthroughSubject<Void, Never>
     private var subscriptions: Set<AnyCancellable>
     private weak var tabBarController: UITabBarController?
     
     init(builder: MenuBuilderRoutProtocol) {
         self.builder = builder
-        self.externalDataPublisher = PassthroughSubject<Void, Never>()
-        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
         self.internalEventPublisher = PassthroughSubject<MenuRouterInternalEvent, Never>()
         self.subscriptions = Set<AnyCancellable>()
         setupObservers()
@@ -27,11 +23,11 @@ private extension MenuRouter {
     
     func setupObservers() {
         internalEventPublisher.sink { [weak self] in
-            self?.internalEventHadler($0)
+            self?.internalEventHandler($0)
         }.store(in: &subscriptions)
     }
     
-    func internalEventHadler(_ event: MenuRouterInternalEvent) {
+    func internalEventHandler(_ event: MenuRouterInternalEvent) {
         switch event {
             case .inject(let value):
                 guard tabBarController == nil else { return }
