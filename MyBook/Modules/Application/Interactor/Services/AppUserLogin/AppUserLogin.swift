@@ -5,16 +5,16 @@ import Combine
 class AppUserLogin: AppUserLoginProtocol {
     
     let internalEventPublisher: PassthroughSubject<AppUserLoginInternalEvent, Never>
-    let externalEventPublisher: AnyPublisher<Result<String, Error>, Never>
+    let externalEventPublisher: AnyPublisher<String, Error>
     
-    private let externalDataPublisher: PassthroughSubject<Result<String, Error>, Never>
+    private let externalDataPublisher: PassthroughSubject<String, Error>
     private let googleService: GIDSignIn
     private var subscriptions: Set<AnyCancellable>
     
     init(googleService: GIDSignIn) {
         self.googleService = googleService
         self.internalEventPublisher = PassthroughSubject<AppUserLoginInternalEvent, Never>()
-        self.externalDataPublisher = PassthroughSubject<Result<String, Error>, Never>()
+        self.externalDataPublisher = PassthroughSubject<String, Error>()
         self.externalEventPublisher = AnyPublisher(externalDataPublisher)
         self.subscriptions = Set<AnyCancellable>()
         setupObservers()
@@ -45,7 +45,7 @@ private extension AppUserLogin {
     
     func checkDataAuthorization(_ user: GIDGoogleUser?, _ error: Error?) {
         if let error {
-            externalDataPublisher.send(.failure(error))
+            externalDataPublisher.send(completion: .failure(error))
             print("Error user login with Google: \(error.localizedDescription)")
             return
         }
@@ -56,7 +56,7 @@ private extension AppUserLogin {
     func getUserToken(_ user: GIDGoogleUser?) {
         user?.refreshTokensIfNeeded { [weak self] user, error in
             if let error {
-                self?.externalDataPublisher.send(.failure(error))
+                self?.externalDataPublisher.send(completion: .failure(error))
                 print("Error getting user token: \(error.localizedDescription)")
                 return
             }
@@ -78,7 +78,7 @@ private extension AppUserLogin {
             
             print("User logged in")
             let message = "User succefully logged in with token: \(token), id: \(userID)"
-            self?.externalDataPublisher.send(.success(message))
+            self?.externalDataPublisher.send(message)
         }
     }
 
@@ -90,7 +90,7 @@ enum AppUserLoginInternalEvent {
     case restorePreviousSignIn
 }
 
-// MARK: - UserLoginStatus
+// MARK: - AppUserLoginStatus
 enum AppUserLoginStatus {
     case unavaliable
     case avaliable

@@ -3,7 +3,7 @@ import Combine
 
 class AppInteractor: AppInteractorProtocol {
     
-    let externalEventPublisher: AnyPublisher<AppInteractorExternalEvent, Never>
+    let publisher: AnyPublisher<AppInteractorExternalEvent, Never>
     
     private let userLogin: AppUserLoginProtocol
     private let externalDataPublisher: PassthroughSubject<AppInteractorExternalEvent, Never>
@@ -12,7 +12,7 @@ class AppInteractor: AppInteractorProtocol {
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
         self.externalDataPublisher = PassthroughSubject<AppInteractorExternalEvent, Never>()
-        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.publisher = AnyPublisher(externalDataPublisher)
         self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
@@ -27,9 +27,12 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     func setupObservers() {
-        userLogin.externalEventPublisher.sink { [weak self] in
-            self?.externalEventHandler($0)
-        }.store(in: &subscriptions)
+        userLogin.externalEventPublisher
+            .map { Result<String, Error>.success($0) }
+            .catch { Just(Result<String, Error>.failure($0)) }
+            .sink { [weak self] in
+                self?.externalEventHandler($0)
+            }.store(in: &subscriptions)
     }
     
     func externalEventHandler(_ event: Result<String, Error>) {

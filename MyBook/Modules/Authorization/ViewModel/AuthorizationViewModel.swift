@@ -4,13 +4,14 @@ import Combine
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
+    private weak var router: AuthorizationRouterProtocol?
+    
     let internalEventPublisher: PassthroughSubject<AuthorizationViewModelInternalEvent, Never>
     let externalEventPublisher: AnyPublisher<AuthorizationViewData, Never>
     
     private let externalDataPublisher: PassthroughSubject<AuthorizationViewData, Never>
     private let userLogin: AppUserLoginProtocol
     private var subscriptions: Set<AnyCancellable>
-    private weak var router: AuthorizationRouterProtocol?
     
     init(userLogin: AppUserLoginProtocol, router: AuthorizationRouterProtocol?) {
         self.userLogin = userLogin
@@ -36,9 +37,16 @@ private extension AuthorizationViewModel {
             self?.routerEventHandler($0)
         }.store(in: &subscriptions)
         
-        userLogin.externalEventPublisher.sink { [weak self] in
-            self?.userAuthorizationHandler($0)
-        }.store(in: &subscriptions)
+        setupObserverUserLogin()
+    }
+    
+    func setupObserverUserLogin() {
+        userLogin.externalEventPublisher
+            .map { Result<String, Error>.success($0) }
+            .catch { Just(Result<String, Error>.failure($0)) }
+            .sink { [weak self] in
+                self?.userAuthorizationHandler($0)
+            }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: AuthorizationViewModelInternalEvent) {
@@ -46,7 +54,7 @@ private extension AuthorizationViewModel {
             case .initialSetup:
                 initialSetup()
 
-            case .router:
+            case .logInToGoogle:
                 router?.internalEventPublisher.send(.logInToGoogle)
         }
     }
@@ -97,5 +105,5 @@ private extension AuthorizationViewModel {
 // MARK: - AuthorizationViewModelInternalEvent
 enum AuthorizationViewModelInternalEvent {
     case initialSetup
-    case router
+    case logInToGoogle
 }
