@@ -27,12 +27,9 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     func setupObservers() {
-        userLogin.externalEventPublisher
-            .map { Result<String, Error>.success($0) }
-            .catch { Just(Result<String, Error>.failure($0)) }
-            .sink { [weak self] in
-                self?.externalEventHandler($0)
-            }.store(in: &subscriptions)
+        userLogin.externalEventPublisher.sink { [weak self] in
+            self?.externalEventHandler($0)
+        }.store(in: &subscriptions)
     }
     
     func externalEventHandler(_ event: Result<String, Error>) {

@@ -20,6 +20,8 @@
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
 		757396032BFB32A4006671E9 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757396022BFB32A4006671E9 /* ProjectButton.swift */; };
 		757396052BFBCF79006671E9 /* ProjectButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757396042BFBCF79006671E9 /* ProjectButtonProtocol.swift */; };
+		757396092BFC71DA006671E9 /* PublisherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757396082BFC71DA006671E9 /* PublisherExtension.swift */; };
+		7573960B2BFC7711006671E9 /* SubjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7573960A2BFC7711006671E9 /* SubjectExtension.swift */; };
 		757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */; };
 		757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D72BD8E76100ABABAE /* MenuRouter.swift */; };
 		757FF6DA2BD8E79700ABABAE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */; };
@@ -89,6 +91,8 @@
 		75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublishers.swift; sourceTree = "<group>"; };
 		757396022BFB32A4006671E9 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = MyBook/Services/UserInterface/ProjectButton/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
 		757396042BFBCF79006671E9 /* ProjectButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectButtonProtocol.swift; sourceTree = "<group>"; };
+		757396082BFC71DA006671E9 /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
+		7573960A2BFC7711006671E9 /* SubjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectExtension.swift; sourceTree = "<group>"; };
 		757FF6D52BD8E73800ABABAE /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		757FF6D72BD8E76100ABABAE /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
 		757FF6D92BD8E79600ABABAE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +180,15 @@
 				757396042BFBCF79006671E9 /* ProjectButtonProtocol.swift */,
 			);
 			path = ProjectButton;
+			sourceTree = "<group>";
+		};
+		7573960C2BFC8023006671E9 /* Publishers */ = {
+			isa = PBXGroup;
+			children = (
+				757396082BFC71DA006671E9 /* PublisherExtension.swift */,
+				7573960A2BFC7711006671E9 /* SubjectExtension.swift */,
+			);
+			path = Publishers;
 			sourceTree = "<group>";
 		};
 		757FF6D02BD8D35700ABABAE /* Builder */ = {
@@ -462,6 +475,7 @@
 		CE96D9AE2BA9E50F00FF8A61 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7573960C2BFC8023006671E9 /* Publishers */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -767,6 +781,7 @@
 				75404FE72BF1F0B6008ABDA8 /* DataPublisher.swift in Sources */,
 				757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */,
 				757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */,
+				757396092BFC71DA006671E9 /* PublisherExtension.swift in Sources */,
 				7523E7E22BC699CC00315858 /* UIColorExtension.swift in Sources */,
 				CE96D9C22BAA047A00FF8A61 /* SplashRouter.swift in Sources */,
 				CE96D9AB2BA9E45C00FF8A61 /* AppCoordinatorProtocol.swift in Sources */,
@@ -784,6 +799,7 @@
 				75B163582BF8E999009F0FD6 /* MenuViewModelProtocol.swift in Sources */,
 				CE96D9B52BAA039B00FF8A61 /* AppInteractorProtocol.swift in Sources */,
 				CE96D9A92BA9E45000FF8A61 /* AppCoordinator.swift in Sources */,
+				7573960B2BFC7711006671E9 /* SubjectExtension.swift in Sources */,
 				CE96D9E82BAA134400FF8A61 /* SplashViewProtocol.swift in Sources */,
 				757396032BFB32A4006671E9 /* ProjectButton.swift in Sources */,
 				757FF6EC2BDBA95600ABABAE /* MenuBuilderRoutProtocol.swift in Sources */,

@@ -56,7 +56,7 @@ private extension AppUserLogin {
     func getUserToken(_ user: GIDGoogleUser?) {
         user?.refreshTokensIfNeeded { [weak self] user, error in
             if let error {
-                self?.externalDataPublisher.send(completion: .failure(error))
+                self?.externalDataPublisher.send(.failure(error))
                 print("Error getting user token: \(error.localizedDescription)")
                 return
             }
@@ -78,7 +78,7 @@ private extension AppUserLogin {
             
             print("User logged in")
             let message = "User succefully logged in with token: \(token), id: \(userID)"
-            self?.externalDataPublisher.send(message)
+            self?.externalDataPublisher.send(.success(message))
         }
     }
 
