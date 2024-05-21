@@ -14,8 +14,6 @@
 		7523ECA22BA6AD9300707DB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECA42BA6AD9300707DB7 /* Localizable.strings */; };
 		7523ECA82BA6AE1200707DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7523ECAA2BA6AE1200707DB7 /* InfoPlist.strings */; };
 		753FE7AB2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */; };
-		75404FE72BF1F0B6008ABDA8 /* DataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75404FE62BF1F0B6008ABDA8 /* DataPublisher.swift */; };
-		75404FE92BF1F0C4008ABDA8 /* AnyPublishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */; };
 		755C9F5F2BC42B9E00E1F089 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F5E2BC42B9E00E1F089 /* KeychainAccess */; };
 		755C9F622BC431D900E1F089 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 755C9F612BC431D900E1F089 /* SnapKit */; };
 		757396032BFB32A4006671E9 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757396022BFB32A4006671E9 /* ProjectButton.swift */; };
@@ -87,8 +85,6 @@
 		7523ECA92BA6AE1200707DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7523ECAB2BA6AE1800707DB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		753FE7AA2BDCEEF30039C569 /* SplashBuilderRoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilderRoutProtocol.swift; sourceTree = "<group>"; };
-		75404FE62BF1F0B6008ABDA8 /* DataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPublisher.swift; sourceTree = "<group>"; };
-		75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublishers.swift; sourceTree = "<group>"; };
 		757396022BFB32A4006671E9 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = MyBook/Services/UserInterface/ProjectButton/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
 		757396042BFBCF79006671E9 /* ProjectButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectButtonProtocol.swift; sourceTree = "<group>"; };
 		757396082BFC71DA006671E9 /* PublisherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtension.swift; sourceTree = "<group>"; };
@@ -164,15 +160,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		75404FE52BF1F09C008ABDA8 /* Publishers */ = {
-			isa = PBXGroup;
-			children = (
-				75404FE62BF1F0B6008ABDA8 /* DataPublisher.swift */,
-				75404FE82BF1F0C4008ABDA8 /* AnyPublishers.swift */,
-			);
-			path = Publishers;
-			sourceTree = "<group>";
-		};
 		757396062BFBD2C3006671E9 /* ProjectButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,15 +167,6 @@
 				757396042BFBCF79006671E9 /* ProjectButtonProtocol.swift */,
 			);
 			path = ProjectButton;
-			sourceTree = "<group>";
-		};
-		7573960C2BFC8023006671E9 /* Publishers */ = {
-			isa = PBXGroup;
-			children = (
-				757396082BFC71DA006671E9 /* PublisherExtension.swift */,
-				7573960A2BFC7711006671E9 /* SubjectExtension.swift */,
-			);
-			path = Publishers;
 			sourceTree = "<group>";
 		};
 		757FF6D02BD8D35700ABABAE /* Builder */ = {
@@ -357,7 +335,6 @@
 		CE96D98F2BA9DF9E00FF8A61 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				75404FE52BF1F09C008ABDA8 /* Publishers */,
 				CEA54A3C2BBD6BA00087C90A /* Dependency */,
 				CEA54A3D2BBD6BBA0087C90A /* UserInterface */,
 				CEA54A3E2BBD6BCD0087C90A /* Networking */,
@@ -475,7 +452,8 @@
 		CE96D9AE2BA9E50F00FF8A61 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7573960C2BFC8023006671E9 /* Publishers */,
+				757396082BFC71DA006671E9 /* PublisherExtension.swift */,
+				7573960A2BFC7711006671E9 /* SubjectExtension.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -778,7 +756,6 @@
 				751EE19E2B9EDC1A006356F5 /* AuthorizationView.swift in Sources */,
 				CE96D9C92BAA053800FF8A61 /* SplashView.swift in Sources */,
 				75EDEC4D2B9EDB6E003DF653 /* AuthorizationViewController.swift in Sources */,
-				75404FE72BF1F0B6008ABDA8 /* DataPublisher.swift in Sources */,
 				757FF6D82BD8E76100ABABAE /* MenuRouter.swift in Sources */,
 				757FF6D62BD8E73800ABABAE /* MenuBuilder.swift in Sources */,
 				757396092BFC71DA006671E9 /* PublisherExtension.swift in Sources */,
@@ -808,7 +785,6 @@
 				CE96D9CC2BAA056A00FF8A61 /* AuthorizationViewProtocol.swift in Sources */,
 				CE96D9B82BAA03F700FF8A61 /* AppBuilder.swift in Sources */,
 				75EDEC492B9EDB6E003DF653 /* AppDelegate.swift in Sources */,
-				75404FE92BF1F0C4008ABDA8 /* AnyPublishers.swift in Sources */,
 				CE96D9BF2BAA044E00FF8A61 /* SplashBuilderProtocol.swift in Sources */,
 				CE96D98D2BA9DB9900FF8A61 /* Documentation.docc in Sources */,
 				757FF6E32BD9524E00ABABAE /* MenuRouterProtocol.swift in Sources */,
