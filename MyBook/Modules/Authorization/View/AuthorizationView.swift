@@ -30,8 +30,8 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     
     func setViewData(_ data: AuthorizationViewData) {
         logoImageView.image = data.imageLogo
-        setupLoginButton(data.imageLoginButton)
-        setupLabelGreeting(data.textLabelGreeting)
+        loginButton.setImage(data.imageLoginButton, for: .normal)
+        labelGreeting.text = data.textLabelGreeting
     }
     
 }
@@ -52,6 +52,12 @@ private extension AuthorizationView {
     
     func setupLayout() {
         backgroundColor = .lightBeige
+        
+        labelGreeting.textColor = .greyBlue
+        labelGreeting.numberOfLines = 0
+        labelGreeting.textAlignment = .center
+        labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
+        
         addSubview(logoImageView)
         addSubview(labelGreeting)
         addSubview(loginButton)
@@ -78,18 +84,6 @@ private extension AuthorizationView {
             $0.height.equalTo(60)
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
         }
-    }
-    
-    func setupLoginButton(_ image: UIImage?) {
-        loginButton.setImage(image, for: .normal)
-    }
-    
-    func setupLabelGreeting(_ text: String) {
-        labelGreeting.text = text
-        labelGreeting.textColor = UIColor(red: 64/255, green: 86/255, blue: 115/255, alpha: 1)
-        labelGreeting.numberOfLines = 0
-        labelGreeting.textAlignment = .center
-        labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
     }
     
 }
