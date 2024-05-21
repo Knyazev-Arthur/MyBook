@@ -3,10 +3,9 @@ import Combine
 
 class MenuRouter: MenuRouterProtocol {
     
-    private weak var tabBarController: UITabBarController?
-    
     let internalEventPublisher: PassthroughSubject<MenuRouterInternalEvent, Never>
     
+    private weak var tabBarController: UITabBarController?
     private let builder: MenuBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>
     

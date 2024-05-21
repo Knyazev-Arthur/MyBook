@@ -3,12 +3,11 @@ import UIKit
 import Combine
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
-    
-    private weak var viewController: UIViewController?
-    
+        
     let internalEventPublisher: PassthroughSubject<AuthorizationRouterInternalEvent, Never>
     let externalEventPublisher: AnyPublisher<AuthorizationRouterExternalEvent, Never>
     
+    private weak var viewController: UIViewController?
     private let externalDataPublisher: PassthroughSubject<AuthorizationRouterExternalEvent, Never>
     private let builder: AuthorizationBuilderRoutProtocol
     private var subscriptions: Set<AnyCancellable>

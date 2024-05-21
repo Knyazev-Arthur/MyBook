@@ -6,7 +6,7 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
     
     let publisher: AnyPublisher<Void, Never>
     
-    private let externalDataPublisher: PassthroughSubject<Void, Never>
+    private let internalPublisher: PassthroughSubject<Void, Never>
     private let logoImageView: UIImageView
     private let labelGreeting: UILabel
     private let loginButton: ProjectButtonProtocol
@@ -16,8 +16,8 @@ class AuthorizationView: UIView, AuthorizationViewProtocol {
         self.logoImageView = logoImageView
         self.labelGreeting = label
         self.loginButton = loginButton
-        self.externalDataPublisher = PassthroughSubject<Void, Never>()
-        self.publisher = AnyPublisher(externalDataPublisher)
+        self.internalPublisher = PassthroughSubject<Void, Never>()
+        self.publisher = AnyPublisher(internalPublisher)
         self.subscriptions = Set<AnyCancellable>()
         super.init(frame: .zero)
         setupObservers()
@@ -41,15 +41,13 @@ private extension AuthorizationView {
     
     func setupObservers() {
         loginButton.publisher.sink { [weak self] in
-            self?.externalDataPublisher.send()
+            self?.internalPublisher.send()
         }.store(in: &subscriptions)
     }
     
     func setupConfiguration() {
         setupLayout()
-        setupLogoImageViewConstraints()
-        setupLabelGreetingConstraints()
-        setupLoginButtonConstraints()
+        setupConstraints()
     }
     
     func setupLayout() {
@@ -57,6 +55,29 @@ private extension AuthorizationView {
         addSubview(logoImageView)
         addSubview(labelGreeting)
         addSubview(loginButton)
+    }
+    
+    func setupConstraints() {
+        logoImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(210)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(80)
+        }
+        
+        labelGreeting.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(40)
+            $0.width.equalTo(250)
+            $0.height.equalTo(60)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
+        }
     }
     
     func setupLoginButton(_ image: UIImage?) {
@@ -71,33 +92,6 @@ private extension AuthorizationView {
         labelGreeting.font = UIFont(name: "MerriweatherSans-Regular", size: 20)
     }
     
-    func setupLogoImageViewConstraints() {
-        logoImageView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(300)
-            $0.height.equalTo(210)
-            $0.top.equalTo(safeAreaLayoutGuide).offset(80)
-        }
-    }
-    
-    func setupLabelGreetingConstraints() {
-        labelGreeting.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(40)
-            $0.width.equalTo(250)
-            $0.height.equalTo(60)
-        }
-    }
-    
-    func setupLoginButtonConstraints() {
-        loginButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(60)
-            $0.height.equalTo(60)
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-120)
-        }
-    }
-
 }
 
 // MARK: - AuthorizationViewData

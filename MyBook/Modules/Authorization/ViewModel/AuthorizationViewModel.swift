@@ -4,11 +4,10 @@ import Combine
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
-    private weak var router: AuthorizationRouterProtocol?
-
     let internalEventPublisher: PassthroughSubject<AuthorizationViewModelInternalEvent, Never>
     let externalEventPublisher: AnyPublisher<AuthorizationViewData, Never>
-        
+    
+    private weak var router: AuthorizationRouterProtocol?
     private let externalDataPublisher: PassthroughSubject<AuthorizationViewData, Never>
     private let userLogin: AppUserLoginProtocol
     private var subscriptions: Set<AnyCancellable>

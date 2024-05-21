@@ -6,13 +6,13 @@ class AppInteractor: AppInteractorProtocol {
     let publisher: AnyPublisher<AppInteractorExternalEvent, Never>
     
     private let userLogin: AppUserLoginProtocol
-    private let externalDataPublisher: PassthroughSubject<AppInteractorExternalEvent, Never>
+    private let internalPublisher: PassthroughSubject<AppInteractorExternalEvent, Never>
     private var subscriptions: Set<AnyCancellable>
     
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
-        self.externalDataPublisher = PassthroughSubject<AppInteractorExternalEvent, Never>()
-        self.publisher = AnyPublisher(externalDataPublisher)
+        self.internalPublisher = PassthroughSubject<AppInteractorExternalEvent, Never>()
+        self.publisher = AnyPublisher(internalPublisher)
         self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
@@ -35,10 +35,10 @@ private extension AppInteractor {
     func externalEventHandler(_ event: Result<String, Error>) {
         switch event {
             case .success(_):
-                externalDataPublisher.send(.authorization(.avaliable))
+                internalPublisher.send(.authorization(.avaliable))
                 
             case .failure(_):
-                externalDataPublisher.send(.authorization(.unavaliable))
+                internalPublisher.send(.authorization(.unavaliable))
         }
     }
     
