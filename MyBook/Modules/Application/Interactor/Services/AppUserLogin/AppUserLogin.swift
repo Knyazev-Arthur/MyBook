@@ -45,7 +45,7 @@ private extension AppUserLogin {
     
     func checkDataAuthorization(_ user: GIDGoogleUser?, _ error: Error?) {
         if let error {
-            externalDataPublisher.send(completion: .failure(error))
+            externalDataPublisher.send(.failure(error))
             print("Error user login with Google: \(error.localizedDescription)")
             return
         }
