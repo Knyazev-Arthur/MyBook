@@ -15,4 +15,4 @@ Pods/
 *.hmap
 *.ipa
 *.lock
-*.xcschememanagement.plist
+*.xcschemes/xcschememanagement.plist
