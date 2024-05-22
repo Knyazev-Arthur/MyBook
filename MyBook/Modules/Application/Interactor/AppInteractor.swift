@@ -1,21 +1,24 @@
 import Foundation
+import Combine
 
 class AppInteractor: AppInteractorProtocol {
     
-    let externalEvent: AnyPublisher<AppInteractorExternalEvent>
+    let publisher: AnyPublisher<AppInteractorExternalEvent, Never>
     
-    private let externalDataPublisher: DataPublisher<AppInteractorExternalEvent>
     private let userLogin: AppUserLoginProtocol
+    private let internalPublisher: PassthroughSubject<AppInteractorExternalEvent, Never>
+    private var subscriptions: Set<AnyCancellable>
     
     init(userLogin: AppUserLoginProtocol) {
         self.userLogin = userLogin
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
+        self.internalPublisher = PassthroughSubject<AppInteractorExternalEvent, Never>()
+        self.publisher = AnyPublisher(internalPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
     func restorePreviousSignIn() {
-        userLogin.internalEvent.send(.restorePreviousSignIn)
+        userLogin.internalEventPublisher.send(.restorePreviousSignIn)
     }
 
 }
@@ -24,18 +27,18 @@ class AppInteractor: AppInteractorProtocol {
 private extension AppInteractor {
     
     func setupObservers() {
-        userLogin.externalEvent.sink { [weak self] in
-            self?.externalEventHadler($0)
-        }
+        userLogin.externalEventPublisher.sink { [weak self] in
+            self?.externalEventHandler($0)
+        }.store(in: &subscriptions)
     }
     
-    func externalEventHadler(_ event: Result<String, Error>) {
+    func externalEventHandler(_ event: Result<String, Error>) {
         switch event {
             case .success(_):
-                externalDataPublisher.send(.authorization(.avaliable))
+                internalPublisher.send(.authorization(.avaliable))
                 
             case .failure(_):
-                externalDataPublisher.send(.authorization(.unavaliable))
+                internalPublisher.send(.authorization(.unavaliable))
         }
     }
     

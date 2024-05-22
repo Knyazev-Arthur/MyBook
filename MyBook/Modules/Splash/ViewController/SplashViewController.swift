@@ -1,13 +1,16 @@
 import UIKit
+import Combine
 
 class SplashViewController: UIViewController {
     
     private let viewModel: SplashViewModelProtocol
     private let myView: SplashViewProtocol
+    private var subscriptions: Set<AnyCancellable>
     
     init(viewModel: SplashViewModelProtocol, view: SplashViewProtocol) {
         self.viewModel = viewModel
         self.myView = view
+        self.subscriptions = Set<AnyCancellable>()
         super.init(nibName: nil, bundle: nil)
         setupObservers()
     }
@@ -26,9 +29,9 @@ class SplashViewController: UIViewController {
     }
     
     private func setupObservers() {
-        viewModel.externalEvent.sink { [weak self] in
+        viewModel.publisher.sink { [weak self] in
             self?.myView.setLogo($0)
-        }
+        }.store(in: &subscriptions)
     }
     
 }

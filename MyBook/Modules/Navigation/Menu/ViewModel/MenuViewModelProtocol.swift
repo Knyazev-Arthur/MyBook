@@ -1,5 +1,6 @@
 import Foundation
+import Combine
 
 protocol MenuViewModelProtocol {
-    var externalEvent: AnyPublisher<Void> { get }
+    
 }

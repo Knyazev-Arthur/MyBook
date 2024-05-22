@@ -1,19 +1,22 @@
 import Foundation
 import GoogleSignIn
+import Combine
 
 class AppUserLogin: AppUserLoginProtocol {
     
-    let externalEvent: AnyPublisher<Result<String, Error>>
-    let internalEvent: DataPublisher<AppUserLoginInternalEvent>
+    let internalEventPublisher: PassthroughSubject<AppUserLoginInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<String, Error>
     
-    private let externalDataPublisher: DataPublisher<Result<String, Error>>
+    private let externalDataPublisher: PassthroughSubject<String, Error>
     private let googleService: GIDSignIn
+    private var subscriptions: Set<AnyCancellable>
     
     init(googleService: GIDSignIn) {
         self.googleService = googleService
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
-        self.internalEvent = DataPublisher()
+        self.internalEventPublisher = PassthroughSubject<AppUserLoginInternalEvent, Never>()
+        self.externalDataPublisher = PassthroughSubject<String, Error>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
     
@@ -23,9 +26,9 @@ class AppUserLogin: AppUserLoginProtocol {
 private extension AppUserLogin {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: AppUserLoginInternalEvent) {
@@ -42,7 +45,7 @@ private extension AppUserLogin {
     
     func checkDataAuthorization(_ user: GIDGoogleUser?, _ error: Error?) {
         if let error {
-            externalDataPublisher.send(.failure(error))
+            externalDataPublisher.send(error)
             print("Error user login with Google: \(error.localizedDescription)")
             return
         }
@@ -53,7 +56,7 @@ private extension AppUserLogin {
     func getUserToken(_ user: GIDGoogleUser?) {
         user?.refreshTokensIfNeeded { [weak self] user, error in
             if let error {
-                self?.externalDataPublisher.send(.failure(error))
+                self?.externalDataPublisher.send(error)
                 print("Error getting user token: \(error.localizedDescription)")
                 return
             }
@@ -75,7 +78,7 @@ private extension AppUserLogin {
             
             print("User logged in")
             let message = "User succefully logged in with token: \(token), id: \(userID)"
-            self?.externalDataPublisher.send(.success(message))
+            self?.externalDataPublisher.send(message)
         }
     }
 
@@ -87,7 +90,7 @@ enum AppUserLoginInternalEvent {
     case restorePreviousSignIn
 }
 
-// MARK: - UserLoginStatus
+// MARK: - AppUserLoginStatus
 enum AppUserLoginStatus {
     case unavaliable
     case avaliable

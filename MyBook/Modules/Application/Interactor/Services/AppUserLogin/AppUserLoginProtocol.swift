@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
 protocol AppUserLoginProtocol: AnyObject {
-    var externalEvent: AnyPublisher<Result<String, Error>> { get }
-    var internalEvent: DataPublisher<AppUserLoginInternalEvent> { get }
+    var internalEventPublisher: PassthroughSubject<AppUserLoginInternalEvent, Never> { get }
+    var externalEventPublisher: AnyPublisher<String, Error> { get }
 }

@@ -1,23 +1,24 @@
 import UIKit
+import Combine
 
 class SplashViewModel: SplashViewModelProtocol {
     
-    let externalEvent: AnyPublisher<UIImage?>
+    let publisher: AnyPublisher<UIImage?, Never>
     
     private weak var router: SplashRouterProtocol?
-    private let externalDataPublisher: DataPublisher<UIImage?>
+    private let internalPublisher: PassthroughSubject<UIImage?, Never>
     
     init(router: SplashRouterProtocol?) {
         self.router = router
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
+        self.internalPublisher = PassthroughSubject<UIImage?, Never>()
+        self.publisher = AnyPublisher(internalPublisher)
     }
     
     func sendLogoAndAction() {
         let image = UIImage(named: "Logo")
-        externalDataPublisher.send(image)
+        internalPublisher.send(image)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.router?.internalEvent.send(.action)
+            self?.router?.internalEventPublisher.send(.action)
         }
     }
     

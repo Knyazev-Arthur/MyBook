@@ -32,7 +32,7 @@ private extension SplashBuilder {
         let view = view(imageView)
         let viewController = SplashViewController(viewModel: viewModel, view: view)
         
-        router.internalEvent.send(.inject(viewController: viewController))
+        router.internalEventPublisher.send(.inject(viewController: viewController))
         injector.addObject(to: .splash, value: viewController)
     }
     

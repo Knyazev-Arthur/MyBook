@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
 protocol AppInteractorProtocol: AnyObject {
-    var externalEvent: AnyPublisher<AppInteractorExternalEvent> { get }
+    var publisher: AnyPublisher<AppInteractorExternalEvent, Never> { get }
     func restorePreviousSignIn()
 }

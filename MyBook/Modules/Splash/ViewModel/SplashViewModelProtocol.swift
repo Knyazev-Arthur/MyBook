@@ -1,6 +1,7 @@
 import UIKit
+import Combine
 
 protocol SplashViewModelProtocol: AnyObject {
-    var externalEvent: AnyPublisher<UIImage?> { get }
+    var publisher: AnyPublisher<UIImage?, Never> { get }
     func sendLogoAndAction()
 }

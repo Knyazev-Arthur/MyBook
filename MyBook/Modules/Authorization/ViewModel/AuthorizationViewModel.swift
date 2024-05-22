@@ -1,22 +1,24 @@
-import Foundation
 import UIKit
 import GoogleSignIn
+import Combine
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
     
-    let externalEvent: AnyPublisher<AuthorizationViewData>
-    let internalEvent: DataPublisher<AuthorizationViewModelInternalEvent>
+    let internalEventPublisher: PassthroughSubject<AuthorizationViewModelInternalEvent, Never>
+    let externalEventPublisher: AnyPublisher<AuthorizationViewData, Never>
     
-    private let externalDataPublisher: DataPublisher<AuthorizationViewData>
-    private let userLogin: AppUserLoginProtocol
     private weak var router: AuthorizationRouterProtocol?
+    private let externalDataPublisher: PassthroughSubject<AuthorizationViewData, Never>
+    private let userLogin: AppUserLoginProtocol
+    private var subscriptions: Set<AnyCancellable>
     
     init(userLogin: AppUserLoginProtocol, router: AuthorizationRouterProtocol?) {
         self.userLogin = userLogin
         self.router = router
-        self.externalDataPublisher = DataPublisher()
-        self.externalEvent = AnyPublisher(externalDataPublisher)
-        self.internalEvent = DataPublisher()
+        self.internalEventPublisher = PassthroughSubject<AuthorizationViewModelInternalEvent, Never>()
+        self.externalDataPublisher = PassthroughSubject<AuthorizationViewData, Never>()
+        self.externalEventPublisher = AnyPublisher(externalDataPublisher)
+        self.subscriptions = Set<AnyCancellable>()
         setupObservers()
     }
 
@@ -26,17 +28,17 @@ class AuthorizationViewModel: AuthorizationViewModelProtocol {
 private extension AuthorizationViewModel {
     
     func setupObservers() {
-        internalEvent.sink { [weak self] in
+        internalEventPublisher.sink { [weak self] in
             self?.internalEventHandler($0)
-        }
+        }.store(in: &subscriptions)
         
-        router?.externalEvent.sink { [weak self] in
+        router?.externalEventPublisher.sink { [weak self] in
             self?.routerEventHandler($0)
-        }
+        }.store(in: &subscriptions)
         
-        userLogin.externalEvent.sink { [weak self] in
+        userLogin.externalEventPublisher.sink { [weak self] in
             self?.userAuthorizationHandler($0)
-        }
+        }.store(in: &subscriptions)
     }
     
     func internalEventHandler(_ event: AuthorizationViewModelInternalEvent) {
@@ -44,8 +46,8 @@ private extension AuthorizationViewModel {
             case .initialSetup:
                 initialSetup()
 
-            case .router:
-                router?.internalEvent.send(.logInToGoogle)
+            case .logInToGoogle:
+                router?.internalEventPublisher.send(.logInToGoogle)
         }
     }
     
@@ -76,14 +78,14 @@ private extension AuthorizationViewModel {
             return
         }
         
-        userLogin.internalEvent.send(.userLogin(user))
+        userLogin.internalEventPublisher.send(.userLogin(user))
     }
     
     func userAuthorizationHandler(_ event: Result<String, Error>) {
         switch event {
             case .success(let message):
                 print(message)
-                router?.internalEvent.send(.complete)
+                router?.internalEventPublisher.send(.complete)
             
             case .failure(_):
                 break
@@ -95,5 +97,5 @@ private extension AuthorizationViewModel {
 // MARK: - AuthorizationViewModelInternalEvent
 enum AuthorizationViewModelInternalEvent {
     case initialSetup
-    case router
+    case logInToGoogle
 }

@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
 protocol AuthorizationViewModelProtocol: AnyObject {
-    var externalEvent: AnyPublisher<AuthorizationViewData> { get }
-    var internalEvent: DataPublisher<AuthorizationViewModelInternalEvent> { get }
+    var internalEventPublisher: PassthroughSubject<AuthorizationViewModelInternalEvent, Never> { get }
+    var externalEventPublisher: AnyPublisher<AuthorizationViewData, Never> { get }
 }
